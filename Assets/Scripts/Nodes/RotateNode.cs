@@ -65,6 +65,7 @@ public class RotateNode : ExecuteableNode
         }
         rb.MoveRotation(Quaternion.Euler(0,targetDirection.y,0));
         await Task.Yield();
+        await Task.Delay(500);
 
         //if 
         //    (

@@ -68,5 +68,6 @@ public class BewegungsNode : ExecuteableNode
             rb.MovePosition(targetPosition);
             await Task.Yield();
         }
+        await Task.Delay(500);
     }
 }

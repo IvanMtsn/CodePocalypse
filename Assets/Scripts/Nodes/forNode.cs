@@ -10,12 +10,12 @@ public class ForNode : ContainingNode
     public int ExecuteXTimes;
     public override async Task GoThroughNodes()
     {
-        Task[] tasks = new Task[ExecuteXTimes]; 
+        //Task[] tasks = new Task[ExecuteXTimes]; 
         for (int i = 0; i < ExecuteXTimes; i++)
         {
-            tasks[i] = base.GoThroughNodes();
+            await base.GoThroughNodes();
         }
-        await Task.WhenAll(tasks);
+        //await Task.WhenAll(tasks);
     }
 
     public void OnValueChanged(string text)
