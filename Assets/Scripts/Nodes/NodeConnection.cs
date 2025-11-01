@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class NodeConnection
 {
-    Node InputNode;
-    Node OutputNode;
+    public INode InputNode;
+    public INode OutputNode;
 
 
 

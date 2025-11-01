@@ -7,31 +7,51 @@ public enum RotateDirection
     Right
 }
 
-public class RotateNode : Node
+public class RotateNode : MonoBehaviour, INode
 {
+    public NodeConnection Input { get; set; }
+    public NodeConnection Output { get; set; }
+
     [SerializeField] GameObject Player;
     [SerializeField] RotateDirection selectedDir;
-    [SerializeField] GameObject destinatedRotation;
+    [SerializeField] GameObject destination;
     Rigidbody rb;
-    public float MoveSpeed;
+    public int RotateSpeed;
+
+    float timer;
+    bool isRotating;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = Player.GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
+        if ((isRotating && (Quaternion.Inverse(Quaternion.Euler(0, Player.transform.eulerAngles.y, 0)) * Quaternion.Euler(0, destination.transform.eulerAngles.y, 0)).eulerAngles.y > 0.05f))
+        {
+            rb.MoveRotation(Quaternion.Slerp(Quaternion.Euler(0, Player.transform.eulerAngles.y, 0), Quaternion.Euler(0, destination.transform.eulerAngles.y, 0), timer));
+            timer += Time.fixedDeltaTime * RotateSpeed;
+        }
+        else if (isRotating)
+        {
+            isRotating = false;
+            Player.transform.eulerAngles = destination.transform.eulerAngles;
+            destination.transform.SetParent(Player.transform);
+            timer = 0;
+        }
     }
-    public override async Task RunNode()
+
+    public async Task RunNode()
     {
-        //RotatePlayer();
+        //awate RotatePlayer();
         await Task.Yield();
     }
 
     public void RotatePlayer()
+    //public async Task RotatePlayer()
     {
         Vector3 targetDirection = rb.rotation.eulerAngles;
         Debug.Log(selectedDir.ToString());
@@ -47,16 +67,11 @@ public class RotateNode : Node
         }
 
 
-        destinatedRotation.transform.SetParent(null);
-        Player.GetComponent<PlayerMovement>().ToggleRotation();
-        destinatedRotation.transform.eulerAngles = targetDirection;
-        //float timer = 0f;
+        destination.transform.SetParent(null);
+        destination.transform.eulerAngles = targetDirection;
+        isRotating = true;
 
-        //while (timer < 1)
-        //{
-        //    rb.MoveRotation(Quaternion.Slerp(Quaternion.identity, Quaternion.Euler(0, targetDirection.y, 0), timer));
-        //    timer += Time.deltaTime * MoveSpeed;
-        //}
-        //rb.MoveRotation(Quaternion.Euler(0, targetDirection.y, 0));
+        //await Task.Yield ();
+        Debug.Log("Finished Rotating");
     }
 }

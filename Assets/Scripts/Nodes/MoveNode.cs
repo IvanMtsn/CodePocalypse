@@ -1,12 +1,23 @@
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
-public class MoveNode : Node
+public class MoveNode : MonoBehaviour, INode
 {
+    public NodeConnection Input { get; set; }
+    public NodeConnection Output { get; set; }
+
     [SerializeField] GameObject Player;
     [SerializeField] GameObject destination;
-    [SerializeField] public float MoveLenght;
+    public float MoveLenght;
+    public int MoveSpeed;
+
     Rigidbody rb;
+    Vector3 prevPos;
+    bool isMoving;
+    float timer;
+
 
     void Start()
     {
@@ -14,23 +25,46 @@ public class MoveNode : Node
         //destination = Player.transform.GetChild(0).gameObject;
     }
 
-    public override async Task RunNode()
+    private void FixedUpdate()
     {
-        //await MovePlayer();
+        if (isMoving && Vector3.Distance(Player.transform.position, destination.transform.position) > 0.01f)
+        {
+            rb.MovePosition(Vector3.Lerp(prevPos, destination.transform.position, timer));
+            timer += Time.fixedDeltaTime * MoveSpeed;
+        }
+        else if (isMoving)
+        {
+            isMoving = false;
+            Player.transform.position = destination.transform.position;
+            destination.transform.SetParent(Player.transform);
+            timer = 0;
+        }
+    }
+
+    public async Task RunNode()
+    {
+        await MovePlayer();
         await Task.Yield();
     }
 
-    //public async Task MovePlayer()
-    public void MovePlayer()
+    //public void MovePlayer()
+    public async Task MovePlayer()
     {
         Transform dT = destination.transform;
+        prevPos = Player.transform.position;
         dT.SetParent(null);
-        Debug.Log($"Pos before: {dT.position}");
-        Player.GetComponent<PlayerMovement>().ToggleMovement();
-        dT.position += Player.transform.forward;
-        Debug.Log($"Pos after: {dT.position}");
+        isMoving = true;
+        dT.position += Player.transform.forward * MoveLenght;
 
-        //await Task.Delay(100);
-        Debug.Log("Finished");
+        while(!isMoving)
+        {
+            await Task.Yield();
+        }
+        Debug.Log("Finished Moving");
+    }
+
+    public void TestNode()
+    {
+        RunNode();
     }
 }

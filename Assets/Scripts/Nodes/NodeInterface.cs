@@ -1,10 +1,11 @@
 using System.Threading.Tasks;
 using UnityEngine;
 
-public abstract class Node : MonoBehaviour 
+public interface INode
 {
-    NodeConnection input;
-    NodeConnection output;
+    NodeConnection Input { get; set; }
+    NodeConnection Output { get; set; }
+
 
     //Könnte sein das der Rückgabetyp geändert werden muss
     public abstract Task RunNode();
