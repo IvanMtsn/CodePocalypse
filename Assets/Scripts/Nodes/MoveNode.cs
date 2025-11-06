@@ -41,7 +41,7 @@ public class MoveNode : MonoBehaviour, INode
         }
     }
 
-    public async Task RunNode()
+    public async void RunNode()
     {
         await MovePlayer();
         await Task.Yield();
@@ -56,7 +56,7 @@ public class MoveNode : MonoBehaviour, INode
         isMoving = true;
         dT.position += Player.transform.forward * MoveLenght;
 
-        while(!isMoving)
+        while(isMoving)
         {
             await Task.Yield();
         }

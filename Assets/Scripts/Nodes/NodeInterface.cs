@@ -8,7 +8,7 @@ public interface INode
 
 
     //Könnte sein das der Rückgabetyp geändert werden muss
-    public abstract Task RunNode();
+    public abstract void RunNode();
 
     //Hier könnte man eine Funktion zB GoNext machen, welche die nächste (Node am output) ausführt
     //zb public void GoNext();

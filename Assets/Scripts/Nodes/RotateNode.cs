@@ -44,14 +44,13 @@ public class RotateNode : MonoBehaviour, INode
         }
     }
 
-    public async Task RunNode()
+    public async void RunNode()
     {
-        //awate RotatePlayer();
+        await RotatePlayer();
         await Task.Yield();
     }
 
-    public void RotatePlayer()
-    //public async Task RotatePlayer()
+    public async Task RotatePlayer()
     {
         Vector3 targetDirection = rb.rotation.eulerAngles;
         Debug.Log(selectedDir.ToString());
@@ -71,7 +70,14 @@ public class RotateNode : MonoBehaviour, INode
         destination.transform.eulerAngles = targetDirection;
         isRotating = true;
 
-        //await Task.Yield ();
+        while (isRotating) 
+        {
+            await Task.Yield ();
+        }
         Debug.Log("Finished Rotating");
+    }
+    public void TestNode()
+    {
+        RunNode();
     }
 }

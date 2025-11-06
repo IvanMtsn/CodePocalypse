@@ -20,7 +20,7 @@ public class IfNode : MonoBehaviour, INode
 
     ICondition condition;
 
-    public async Task RunNode()
+    public async void RunNode()
     {
         CheckCondition();
         await Task.Yield();
