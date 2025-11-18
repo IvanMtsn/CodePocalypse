@@ -5,20 +5,15 @@ ModelImporter:
   internalIDToNameTable: []
   externalObjects:
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: BodyMaterial
-    second: {fileID: 2100000, guid: 8cdae7c7fef176f47b34a6c2eb09afcb, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: TrackMaterial.001
-    second: {fileID: 2100000, guid: b3fde5e032835c94e8ede94d5d8352b1, type: 2}
-  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Player_texture
-    second: {fileID: 2800000, guid: 3d7dec7e26f5cc348974f87ce38414fe, type: 3}
+    second: {fileID: 2800000, guid: 40b816938b804734098a11816bb03f08, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Track_texture
+    second: {fileID: 2800000, guid: f86b6b34e7c4aef46991f9dd6ec9beea, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

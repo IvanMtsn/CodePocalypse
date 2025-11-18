@@ -13,7 +13,7 @@ public class GateObstacle : MonoBehaviour
     void Update()
     {
         _animator.SetBool("isClosed", _isClosed);
-        //if (Input.GetMouseButtonDown(0)) { OpenOrCloseGate(); }
+        if (Input.GetKeyDown(KeyCode.L)) { OpenOrCloseGate(); }
     }
     public void OpenOrCloseGate()
     {
