@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4612d9f778e975d4689e5172da3d619c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.014
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4612d9f778e975d4689e5172da3d619c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4612d9f778e975d4689e5172da3d619c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: da6ae93241002984c8f5eaebf463d3d8, type: 2}
     - target: {fileID: 919132149155446097, guid: 4612d9f778e975d4689e5172da3d619c, type: 3}
       propertyPath: m_Name
       value: Player
@@ -151,3 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6daa9f74ca5505e4e8cb098112d2bd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hostileColliders:
+    serializedVersion: 2
+    m_Bits: 1280
+  _scrollSpeed: 0.25
