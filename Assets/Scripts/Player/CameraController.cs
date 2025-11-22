@@ -37,7 +37,7 @@ public class CameraController : MonoBehaviour
             _currentAngleHorizontal += deltaX * _rotationSpeed;
             _currentAngleVertical -= deltaY * _rotationSpeed;
 
-            _currentAngleVertical = Mathf.Clamp(_currentAngleVertical, -5, 50);
+            _currentAngleVertical = Mathf.Clamp(_currentAngleVertical, -5, 65);
         }
         float scroll = Mouse.current.scroll.y.ReadValue();
         _distance -= scroll * _zoomSpeed;
