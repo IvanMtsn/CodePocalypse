@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 13966, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: ArenaTemplate_1
+  m_EditorClassIdentifier: 
+  templateScene: {fileID: 102900000, guid: 1037bb44d1f7e7a4f9544cc4017e8eb8, type: 3}
+  templateName: 7x7 Arena
+  description: 
+  preview: {fileID: 0}
+  dependencies:
+  - dependency: {fileID: 2100000, guid: 7e02da0773b7c694a89f196ddfad9b52, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 5292029740168671188, guid: 0b677e9d9bd1f9a408ab7f037dc75578, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 919132149155446097, guid: cfa4677169507a14fb05e6929a08eadb, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 2800000, guid: 3028dc075ba8c584d9bc7d1e0255e038, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 8900000, guid: 2ac0036a536f0414fafa92614fbc0ee1, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 2800000, guid: 0b2c7aefd44d3bd4daab9924c3b9de63, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 919132149155446097, guid: d4d75773d97ad4e4eb30a1a5a23b4f67, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 2100000, guid: 23c9ab27be58dce499fa427abd105358, type: 2}
+    instantiationMode: 1
+  templatePipeline: {fileID: 0}
+  badge: {fileID: 0}
+  addToDefaults: 0
