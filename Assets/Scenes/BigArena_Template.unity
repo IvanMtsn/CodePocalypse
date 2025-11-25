@@ -2897,7 +2897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4754bc4dd441c4aacaf291e69298b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewTarget: {fileID: 0}
+  _viewTarget: {fileID: 1780775631}
   _distance: 50
   _rotationSpeed: 0.4
   _zoomSpeed: 1
@@ -8236,7 +8236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8790025018002667229, guid: 9723efb4165e5694eab51b67e038840a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -27.54
+      value: -27.74
       objectReference: {fileID: 0}
     - target: {fileID: 8790025018002667229, guid: 9723efb4165e5694eab51b67e038840a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8485,6 +8485,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.015, y: 0.015, z: 0.03}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1780775631 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3925512958679188493, guid: 9723efb4165e5694eab51b67e038840a, type: 3}
+  m_PrefabInstance: {fileID: 1657764870}
+  m_PrefabAsset: {fileID: 0}
 --- !u!65 &1788783571
 BoxCollider:
   m_ObjectHideFlags: 0
