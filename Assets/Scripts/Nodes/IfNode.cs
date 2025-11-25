@@ -54,4 +54,8 @@ public class IfNode : MonoBehaviour, INode
         return Output2;
     }
 
+    public void Stop()
+    {
+        //NA
+    }
 }

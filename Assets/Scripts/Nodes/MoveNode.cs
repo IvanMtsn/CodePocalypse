@@ -10,6 +10,7 @@ public class MoveNode : MonoBehaviour, INode
 
     [SerializeField] GameObject Player;
     [SerializeField] GameObject destination;
+    [SerializeField] LayerMask coordinateLayer;
     public float MoveLenght;
     public int MoveSpeed;
 
@@ -17,27 +18,33 @@ public class MoveNode : MonoBehaviour, INode
     Vector3 prevPos;
     bool isMoving;
     float timer;
-
+    bool isStopped;
+    Transform dT;
 
     void Start()
     {
         rb = Player.GetComponent<Rigidbody>();
-        //destination = Player.transform.GetChild(0).gameObject;
     }
 
     private void FixedUpdate()
     {
-        if (isMoving && Vector3.Distance(Player.transform.position, destination.transform.position) > 0.01f)
+        if (!isStopped)
         {
-            rb.MovePosition(Vector3.Lerp(prevPos, destination.transform.position, timer));
-            timer += Time.fixedDeltaTime * MoveSpeed;
-        }
-        else if (isMoving)
-        {
-            isMoving = false;
-            Player.transform.position = destination.transform.position;
-            destination.transform.SetParent(Player.transform);
-            timer = 0;
+            if (isMoving && Vector3.Distance(Player.transform.position, dT.position) > 0.01f)
+            {
+                rb.MovePosition(Vector3.Lerp(prevPos, dT.position, timer));
+                timer += Time.fixedDeltaTime * MoveSpeed;
+            }
+            else if (isMoving)
+            {
+                isMoving = false;
+                Player.transform.position = dT.position;
+                if (dT == destination.transform) 
+                {
+                    dT.SetParent(Player.transform);
+                }
+                timer = 0;
+            }
         }
     }
 
@@ -50,11 +57,21 @@ public class MoveNode : MonoBehaviour, INode
     //public void MovePlayer()
     public async Task MovePlayer()
     {
-        Transform dT = destination.transform;
+        RaycastHit hit;
+        if(Physics.Raycast(Player.transform.position + Player.transform.up * -1, Player.transform.up * -1, out hit, 2, coordinateLayer.value, QueryTriggerInteraction.UseGlobal))
+        {
+            dT = hit.transform;
+            Debug.Log("Hit Cort.");
+        }
+        else
+        {
+            dT = destination.transform;
+            dT.SetParent(null);
+            dT.position += -1 * MoveLenght * Player.transform.up;
+
+        }
         prevPos = Player.transform.position;
-        dT.SetParent(null);
         isMoving = true;
-        dT.position += Player.transform.forward * MoveLenght;
 
         while(isMoving)
         {
@@ -66,5 +83,10 @@ public class MoveNode : MonoBehaviour, INode
     public void TestNode()
     {
         RunNode();
+    }
+
+    public void Stop()
+    {
+        isStopped = true;
     }
 }

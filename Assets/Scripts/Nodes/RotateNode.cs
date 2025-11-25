@@ -20,27 +20,31 @@ public class RotateNode : MonoBehaviour, INode
 
     float timer;
     bool isRotating;
-
+    bool isStopped;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = Player.GetComponent<Rigidbody>();
+        if(destination != null) destination.transform.rotation = Player.transform.rotation;
     }
 
     private void FixedUpdate()
     {
-        if ((isRotating && (Quaternion.Inverse(Quaternion.Euler(0, Player.transform.eulerAngles.y, 0)) * Quaternion.Euler(0, destination.transform.eulerAngles.y, 0)).eulerAngles.y > 0.05f))
+        if (!isStopped)
         {
-            rb.MoveRotation(Quaternion.Slerp(Quaternion.Euler(0, Player.transform.eulerAngles.y, 0), Quaternion.Euler(0, destination.transform.eulerAngles.y, 0), timer));
-            timer += Time.fixedDeltaTime * RotateSpeed;
-        }
-        else if (isRotating)
-        {
-            isRotating = false;
-            Player.transform.eulerAngles = destination.transform.eulerAngles;
-            destination.transform.SetParent(Player.transform);
-            timer = 0;
+            if ((isRotating && (Quaternion.Inverse(Quaternion.Euler(0, Player.transform.eulerAngles.y, 0)) * Quaternion.Euler(0, destination.transform.eulerAngles.y, 0)).eulerAngles.y > 0.05f))
+            {
+                rb.MoveRotation(Quaternion.Slerp(Quaternion.Euler(Player.transform.eulerAngles.x, Player.transform.eulerAngles.y, Player.transform.eulerAngles.z), Quaternion.Euler(Player.transform.eulerAngles.x, destination.transform.eulerAngles.y, Player.transform.eulerAngles.z), timer));
+                timer += Time.fixedDeltaTime * RotateSpeed;
+            }
+            else if (isRotating)
+            {
+                isRotating = false;
+                Player.transform.eulerAngles = destination.transform.eulerAngles;
+                destination.transform.SetParent(Player.transform);
+                timer = 0;
+            }
         }
     }
 
@@ -57,12 +61,12 @@ public class RotateNode : MonoBehaviour, INode
         if (selectedDir == RotateDirection.Left)
         {
             Debug.Log("Execute Left");
-            targetDirection += Vector3.down * 90;
+            targetDirection += Vector3.back * 90;
         }
         if (selectedDir == RotateDirection.Right)
         {
             Debug.Log("Execute Right");
-            targetDirection += Vector3.up * 90;
+            targetDirection += Vector3.forward * 90;
         }
 
 
@@ -79,5 +83,10 @@ public class RotateNode : MonoBehaviour, INode
     public void TestNode()
     {
         RunNode();
+    }
+
+    public void Stop()
+    {
+        isStopped = true;
     }
 }

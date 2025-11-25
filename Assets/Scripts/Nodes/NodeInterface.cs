@@ -9,6 +9,7 @@ public interface INode
 
     //Könnte sein das der Rückgabetyp geändert werden muss
     public abstract void RunNode();
+    public abstract void Stop();
 
     //Hier könnte man eine Funktion zB GoNext machen, welche die nächste (Node am output) ausführt
     //zb public void GoNext();
