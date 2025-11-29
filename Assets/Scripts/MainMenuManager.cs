@@ -1,5 +1,5 @@
 using System;
-using UnityEditor.PackageManager;
+using TMPro;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,9 +10,12 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] GameObject _homeScreen;
     [SerializeField] GameObject _settingsScreen;
     [SerializeField] GameObject _levelSelectScreen;
+    [SerializeField] GameObject _videoSettings;
+    [SerializeField] GameObject _audioSettings;
+    [SerializeField] TMP_Dropdown _displayModeDropdown;
     void Start()
     {
-        
+        _displayModeDropdown.onValueChanged.AddListener(SetWindowMode);
     }
     void Update()
     {
@@ -42,8 +45,30 @@ public class MainMenuManager : MonoBehaviour
         _homeScreen.SetActive(false);
         _settingsScreen.SetActive(true);
     }
+    public void OpenVideoSettings()
+    {
+        _audioSettings.SetActive(false);
+        _videoSettings.SetActive(true);
+    }
+    public void OpenAudioSettings()
+    {
+        _videoSettings.SetActive(false);
+        _audioSettings.SetActive(true);
+    }
     public void QuitGame()
     {
         Application.Quit();
+    }
+    void SetWindowMode(int index)
+    {
+        switch(index)
+        {
+            case 0:
+                Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+                break;
+            case 1:
+                Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+                break;
+        }
     }
 }
