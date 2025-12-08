@@ -9,8 +9,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 11f6bf9e4e99c704eb619fc6c0cc355c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11f6bf9e4e99c704eb619fc6c0cc355c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11f6bf9e4e99c704eb619fc6c0cc355c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11f6bf9e4e99c704eb619fc6c0cc355c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.124798
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 11f6bf9e4e99c704eb619fc6c0cc355c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 11f6bf9e4e99c704eb619fc6c0cc355c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.239444
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 11f6bf9e4e99c704eb619fc6c0cc355c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -48,6 +60,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7888286145626594739, guid: 11f6bf9e4e99c704eb619fc6c0cc355c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 3493049813235472821, guid: 4eb14029160b17646a955323533417f2, type: 3}
+    - target: {fileID: -5754084199372789682, guid: 11f6bf9e4e99c704eb619fc6c0cc355c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2525023120804346360, guid: 4eb14029160b17646a955323533417f2, type: 3}
     - target: {fileID: 919132149155446097, guid: 11f6bf9e4e99c704eb619fc6c0cc355c, type: 3}
       propertyPath: m_Name
       value: GateObstacle
@@ -90,8 +110,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.013706026, y: 0.013730359, z: 0.008381829}
-  m_Center: {x: -0.00017845153, y: -0.00021137447, z: -0.0014511152}
+  m_Size: {x: 1.370603, y: 1.373036, z: 1.12}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5102681399276355640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824525d79383d2a4fa24f11ef7e1987d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isClosed: 1
+  _isClosed: 0
 --- !u!95 &5226229968275007486
 Animator:
   serializedVersion: 7
