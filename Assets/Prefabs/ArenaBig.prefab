@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 951550327213095362}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.298}
+  m_LocalPosition: {x: 0, y: 0, z: 29.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39,6 +39,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 0c53e776375120540b974deba65cf2cb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0c53e776375120540b974deba65cf2cb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0c53e776375120540b974deba65cf2cb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c53e776375120540b974deba65cf2cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -79,6 +91,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5754084199372789682, guid: 0c53e776375120540b974deba65cf2cb, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -1698568936591585214, guid: acf34abd19a2a314187e0c769073d70b, type: 3}
+    - target: {fileID: -3128474934858380809, guid: 0c53e776375120540b974deba65cf2cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3128474934858380809, guid: 0c53e776375120540b974deba65cf2cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3128474934858380809, guid: 0c53e776375120540b974deba65cf2cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 27.69
+      objectReference: {fileID: 0}
+    - target: {fileID: -310654695007834916, guid: 0c53e776375120540b974deba65cf2cb, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 213724586458018108, guid: acf34abd19a2a314187e0c769073d70b, type: 3}
     - target: {fileID: 919132149155446097, guid: 0c53e776375120540b974deba65cf2cb, type: 3}
       propertyPath: m_Name
       value: ArenaBig
