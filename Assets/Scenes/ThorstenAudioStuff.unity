@@ -688,6 +688,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 441096612}
   placingField: {fileID: 1705026273}
+  SelectEffekt: {fileID: 0}
+  NodePlaceEffekt: {fileID: 0}
+  NodeResetEffekt: {fileID: 0}
   orginPos: {x: 0, y: 0, z: 0}
   placed: 0
 --- !u!1 &151464183
@@ -794,6 +797,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 441096612}
   placingField: {fileID: 1705026273}
+  SelectEffekt: {fileID: 0}
+  NodePlaceEffekt: {fileID: 0}
+  NodeResetEffekt: {fileID: 0}
   orginPos: {x: 0, y: 0, z: 0}
   placed: 0
 --- !u!1 &162549771
@@ -2174,7 +2180,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -9.862549, y: -201.95999}
+  m_AnchoredPosition: {x: -9.862549, y: -201.95996}
   m_SizeDelta: {x: -723.5601, y: -403.9103}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &526714039
@@ -2847,6 +2853,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 441096612}
   placingField: {fileID: 1705026273}
+  SelectEffekt: {fileID: 8300000, guid: 038eea3d78cb5ad4fa8845d13c7c8af2, type: 3}
+  NodePlaceEffekt: {fileID: 8300000, guid: e7f1a90d988f05b4fbc0e8dc2fcb4049, type: 3}
+  NodeResetEffekt: {fileID: 8300000, guid: 749c02d8bf875c44f82d9640424b7c7a, type: 3}
   orginPos: {x: 0, y: 0, z: 0}
   placed: 0
 --- !u!1 &782105948
@@ -3167,6 +3176,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linePrefab: {fileID: 4745500550056744356, guid: cb65e4716a2793c42adc1acba04aec92, type: 3}
   Content: {fileID: 1705026273}
+  ButtonEffekt: {fileID: 8300000, guid: e00cce4b97cd1f442ad3a55e142df22b, type: 3}
+  NodeConnectEffekt: {fileID: 8300000, guid: 0a557fd90505da9429715990e5380f3d, type: 3}
 --- !u!4 &986802626
 Transform:
   m_ObjectHideFlags: 0
@@ -6233,7 +6244,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1776182740}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999999
+  m_Size: 0.99999964
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
