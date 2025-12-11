@@ -2339,7 +2339,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 528443390}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f6d17db7130cb04bb6a2e293d1e79f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 07f1a36b420bb2c439e425789b5e24c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 24eacfadf440bb0429c6467832121fbe, type: 2}
@@ -2551,9 +2551,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 1052896022508603609, guid: 24eacfadf440bb0429c6467832121fbe, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: ec527dc5a2f203f4ea7c735cfe0ce426, type: 3}
+  m_Resource: {fileID: 8300000, guid: 55e6770b54e77c4438d2068670ee2909, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.316
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6911,11 +6911,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1451531752}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e8d19966b475c14aa75667b0350b33b, type: 3}
+  m_Script: {fileID: 11500000, guid: 00791cfd89d39e641b2dbdf060b4b7f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AudioSource: {fileID: 2195457200094170934, guid: f2f2fbe346239da44acce5db2ba5fbdb, type: 3}
-  musicSource: {fileID: 0}
+  m_AudioSource: {fileID: 0}
+  CloseEditor: {fileID: 0}
+  OpenEditor: {fileID: 0}
+  PlayerStart: {fileID: 0}
+  PlayerStop: {fileID: 0}
 --- !u!4 &1451531754
 Transform:
   m_ObjectHideFlags: 0
@@ -7063,8 +7066,8 @@ MonoBehaviour:
   _videoSettings: {fileID: 516946341}
   _audioSettings: {fileID: 695406146}
   _displayModeDropdown: {fileID: 1074292543}
-  SelectEffekt: {fileID: 8300000, guid: 4a66be411a95e354fbc3b240a25fd971, type: 3}
-  DropDownEffekt: {fileID: 8300000, guid: 850c08cb00fa8ca4798dba4d8a51d62d, type: 3}
+  SelectEffekt: {fileID: 8300000, guid: e00cce4b97cd1f442ad3a55e142df22b, type: 3}
+  DropDownEffekt: {fileID: 8300000, guid: a49d9208261f6df4b83108b6d95778ba, type: 3}
 --- !u!4 &1466617469
 Transform:
   m_ObjectHideFlags: 0
