@@ -1,13 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public static SoundManager instance;
     [SerializeField] private AudioSource m_AudioSource;
+    [SerializeField] private AudioClip CloseEditor;
+    [SerializeField] private AudioClip OpenEditor;
+    [SerializeField] private AudioClip PlayerStart;
+    [SerializeField] private AudioClip PlayerStop;
     private AudioSource a;
-    public AudioSource musicSource;
     private void Awake()
     {
         if (instance == null)
@@ -16,25 +18,32 @@ public class SoundManager : MonoBehaviour
         a = GetComponent<AudioSource>();
     }
 
-    
     public void PlaySoundCLip(AudioClip audioclip, float volume)
     {
         a.PlayOneShot(audioclip, volume);
     }
 
-
-    public void PlaySoundFXCLip(AudioClip audioclip, Transform spawnTransform, float volume) 
+    public void PlayCloseEditorSound() 
     {
-        AudioSource audioSource = Instantiate(m_AudioSource, spawnTransform.position, Quaternion.identity); 
-
-        audioSource.clip = audioclip;
-
-        audioSource.volume = volume;    
-
-        audioSource.Play();
-
-        float cliplength = audioSource.clip.length;
-
-        Destroy(audioSource.gameObject, cliplength );
+        a.PlayOneShot(CloseEditor, 1f);
     }
+
+    public void PlayOpenEditorSound()
+    {
+        a.PlayOneShot(OpenEditor, 1f);
+    }
+
+    public void PlayPlayerStartSound()
+    {
+        a.PlayOneShot(PlayerStart, 1f);
+    }
+    public void PlayPlayerStopSound()
+    {
+        a.PlayOneShot(PlayerStop, 1f);
+    }
+
+
+
+
+
 }

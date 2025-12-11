@@ -5,9 +5,10 @@ using UnityEngine.Audio;
 
 public class SoundMixerManager : MonoBehaviour
 {
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private AudioMixer audioMixer;
 
-    public void SetSoundFXVolume(float level) 
+    public void SetSoundFXVolume(float level)
     {
         if (level <= 0.0001f)
         {
@@ -26,7 +27,6 @@ public class SoundMixerManager : MonoBehaviour
             return;
         }
 
-       
         float volumeInDb = Mathf.Log10(level) * 20f;
         audioMixer.SetFloat("MixerMusikVolume", volumeInDb);
     }

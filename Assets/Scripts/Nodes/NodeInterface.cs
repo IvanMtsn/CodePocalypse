@@ -7,12 +7,12 @@ public interface INode
     NodeConnection Output { get; set; }
 
 
-    //Könnte sein das der Rückgabetyp geändert werden muss
+    //Kï¿½nnte sein das der Rï¿½ckgabetyp geï¿½ndert werden muss
     public abstract void RunNode();
     public abstract void Stop();
 
-    //Hier könnte man eine Funktion zB GoNext machen, welche die nächste (Node am output) ausführt
+    //Hier kï¿½nnte man eine Funktion zB GoNext machen, welche die nï¿½chste (Node am output) ausfï¿½hrt
     //zb public void GoNext();
 
-    //Oder das (Noden-)Interaktionssystem liest die outputNode und führt RunNode für diese aus
+    //Oder das (Noden-)Interaktionssystem liest die outputNode und fï¿½hrt RunNode fï¿½r diese aus
 }
