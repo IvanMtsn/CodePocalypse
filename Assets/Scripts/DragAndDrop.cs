@@ -5,6 +5,10 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IPointerDownHandler, IBe
 {
     [SerializeField] Canvas canvas;
     [SerializeField] GameObject placingField;
+    [SerializeField] AudioClip SelectEffekt;
+    [SerializeField] AudioClip NodePlaceEffekt;
+    [SerializeField] AudioClip NodeResetEffekt;
+
     CanvasGroup canvasGroup;
     RectTransform rectTransform;
     Transform originalParents;
@@ -24,6 +28,7 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IPointerDownHandler, IBe
         canvasGroup.blocksRaycasts = false;
         if(!placed)
         rectTransform.SetParent(canvas.GetComponent<RectTransform>());
+        SoundManager.instance.PlaySoundCLip(SelectEffekt, 1f);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -39,8 +44,11 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IPointerDownHandler, IBe
         canvasGroup.blocksRaycasts = true;
         if (!placed)
         {
+
             ResetPosition();
+            SoundManager.instance.PlaySoundCLip(NodeResetEffekt, 1f);
         }
+        SoundManager.instance.PlaySoundCLip(NodePlaceEffekt, 1f);
     }
 
     public void OnPointerDown(PointerEventData eventData)

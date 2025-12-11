@@ -5,6 +5,8 @@ public class LineManager : MonoBehaviour
 {
     [SerializeField] private GameObject linePrefab;
     [SerializeField] private GameObject Content;
+    [SerializeField] AudioClip ButtonEffekt;
+    [SerializeField] AudioClip NodeConnectEffekt;
 
     private GameObject firstbutton;
 
@@ -13,13 +15,14 @@ public class LineManager : MonoBehaviour
         if (firstbutton == null)
         {
             firstbutton = button;
+            SoundManager.instance.PlaySoundCLip(ButtonEffekt, 1f);
         }
         else
         {
             if (button == firstbutton)
             {
               firstbutton = null;
-              Debug.Log("Same button clicked twice, line not created.");
+                Debug.Log("Same button clicked twice, line not created.");
               return;
             }
             GameObject newLine = Instantiate(linePrefab, Content.transform);
@@ -29,6 +32,7 @@ public class LineManager : MonoBehaviour
             points[1] = button.transform;
             lineRenderer.SetUpLine(points);
             firstbutton = null;
+            SoundManager.instance.PlaySoundCLip(NodeConnectEffekt, 1f);
         }
     }
     
