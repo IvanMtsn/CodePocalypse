@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40.91056, y: 215.269}
+  m_AnchoredPosition: {x: -163.6, y: 216.7}
   m_SizeDelta: {x: 65.851, y: 19.397}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &84679018
@@ -3367,7 +3367,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40.91056, y: 215.269}
+  m_AnchoredPosition: {x: -163.60013, y: 216.69997}
   m_SizeDelta: {x: 65.851, y: 19.397}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1084448564
@@ -4207,8 +4207,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -192.5412, y: 0.8575}
-  m_SizeDelta: {x: 288.9176, y: 318.2849}
+  m_AnchoredPosition: {x: -298.819, y: 0.8575}
+  m_SizeDelta: {x: 177.178, y: 318.285}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1517968988
 MonoBehaviour:
@@ -5134,8 +5134,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.329956, y: -4.0213013}
-  m_SizeDelta: {x: 400, y: 451.81}
+  m_AnchoredPosition: {x: 24.703, y: -4.0213013}
+  m_SizeDelta: {x: 632.771, y: 451.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1705026277
 MonoBehaviour:
@@ -6090,8 +6090,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 204, y: -0.0018463}
-  m_SizeDelta: {x: 392, y: 450}
+  m_AnchoredPosition: {x: 99.816, y: -0.0018463}
+  m_SizeDelta: {x: 600.367, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2076230449
 MonoBehaviour:
@@ -6244,7 +6244,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1776182740}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99999964
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
