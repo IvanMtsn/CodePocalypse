@@ -9,6 +9,8 @@ public class GateObstacle : MonoBehaviour
     {
         _collider = GetComponent<BoxCollider>();
         _animator = GetComponent<Animator>();
+        _isClosed = !_isClosed;
+        _collider.enabled = _isClosed;
     }
     void Update()
     {
