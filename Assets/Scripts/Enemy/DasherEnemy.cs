@@ -4,8 +4,6 @@ using UnityEngine;
 public class DasherEnemy : MonoBehaviour
 {
     [SerializeField] LayerMask _scanningLaserMask;
-    [SerializeField] MeshRenderer _trackMeshRenderer;
-    [SerializeField] float _scrollSpeed;
     Rigidbody _rb;
     float _maxRaycastDistance = 19;
     float _currentSpeed = 0;
@@ -27,10 +25,6 @@ public class DasherEnemy : MonoBehaviour
                 _isRushingForward = true;
                 StartCoroutine(RushTowardsPlayer());
             }
-        }
-        if (_rb.linearVelocity.sqrMagnitude > 0.1)
-        {
-            _trackMeshRenderer.material.mainTextureOffset = new Vector2(0, Time.realtimeSinceStartup * _scrollSpeed);
         }
     }
     IEnumerator RushTowardsPlayer()

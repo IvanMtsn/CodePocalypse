@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8267426175715717593}
   - component: {fileID: 4920099656188449130}
   - component: {fileID: 7410450912980173613}
+  - component: {fileID: -2053532900741242727}
   m_Layer: 8
   m_Name: DasherEnemy
   m_TagString: Untagged
@@ -78,7 +79,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -99,8 +100,6 @@ MonoBehaviour:
   _scanningLaserMask:
     serializedVersion: 2
     m_Bits: 1288
-  _trackMeshRenderer: {fileID: 1010571071527811404}
-  _scrollSpeed: 0.6
 --- !u!114 &7410450912980173613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +113,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debrisPrefab: {fileID: 8404821900183296684, guid: 82623e4f91e928649a3e3c8be63e39c9, type: 3}
+--- !u!114 &-2053532900741242727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4813112252558037086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0e947e489300114eb94a82465e2f4aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trackMeshRenderer: {fileID: 1010571071527811404}
+  _scrollSpeed: 0.85
 --- !u!1001 &7031786061605331750
 PrefabInstance:
   m_ObjectHideFlags: 0
