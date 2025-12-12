@@ -1,21 +1,48 @@
+using System.Collections;
 using UnityEngine;
 
 public class DasherEnemy : MonoBehaviour
 {
     [SerializeField] LayerMask _scanningLaserMask;
+    [SerializeField] MeshRenderer _trackMeshRenderer;
+    [SerializeField] float _scrollSpeed;
+    Rigidbody _rb;
+    float _maxRaycastDistance = 19;
+    float _currentSpeed = 0;
+    float _maxSpeed = 15;
+    float _accelerationRate = 0.8f;
+    bool _isRushingForward = false;
     void Start()
     {
-        
+        _rb = GetComponent<Rigidbody>();
     }
     void Update()
     {
-        if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 100, _scanningLaserMask))
+        if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, _maxRaycastDistance, _scanningLaserMask))
         {
             //Debug.Log(hit.collider.gameObject.name);
-            if (hit.collider.CompareTag("Player"))
+            if (hit.collider.CompareTag("Player") && !_isRushingForward)
             {
-                Debug.Log("LECKO MIO");
+                //Debug.Log("LECKO MIO");
+                _isRushingForward = true;
+                StartCoroutine(RushTowardsPlayer());
             }
+        }
+        if (_rb.linearVelocity.sqrMagnitude > 0.1)
+        {
+            _trackMeshRenderer.material.mainTextureOffset = new Vector2(0, Time.realtimeSinceStartup * _scrollSpeed);
+        }
+    }
+    IEnumerator RushTowardsPlayer()
+    {
+        float elapsedTime = 0;
+        while (true)
+        {
+            elapsedTime += Time.fixedDeltaTime;
+            _currentSpeed = _maxSpeed * (1f - Mathf.Exp(-_accelerationRate * elapsedTime));
+            _rb.MovePosition(transform.position + transform.forward * _currentSpeed * Time.fixedDeltaTime);
+
+            yield return new WaitForFixedUpdate();
         }
     }
 }
