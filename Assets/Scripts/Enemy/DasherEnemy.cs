@@ -4,6 +4,9 @@ using UnityEngine;
 public class DasherEnemy : MonoBehaviour
 {
     [SerializeField] LayerMask _scanningLaserMask;
+    [SerializeField] Transform _beamFirePoint;
+    [SerializeField] GameObject _thrusterMesh;
+    LineRenderer _lineRenderer;
     Rigidbody _rb;
     float _maxRaycastDistance = 19;
     float _currentSpeed = 0;
@@ -13,6 +16,7 @@ public class DasherEnemy : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _lineRenderer = GetComponent<LineRenderer>();
     }
     void Update()
     {
@@ -23,8 +27,20 @@ public class DasherEnemy : MonoBehaviour
             {
                 //Debug.Log("LECKO MIO");
                 _isRushingForward = true;
+                _lineRenderer.enabled = false;
+                _thrusterMesh.SetActive(true);
                 StartCoroutine(RushTowardsPlayer());
             }
+        }
+        ShootScanningBeam();
+    }
+    void ShootScanningBeam()
+    {
+        if (_isRushingForward) { return; }
+        else if (Physics.Raycast(_beamFirePoint.position, _beamFirePoint.forward, out RaycastHit hit, _maxRaycastDistance, _scanningLaserMask))
+        {
+            _lineRenderer.SetPosition(0, _beamFirePoint.position);
+            _lineRenderer.SetPosition(1, hit.point);
         }
     }
     IEnumerator RushTowardsPlayer()

@@ -6,12 +6,12 @@ public class EnemyDeathHandler : MonoBehaviour
     [SerializeField] GameObject _debrisPrefab;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Coordinate"))
+        if (other.gameObject.layer == 7)
         {
             _lastCoordinatePos = other.transform.position;
             //Debug.Log(_lastCoordinateHit);
         }
-        if (other.gameObject.CompareTag("Obstacle"))
+        if (other.gameObject.layer == 10)
         {
             DestroyRobot();
         }
