@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
- public enum Conditions
+public enum Conditions
 {
     WayIsBlocked,
     OnObjective

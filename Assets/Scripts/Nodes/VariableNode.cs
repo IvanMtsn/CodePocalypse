@@ -37,7 +37,8 @@ public class VariableNode : MonoBehaviour
     {
         Debug.Log(newVal.GetType());
         Debug.Log($"is:" + (newVal.GetType() == typeof(System.Int32)));
-        varVal.Value = (object)newVal;
+        varVal.Value = newVal;
+        Debug.Log($"Var value: {varVal.Value}");
     }
 
     private void UpdateAllPointers()
