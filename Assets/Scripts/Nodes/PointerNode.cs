@@ -20,9 +20,9 @@ public class PointerNode : MonoBehaviour, INode
 
     public void RunNode()
     {
-        if(Input.InputNode is ICalculatingNodes)
+        if(Input.InputNode is CalculatingNodes)
         {
-            ChangeValue((Input.InputNode as ICalculatingNodes).Value);
+            ChangeValue((Input.InputNode as CalculatingNodes).Value);
         }
         if (Input.InputNode is PointerNode)
         {
