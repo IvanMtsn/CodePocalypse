@@ -7,20 +7,21 @@ using UnityEngine;
 
 public class VariableNode : MonoBehaviour
 {
-    [SerializeField] GameObject PointerPref;
+    //[SerializeField] GameObject PointerPref;
     [SerializeField] private List<GameObject> pointers = new ();
     [SerializeField] private TMP_Text nameField;
 
     private VarValue varVal = new VarValue();
     public string Name;
 
-    public void InstantiateVariable()
+    public void InstantiateVariable(GameObject go)
     {
+        if(!go.GetComponent<PointerNode>()) return;
         Name = nameField.text;
-        GameObject var = Instantiate(PointerPref);
-        var.GetComponent<PointerNode>().VariableNode = this;
-        var.GetComponentInChildren<TMP_Text>().text = this.Name;
-        pointers.Add(var);
+        //GameObject var = Instantiate(PointerPref);
+        go.GetComponent<PointerNode>().VariableNode = this;
+        go.GetComponentInChildren<TMP_Text>().text = this.Name;
+        pointers.Add(go);
     }
 
     public void TestSetFunc()
@@ -37,6 +38,7 @@ public class VariableNode : MonoBehaviour
     {
         Debug.Log(newVal.GetType());
         Debug.Log($"is:" + (newVal.GetType() == typeof(System.Int32)));
+        //TODO: switch mit gültigen Typen und varVal.Type setzen
         varVal.Value = newVal;
         Debug.Log($"Var value: {varVal.Value}");
     }

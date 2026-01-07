@@ -5,8 +5,8 @@ public class PointerNode : MonoBehaviour, INode
 
     public VariableNode VariableNode;
 
-    public NodeConnection Input { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-    public NodeConnection Output { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public NodeConnection Input { get; set; }
+    public NodeConnection Output { get; set; }
 
     public void ChangeValue(object val)
     {
