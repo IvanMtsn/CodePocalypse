@@ -5,19 +5,22 @@ public class Linerendererv2 : MonoBehaviour
   [SerializeField] private LineRenderer lr;
   private Transform[] points;
 
-  private void awake(){
+  private void Awake(){
     lr = GetComponent<LineRenderer>();
-    lr.positionCount = 2;
-    lr.widthMultiplier = 5f;
+    if (lr != null) lr.widthMultiplier = 1f;
   }
 
   public void SetUpLine(Transform[] points){
     this.points = points;
+    if (lr != null && points != null) lr.positionCount = points.Length;
   }
 
-  public void Update(){
+  public Transform[] Points => points;
+
+  private void Update(){
+    if (points == null || lr == null) return;
     for(int i = 0; i < points.Length; i++){
-      lr.SetPosition(i, points[i].position);
+      if (points[i] != null) lr.SetPosition(i, points[i].position);
     }
   }
 }
