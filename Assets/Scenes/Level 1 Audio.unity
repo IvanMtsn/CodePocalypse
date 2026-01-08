@@ -2159,6 +2159,7 @@ MonoBehaviour:
   Content: {fileID: 54886880}
   ButtonEffekt: {fileID: 8300000, guid: e00cce4b97cd1f442ad3a55e142df22b, type: 3}
   NodeConnectEffekt: {fileID: 8300000, guid: 0a557fd90505da9429715990e5380f3d, type: 3}
+  nodefield: {fileID: 0}
 --- !u!4 &129408176
 Transform:
   m_ObjectHideFlags: 0
@@ -3688,6 +3689,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1135338401}
+        m_TargetAssemblyTypeName: MusikManager, Assembly-CSharp
+        m_MethodName: StopMusik
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &408430116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4097,6 +4110,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1780393028}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: PlayPlayerStopSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1135338401}
+        m_TargetAssemblyTypeName: MusikManager, Assembly-CSharp
+        m_MethodName: StopMusik
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11458,7 +11483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Musik_AudioSource: {fileID: 1135338400}
-  Menu_AudioClip: {fileID: 8300000, guid: 70dbc9373f24707488aa2691e2ac719e, type: 3}
+  Menu_AudioClip: {fileID: 8300000, guid: d3ac5333895779041bd2e83d86870d4e, type: 3}
   Action_AudioClip: {fileID: 8300000, guid: 2e5d1a642f3ff6c4d932345ffd87b93c, type: 3}
   Node_AudioClip: {fileID: 8300000, guid: 55e6770b54e77c4438d2068670ee2909, type: 3}
   Player_Startup: {fileID: 8300000, guid: cc372ebab407e534abbc7befdc6130c8, type: 3}
@@ -11789,13 +11814,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1135338398}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1135338401}
+        m_TargetAssemblyTypeName: MusikManager, Assembly-CSharp
+        m_MethodName: PlayMusikAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -14255,6 +14280,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1780393028}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: PlayCloseEditorSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1135338401}
+        m_TargetAssemblyTypeName: MusikManager, Assembly-CSharp
+        m_MethodName: StopMusik
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

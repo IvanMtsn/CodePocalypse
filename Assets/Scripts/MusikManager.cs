@@ -43,21 +43,10 @@ public class MusikManager : MonoBehaviour
         a.Play();
     }
 
-    private IEnumerator PlayActionAfterClip(AudioClip audioClip)
-    {
-        
-        PlayMusik(audioClip, 1f);
-
-        // Warten, bis der Clip vorbei ist
-        yield return new WaitForSeconds(audioClip.length);
-
-        // Danach Action-Musik starten
-        PlayMusik(Action_AudioClip, 1f);
-    }
     public void PlayMusikAction()
     {
 
-        StartCoroutine(PlayActionAfterClip(Player_Startup));
+        PlayMusik(Action_AudioClip, 1f);
     }
     public void PlayMusikMenu()
     {
