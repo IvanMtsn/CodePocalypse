@@ -43,10 +43,21 @@ public class MusikManager : MonoBehaviour
         a.Play();
     }
 
+
+    private IEnumerator PlayActionAfterClip(AudioClip introClip)
+    {
+      
+
+        yield return new WaitForSeconds(introClip.length);
+
+        // Danach Action-Musik starten
+        PlayMusik(Action_AudioClip, 1f);
+    }
+
     public void PlayMusikAction()
     {
 
-        PlayMusik(Action_AudioClip, 1f);
+        StartCoroutine(PlayActionAfterClip(Player_Startup));
     }
     public void PlayMusikMenu()
     {
