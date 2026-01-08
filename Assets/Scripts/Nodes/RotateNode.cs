@@ -48,7 +48,7 @@ public class RotateNode : MonoBehaviour, INode
         }
     }
 
-    public async void RunNode()
+    public async Task RunNode()
     {
         await RotatePlayer();
         await Task.Yield();

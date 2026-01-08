@@ -57,7 +57,7 @@ public class NewIfNode : MonoBehaviour, INode
         }
     }
 
-    public async void RunNode()
+    public async Task RunNode()
     {
         Check();
 

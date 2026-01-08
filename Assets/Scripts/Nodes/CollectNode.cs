@@ -20,7 +20,7 @@ public class CollectNode : MonoBehaviour, INode
         Debug.Log(gates.Count + " Gates found.");
     }
 
-    public async void RunNode()
+    public async Task RunNode()
     {
         await CollectObjective();
         await Task.Yield();

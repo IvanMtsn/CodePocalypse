@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class EndNode : MonoBehaviour, INode
@@ -11,9 +12,9 @@ public class EndNode : MonoBehaviour, INode
         Input = null;
     }
 
-    public void RunNode()
+    public async Task RunNode()
     {
-        
+        await Task.Yield();
     }
 
     public void Stop()

@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class PointerNode : MonoBehaviour, INode
@@ -18,7 +19,7 @@ public class PointerNode : MonoBehaviour, INode
         return VariableNode.GetValue();
     }
 
-    public void RunNode()
+    public async Task RunNode()
     {
         if(Input is CalculatingNodes)
         {
@@ -28,6 +29,7 @@ public class PointerNode : MonoBehaviour, INode
         {
             ChangeValue((Input as PointerNode).VariableNode.GetValue());
         }
+        await Task.Yield();
     }
 
     public void Stop()

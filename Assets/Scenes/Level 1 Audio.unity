@@ -11783,6 +11783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartNode: {fileID: 386647464}
+  DelayMS: 200
 --- !u!1 &1175794104
 GameObject:
   m_ObjectHideFlags: 0

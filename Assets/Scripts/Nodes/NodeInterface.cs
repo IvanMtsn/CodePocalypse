@@ -9,7 +9,7 @@ public interface INode
 
 
     //K�nnte sein das der R�ckgabetyp ge�ndert werden muss
-    public abstract void RunNode();
+    public abstract Task RunNode();
     public abstract void Stop();
 
     //Hier k�nnte man eine Funktion zB GoNext machen, welche die n�chste (Node am output) ausf�hrt

@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class MultiplyNode : CalculatingNodes
@@ -6,9 +7,10 @@ public class MultiplyNode : CalculatingNodes
     public NodeConnection Input { get; set; }
     public NodeConnection Output { get; set; }
 
-    public void RunNode()
+    public async Task RunNode()
     {
         Calculate();
+        await Task.Yield();
     }
 
     public void Stop()

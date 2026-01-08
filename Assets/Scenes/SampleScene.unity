@@ -1441,10 +1441,10 @@ MonoBehaviour:
       - m_Target: {fileID: 271987381}
         m_TargetAssemblyTypeName: VariableNode, Assembly-CSharp
         m_MethodName: InstantiateVariable
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 4679661130027808352, guid: 4dc23380c0093584dace8d574abb23db, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 1
           m_StringArgument: 
@@ -1500,7 +1500,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc62fa439b1263b49a7f386d71bc44bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PointerPref: {fileID: 4679661130027808352, guid: 4dc23380c0093584dace8d574abb23db, type: 3}
   pointers: []
   nameField: {fileID: 1394023611}
   Name: 

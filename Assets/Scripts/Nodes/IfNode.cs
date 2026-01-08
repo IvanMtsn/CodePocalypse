@@ -8,7 +8,7 @@ public enum Conditions
     WayIsBlocked,
     OnObjective
 }
-public class IfNode : MonoBehaviour, INode
+public class IfNode : MonoBehaviour
 {
     [SerializeField] GameObject Player;
     public INode Input { get; set; }

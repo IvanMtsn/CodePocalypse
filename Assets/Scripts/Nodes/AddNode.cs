@@ -8,9 +8,10 @@ public class AddNode : CalculatingNodes, INode
     public INode Input { get; set; }
     public INode Output { get; set; }
 
-    public  void RunNode()
+    public async Task RunNode()
     {
         Calculate();
+        await Task.Yield();
     }
 
     public void Stop()
