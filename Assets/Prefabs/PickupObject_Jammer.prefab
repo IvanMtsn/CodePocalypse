@@ -60,13 +60,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7695f03beace0054ca3520e23686321d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 431b01a36f657cb4594fb7937394ef9d, type: 2}
     - target: {fileID: -5754084199372789682, guid: 7695f03beace0054ca3520e23686321d, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 5818745448405145755, guid: a5fdc1bc5e2c29648a1d05d398c71c08, type: 3}
+      objectReference: {fileID: -6582663280622841297, guid: da12bfad4cd7b8c4f80dc283accc90a2, type: 3}
     - target: {fileID: 919132149155446097, guid: 7695f03beace0054ca3520e23686321d, type: 3}
       propertyPath: m_Name
-      value: PickupObject
+      value: PickupObject_Jammer
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7695f03beace0054ca3520e23686321d, type: 3}
       propertyPath: m_Layer

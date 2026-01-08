@@ -21,7 +21,7 @@ public class LineManager : MonoBehaviour
         if (firstbutton == null)
         {
             firstbutton = button;
-            // SoundManager.instance.PlaySoundCLip(ButtonEffekt, 1f);
+            SoundManager.instance.PlaySoundCLip(ButtonEffekt, 1f);
         }
         else
         {
@@ -43,7 +43,7 @@ public class LineManager : MonoBehaviour
             
             allLines = Content.GetComponentsInChildren<Linerendererv2>();
             firstbutton = null;
-            // SoundManager.instance.PlaySoundCLip(NodeConnectEffekt, 1f);
+            SoundManager.instance.PlaySoundCLip(NodeConnectEffekt, 1f);
         }
     }
 
