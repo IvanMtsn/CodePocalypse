@@ -3223,6 +3223,7 @@ GameObject:
   - component: {fileID: 386647468}
   - component: {fileID: 386647467}
   - component: {fileID: 386647466}
+  - component: {fileID: 386647470}
   m_Layer: 5
   m_Name: start node
   m_TagString: Node
@@ -3319,6 +3320,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 386647464}
   m_CullTransparentMesh: 1
+--- !u!114 &386647470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386647464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9feae3220d39b9946a2dd46195e14ebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &392180937
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4112,30 +4125,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1780393028}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: PlayPlayerStopSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1135338401}
-        m_TargetAssemblyTypeName: MusikManager, Assembly-CSharp
-        m_MethodName: StopMusik
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5986,6 +5975,7 @@ GameObject:
   - component: {fileID: 1012481540}
   - component: {fileID: 1012481539}
   - component: {fileID: 1012481538}
+  - component: {fileID: 1012481542}
   m_Layer: 5
   m_Name: end node
   m_TagString: Node
@@ -6082,6 +6072,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012481536}
   m_CullTransparentMesh: 1
+--- !u!114 &1012481542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012481536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0e1155572e37f49ba11bb5848e795d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1016209870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11587,7 +11589,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1155504390}
-  - component: {fileID: 1155504391}
   m_Layer: 0
   m_Name: Stopwatch
   m_TagString: Untagged
@@ -11610,18 +11611,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1247407066}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1155504391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1155504389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ed183446c9f2874cb5fecf8d42e94ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1161215681
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11654,6 +11643,7 @@ GameObject:
   - component: {fileID: 1163585630}
   - component: {fileID: 1163585632}
   - component: {fileID: 1163585631}
+  - component: {fileID: 1163585633}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -11720,6 +11710,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163585629}
   m_CullTransparentMesh: 1
+--- !u!114 &1163585633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163585629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af0baca8942e778439327566d14e1ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartNode: {fileID: 386647464}
 --- !u!1 &1175794104
 GameObject:
   m_ObjectHideFlags: 0
@@ -11815,21 +11818,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1780393028}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: PlayPlayerStartSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1135338401}
-        m_TargetAssemblyTypeName: MusikManager, Assembly-CSharp
-        m_MethodName: PlayMusikAction
+      - m_Target: {fileID: 1163585633}
+        m_TargetAssemblyTypeName: SpielStart, Assembly-CSharp
+        m_MethodName: StartRound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

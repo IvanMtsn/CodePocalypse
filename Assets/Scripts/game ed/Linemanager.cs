@@ -9,18 +9,15 @@ public class LineManager : MonoBehaviour
     [SerializeField] AudioClip NodeConnectEffekt;
     [SerializeField] GameObject nodefield;
     Linerendererv2[] allLines;
-    List<GameObject> allnodes;
 
     private GameObject firstbutton;
 
     public void Start()
     {
-        allnodes = new List<GameObject>();
     }
 
     public void CreateLine(GameObject button)
     {
-        getNodes();
         if (firstbutton == null)
         {
             firstbutton = button;
@@ -48,19 +45,6 @@ public class LineManager : MonoBehaviour
             firstbutton = null;
             // SoundManager.instance.PlaySoundCLip(NodeConnectEffekt, 1f);
         }
-    }
-
-    public void getNodes()
-    {
-      allnodes.Clear();
-      Transform parent = nodefield.transform;
-      foreach (Transform child in parent)
-      {
-          if (child.gameObject.CompareTag("Node"))
-          {
-              allnodes.Add(child.gameObject);
-          }
-      }
     }
 
     public void ClearAllLines()
