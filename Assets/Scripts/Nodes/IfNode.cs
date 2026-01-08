@@ -11,9 +11,9 @@ public enum Conditions
 public class IfNode : MonoBehaviour, INode
 {
     [SerializeField] GameObject Player;
-    public NodeConnection Input { get; set; }
-    public NodeConnection Output { get; set; }
-    public NodeConnection Output2 { get; set; }
+    public INode Input { get; set; }
+    public INode Output { get; set; }
+    public INode Output2 { get; set; }
     public bool IsTrue { get; set; }
 
     public Conditions conditionType;
@@ -48,7 +48,7 @@ public class IfNode : MonoBehaviour, INode
         RunNode();
     }
 
-    public NodeConnection GetOutput()
+    public INode GetOutput()
     {
         if (IsTrue) return Output;
         return Output2;
