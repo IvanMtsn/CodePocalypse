@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip OpenEditor;
     [SerializeField] private AudioClip PlayerStart;
     [SerializeField] private AudioClip PlayerStop;
+    [SerializeField] private AudioClip MenuButton;
     private AudioSource a;
     private void Awake()
     {
@@ -40,6 +41,10 @@ public class SoundManager : MonoBehaviour
     public void PlayPlayerStopSound()
     {
         a.PlayOneShot(PlayerStop, 1f);
+    }
+    public void PlayMenuButtonSound()
+    {
+        a.PlayOneShot(MenuButton, 1f);
     }
 
 
