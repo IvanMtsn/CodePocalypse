@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class CollectNode : MonoBehaviour, INode
 {
-    public NodeConnection Input { get; set; }
-    public NodeConnection Output { get; set; }
+    public INode Input { get; set; }
+    public INode Output { get; set; }
 
     [SerializeField] GameObject Player;
     List<GateObstacle> gates;

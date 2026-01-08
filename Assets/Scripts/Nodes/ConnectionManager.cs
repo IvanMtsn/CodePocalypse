@@ -5,18 +5,18 @@ public class ConnectionManager : MonoBehaviour
     private void OnDestroy()
     {
         INode node = GetComponent<INode>();
-        //Hat die Node eine Verbindung am Input wird beim Zerstören dieser Node, die Outputverbindung der verbundenen Node gelöscht
+        //Hat die Node eine Verbindung am Input wird beim Zerstï¿½ren dieser Node, die Outputverbindung der verbundenen Node gelï¿½scht
         //TLTR Die Node vor dieser Node trennt die Verbindung
-        if(node.Input.InputNode != null)
+        if(node.Input != null)
         {
-            node.Input.InputNode.Output = null;
+            node.Input = null;
         }
 
-        //Hat die Node eine Verbindung am Output wird beim Zerstören dieser Node, die Inputverbindung der verbundenen Node gelöscht
+        //Hat die Node eine Verbindung am Output wird beim Zerstren dieser Node, die Inputverbindung der verbundenen Node gelscht
         //TLTR Die Node nach dieser Node trennt die Verbindung
-        if (node.Output.OutputNode != null)
+        if (node.Output != null)
         {
-            node.Output.OutputNode.Input = null;
+            node.Output = null;
         }
     }
 }

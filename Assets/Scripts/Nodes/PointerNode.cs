@@ -5,8 +5,8 @@ public class PointerNode : MonoBehaviour, INode
 
     public VariableNode VariableNode;
 
-    public NodeConnection Input { get; set; }
-    public NodeConnection Output { get; set; }
+    public INode Input { get; set; }
+    public INode Output { get; set; }
 
     public void ChangeValue(object val)
     {
@@ -20,13 +20,13 @@ public class PointerNode : MonoBehaviour, INode
 
     public void RunNode()
     {
-        if(Input.InputNode is CalculatingNodes)
+        if(Input is CalculatingNodes)
         {
-            ChangeValue((Input.InputNode as CalculatingNodes).Value);
+            ChangeValue((Input as CalculatingNodes).Value);
         }
-        if (Input.InputNode is PointerNode)
+        if (Input is PointerNode)
         {
-            ChangeValue((Input.InputNode as PointerNode).VariableNode.GetValue());
+            ChangeValue((Input as PointerNode).VariableNode.GetValue());
         }
     }
 

@@ -5,8 +5,8 @@ using UnityEngine.PlayerLoop;
 
 public class MoveNode : MonoBehaviour, INode
 {
-    public NodeConnection Input { get; set; }
-    public NodeConnection Output { get; set; }
+    public INode Input { get; set; }
+    public INode Output { get; set; }
 
     [SerializeField] GameObject Player;
     [SerializeField] GameObject destination;

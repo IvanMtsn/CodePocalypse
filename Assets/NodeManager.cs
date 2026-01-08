@@ -53,21 +53,23 @@ public class NodeManager : MonoBehaviour
         }
 
         // int connectedCount = 0;
-        var currentNode = startNode.GetComponent<INode>();
+        var currentNode = startNode;
+        var startendConnected = false;
         foreach (GameObject lineObj in allLines)
         {
             var lr = lineObj.GetComponent<Linerendererv2>();
             if (lr == null) continue;
             var pts = lr.Points;
             if (pts == null || pts.Length == 0) continue;
-            if (pts[0] == startNode.transform || pts[pts.Length - 1] == startNode.transform)
+            if (pts[0] == startNode.transform)
             {
-                // connectedCount++;
+                
             }
         }
 
+
         // Debug-Ausgabe
         // Debug.Log($"Gefundene Linien, die mit StartNode verbunden sind: {connectedCount}");
-        Debug.Log($"Gefundene Node-Objekte (Tag 'Node'): {allnodes.Count}");
+        // Debug.Log($"Gefundene Node-Objekte (Tag 'Node'): {allnodes.Count}");
     }
 }

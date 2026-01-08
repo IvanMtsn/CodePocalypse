@@ -19,11 +19,11 @@ public enum CompareOptions
 
 public class NewIfNode : MonoBehaviour, INode
 {
-    public NodeConnection Input { get; set; }
-    public NodeConnection SideInput1 { get; set; }
-    public NodeConnection SideInput2 { get; set; }
-    public NodeConnection Output { get; set; }
-    public NodeConnection Output2 { get; set; }
+    public INode Input { get; set; }
+    public INode SideInput1 { get; set; }
+    public INode SideInput2 { get; set; }
+    public INode Output { get; set; }
+    public INode Output2 { get; set; }
     public bool IsTrue { get; set; }
 
     [SerializeField] TMP_Dropdown comparer;
@@ -66,7 +66,7 @@ public class NewIfNode : MonoBehaviour, INode
 
     public void Check()
     {
-        //Keine Var, Val1 wird geprüft
+        //Keine Var, Val1 wird geprï¿½ft
         //.AsSpan()[..^1] weil InputField komisch ist
         if (!side1connected && !float.TryParse(val1.text.AsSpan()[..^1], out _) && !(selectedComparer == CompareOptions.Equal || selectedComparer == CompareOptions.Not))
         {
@@ -218,7 +218,7 @@ public class NewIfNode : MonoBehaviour, INode
         RunNode();
     }
 
-    public NodeConnection GetOutput()
+    public INode GetOutput()
     {
         Check();
         if (IsTrue) return Output;
