@@ -31,7 +31,7 @@ public class CollectNode : MonoBehaviour, INode
         RaycastHit hit;
         if (Physics.Raycast(Player.transform.position-Player.transform.forward, Player.transform.forward, out hit, 1f, layerMask))
         {
-            ObjectiveManager.Instance.PickUpObjective(hit.rigidbody.gameObject);
+            ObjectiveManager.Instance.PickUpObjective(hit.collider.gameObject);
             foreach (GateObstacle g in gates)
             {
                 g.OpenOrCloseGate();
