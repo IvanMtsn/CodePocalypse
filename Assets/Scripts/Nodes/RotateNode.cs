@@ -84,6 +84,11 @@ public class RotateNode : MonoBehaviour, INode
     {
         RunNode();
     }
+    
+    public void OnDirectionDropdownChanged(int value)
+    {
+        selectedDir = (RotateDirection)value;
+    }
 
     public void Stop()
     {
