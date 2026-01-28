@@ -17,7 +17,7 @@ public enum CompareOptions
     Not
 }
 
-public class NewIfNode : MonoBehaviour, INode
+public class NewIfNode : INode
 {
     public INode Input { get; set; }
     public INode SideInput1 { get; set; }
@@ -26,12 +26,12 @@ public class NewIfNode : MonoBehaviour, INode
     public INode Output2 { get; set; }
     public bool IsTrue { get; set; }
 
-    [SerializeField] TMP_Dropdown comparer;
-    [SerializeField] TMP_Text val1, val2;
+    public TMP_Dropdown comparer;
+    public TMP_Text val1, val2;
+    public CompareOptions selectedComparer;
     private PointerNode var1, var2;
-    private bool side1connected, side2connected = false;
 
-    private CompareOptions selectedComparer;
+    private bool side1connected, side2connected = false;
 
     private void Update()
     {
@@ -59,9 +59,11 @@ public class NewIfNode : MonoBehaviour, INode
 
     public async Task RunNode()
     {
-        Check();
-
+        UpdateCaller.AddUpdateCallback(Update);
         await Task.Yield();
+        Check();
+        await Task.Yield();
+        UpdateCaller.UnsubscribeUpdateCallback(Update);
     }
 
     public void Check()
@@ -95,6 +97,7 @@ public class NewIfNode : MonoBehaviour, INode
                 }
                 else
                 {
+                    Debug.Log("AAAAAAAHhhhhhhhhhhhhhhh");
                     IsTrue = float.Parse(val1.text.AsSpan()[..^1]) < float.Parse(val2.text.AsSpan()[..^1]);
                 }
                 break;
@@ -198,19 +201,6 @@ public class NewIfNode : MonoBehaviour, INode
                 break;
         }
         Debug.Log($"IsTrue: {IsTrue}");
-    }
-
-    public void SwitchComparer()
-    {
-        switch (comparer.value)
-        {
-            case 0: selectedComparer = CompareOptions.Smaller; break;
-            case 1: selectedComparer = CompareOptions.SmallerOrEqual; break;
-            case 2: selectedComparer = CompareOptions.Equal; break;
-            case 3: selectedComparer = CompareOptions.GreaterOrEqual; break;
-            case 4: selectedComparer = CompareOptions.Greater; break;
-            case 5: selectedComparer = CompareOptions.Not; break;
-        }
     }
 
     public void TestNode()

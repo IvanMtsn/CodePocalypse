@@ -1,13 +1,13 @@
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class StartNode : MonoBehaviour, INode
+public class StartNode : INode
 {
     public INode Input { get; set; }
     public INode Output { get; set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public StartNode()
     {
         Input = null;
     }

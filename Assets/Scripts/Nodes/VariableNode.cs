@@ -5,23 +5,26 @@ using System.Linq.Expressions;
 using TMPro;
 using UnityEngine;
 
-public class VariableNode : MonoBehaviour
+public class VariableNode
 {
     //[SerializeField] GameObject PointerPref;
-    [SerializeField] private List<GameObject> pointers = new ();
-    [SerializeField] private TMP_Text nameField;
+    public List<GameObject> pointers = new ();
+    public TMP_Text nameField;
+    public VariableNode_Holder holder;
 
     private VarValue varVal = new VarValue();
     public string Name;
 
     public void InstantiateVariable(GameObject go)
     {
-        if(!go.GetComponent<PointerNode>()) return;
+        if(!go.GetComponent<PointerNode_Holder>()) return;
         Name = nameField.text;
-        //GameObject var = Instantiate(PointerPref);
-        go.GetComponent<PointerNode>().VariableNode = this;
-        go.GetComponentInChildren<TMP_Text>().text = this.Name;
-        pointers.Add(go);
+        GameObject var = GameObject.Instantiate(go, holder.transform.position, holder.transform.rotation);
+        Debug.Log(var.GetComponent<PointerNode_Holder>().node);
+        var.GetComponent<PointerNode_Holder>().node.VariableNode = this;
+        var.GetComponentInChildren<TMP_Text>().text = this.Name;
+        pointers.Add(var);
+        Debug.Log(pointers.Count);
     }
 
     public void TestSetFunc()
@@ -40,6 +43,7 @@ public class VariableNode : MonoBehaviour
         Debug.Log($"is:" + (newVal.GetType() == typeof(System.Int32)));
         //TODO: switch mit gültigen Typen und varVal.Type setzen
         varVal.Value = newVal;
+        UpdateAllPointers();
         Debug.Log($"Var value: {varVal.Value}");
     }
 
@@ -67,7 +71,7 @@ public class VariableNode : MonoBehaviour
     {
         foreach (GameObject poi in pointers)
         {
-            Destroy(poi);
+            GameObject.Destroy(poi);
         }
     }
     public void RemoveVariable(GameObject pointer)

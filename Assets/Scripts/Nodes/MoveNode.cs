@@ -1,16 +1,15 @@
 using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-public class MoveNode : MonoBehaviour, INode
+public class MoveNode : INode
 {
     public INode Input { get; set; }
     public INode Output { get; set; }
 
-    [SerializeField] GameObject Player;
-    [SerializeField] GameObject destination;
-    [SerializeField] LayerMask coordinateLayer;
+    public GameObject Player;
+    public GameObject destination;
+    public LayerMask coordinateLayer;
     public float MoveLenght;
     public int MoveSpeed;
 
@@ -21,18 +20,22 @@ public class MoveNode : MonoBehaviour, INode
     bool isStopped;
     Transform dT;
 
-    void Start()
+    public MoveNode(GameObject PL)
     {
+        Player = PL;
         rb = Player.GetComponent<Rigidbody>();
+        Debug.Log($"{Player}, {rb}");
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
+        Debug.Log($"{isMoving} {dT}");
         if (!isStopped)
         {
             if (isMoving && (Vector3.Distance(new Vector3(Player.transform.position.x,0,0), new Vector3(dT.position.x, 0, 0)) > 0.01f 
                 || Vector3.Distance(new Vector3(0,0,Player.transform.position.z), new Vector3(0,0, dT.position.z)) > 0.01f))
             {
+                Debug.Log("Update");
                 rb.MovePosition(Vector3.Lerp(prevPos, new Vector3(dT.position.x, 0, dT.position.z), timer));
                 timer += Time.fixedDeltaTime * MoveSpeed;
             }
@@ -51,8 +54,10 @@ public class MoveNode : MonoBehaviour, INode
 
     public async Task RunNode()
     {
+        UpdateCaller.AddUpdateCallback(Update);
         await MovePlayer();
         await Task.Yield();
+        UpdateCaller.UnsubscribeUpdateCallback(Update);
     }
 
     //public void MovePlayer()

@@ -4,16 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class CollectNode : MonoBehaviour, INode
+public class CollectNode : INode
 {
     public INode Input { get; set; }
     public INode Output { get; set; }
 
-    [SerializeField] GameObject Player;
+    public GameObject Player;
     List<GateObstacle> gates;
     LayerMask layerMask;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public CollectNode()
     {
         layerMask = LayerMask.GetMask("Objective");
         gates = GameObject.FindObjectsByType<GateObstacle>(FindObjectsSortMode.None).ToList<GateObstacle>();

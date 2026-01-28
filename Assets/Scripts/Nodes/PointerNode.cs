@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class PointerNode : MonoBehaviour, INode
+public class PointerNode : INode
 {
-
+    public PointerNode_Holder Holder;
     public VariableNode VariableNode;
 
     public INode Input { get; set; }
@@ -37,8 +37,8 @@ public class PointerNode : MonoBehaviour, INode
         throw new System.NotImplementedException();
     }
 
-    private void OnDestroy()
+    ~PointerNode()
     {
-        VariableNode.RemoveVariable(gameObject);
+        VariableNode.RemoveVariable(Holder.gameObject);
     }
 }

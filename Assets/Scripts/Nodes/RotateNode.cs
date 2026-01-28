@@ -7,14 +7,14 @@ public enum RotateDirection
     Right
 }
 
-public class RotateNode : MonoBehaviour, INode
+public class RotateNode : INode
 {
     public INode Input { get; set; }
     public INode Output { get; set; }
 
-    [SerializeField] GameObject Player;
-    [SerializeField] RotateDirection selectedDir;
-    [SerializeField] GameObject destination;
+    GameObject Player;
+    public RotateDirection selectedDir;
+    public GameObject destination;
     Rigidbody rb;
     public int RotateSpeed;
 
@@ -22,11 +22,12 @@ public class RotateNode : MonoBehaviour, INode
     bool isRotating;
     bool isStopped;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public RotateNode(GameObject PL)
     {
+        Player = PL;
         rb = Player.GetComponent<Rigidbody>();
-        if(destination != null) destination.transform.rotation = Player.transform.rotation;
+        Debug.Log($"{Player}, {rb}");
+        if (destination != null) destination.transform.rotation = Player.transform.rotation;
     }
 
     private void FixedUpdate()
@@ -50,8 +51,10 @@ public class RotateNode : MonoBehaviour, INode
 
     public async Task RunNode()
     {
+        UpdateCaller.AddUpdateCallback(FixedUpdate);
         await RotatePlayer();
         await Task.Yield();
+        UpdateCaller.UnsubscribeUpdateCallback(FixedUpdate);
     }
 
     public async Task RotatePlayer()

@@ -1,22 +1,20 @@
 using System;
 using System.Threading.Tasks;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class AddNode : CalculatingNodes, INode
+public class AddNode : CalculatingNodes
 {
-    public INode Input { get; set; }
-    public INode Output { get; set; }
-
-    public async Task RunNode()
+    public override async Task RunNode()
     {
+        UpdateCaller.AddUpdateCallback(Update);
         Calculate();
         await Task.Yield();
     }
-
-    public void Stop()
+    ~AddNode() 
     {
-        //NA
+        UpdateCaller.UnsubscribeUpdateCallback(Update);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -35,6 +33,7 @@ public class AddNode : CalculatingNodes, INode
         {
             return;
         }
+        //out speichern
 
         //Beide Seiten sind nicht verbunden
         if (!side1connected && !side2connected)

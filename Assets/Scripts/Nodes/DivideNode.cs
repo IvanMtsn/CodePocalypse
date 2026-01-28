@@ -1,22 +1,15 @@
 using System;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
 public class DivideNode : CalculatingNodes
 {
-    public NodeConnection Input { get; set; }
-    public NodeConnection Output { get; set; }
-
-    public async Task RunNode()
+    public override async Task RunNode()
     {
         Calculate();
         await Task.Yield();
-    }
-
-    public void Stop()
-    {
-        //NA
     }
 
     public override void Calculate()
