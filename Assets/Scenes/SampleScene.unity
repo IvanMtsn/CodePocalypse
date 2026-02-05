@@ -680,6 +680,7 @@ GameObject:
   - component: {fileID: 117968174}
   - component: {fileID: 117968173}
   - component: {fileID: 117968178}
+  - component: {fileID: 117968179}
   m_Layer: 3
   m_Name: Playertemplate
   m_TagString: Untagged
@@ -805,6 +806,21 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &117968179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117968172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6daa9f74ca5505e4e8cb098112d2bd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hostileColliders:
+    serializedVersion: 2
+    m_Bits: 1280
 --- !u!1 &144447627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1684,8 +1700,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 271987381}
-        m_TargetAssemblyTypeName: NodeHolder_VariableNode, Assembly-CSharp
-        m_MethodName: RunNode
+        m_TargetAssemblyTypeName: VariableNode_Holder, Assembly-CSharp
+        m_MethodName: InstaniatePointer
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 4679661130027808352, guid: 4dc23380c0093584dace8d574abb23db, type: 3}
@@ -1745,7 +1761,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a5c02a4ef5eda42befe3b762005490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointers: []
   nameField: {fileID: 1394023611}
 --- !u!1 &318231275
 GameObject:
@@ -10762,9 +10777,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 271987381}
-        m_TargetAssemblyTypeName: NodeHolder_VariableNode, Assembly-CSharp
+        m_TargetAssemblyTypeName: VariableNode_Holder, Assembly-CSharp
         m_MethodName: SetVal
-        m_Mode: 4
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10958,7 +10973,6 @@ GameObject:
   - component: {fileID: 1895217966}
   - component: {fileID: 1895217965}
   - component: {fileID: 1895217964}
-  - component: {fileID: 1895217967}
   - component: {fileID: 1895217968}
   m_Layer: 6
   m_Name: Objective
@@ -11035,33 +11049,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &1895217967
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895217962}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!135 &1895217968
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -11077,8 +11064,8 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 1
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5

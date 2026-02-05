@@ -15,7 +15,7 @@ public class VariableNode
     private VarValue varVal = new VarValue();
     public string Name;
 
-    public void InstantiateVariable(GameObject go)
+    public void InstantiateVariablePointer(GameObject go)
     {
         if(!go.GetComponent<PointerNode_Holder>()) return;
         Name = nameField.text;
@@ -40,8 +40,15 @@ public class VariableNode
     public void SetValue(object newVal)
     {
         Debug.Log(newVal.GetType());
-        Debug.Log($"is:" + (newVal.GetType() == typeof(System.Int32)));
+        Debug.Log($"is Int:" + (newVal.GetType() == typeof(System.Int32)));
         //TODO: switch mit gültigen Typen und varVal.Type setzen
+        switch (newVal)
+        {
+            case System.Int32: varVal.varType = VarType.Int;
+                break;
+            case System.Boolean: varVal.varType = VarType.Bool;
+                break;
+        }
         varVal.Value = newVal;
         UpdateAllPointers();
         Debug.Log($"Var value: {varVal.Value}");
@@ -51,8 +58,8 @@ public class VariableNode
     {
         foreach (var point in pointers)
         {
-            point.GetComponent<TMP_Text>().text = Name;
-            point.GetComponent<PointerNode>().GetValue();
+            point.GetComponentInChildren<TMP_Text>().text = Name;
+            point.GetComponent<PointerNode_Holder>().node.GetValue();
         }
     }
 

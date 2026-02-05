@@ -26,7 +26,6 @@ public class RotateNode : INode
     {
         Player = PL;
         rb = Player.GetComponent<Rigidbody>();
-        Debug.Log($"{Player}, {rb}");
         if (destination != null) destination.transform.rotation = Player.transform.rotation;
     }
 

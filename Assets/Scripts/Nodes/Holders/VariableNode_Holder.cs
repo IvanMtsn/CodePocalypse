@@ -6,7 +6,6 @@ public class VariableNode_Holder : MonoBehaviour
 {
     public VariableNode node;
 
-    [SerializeField] private List<GameObject> pointers = new();
     [SerializeField] private TMP_Text nameField;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,19 +15,14 @@ public class VariableNode_Holder : MonoBehaviour
         node.holder = this;
         node.nameField = nameField;
     }
-    public void RunNode(GameObject go)
+    public void InstaniatePointer(GameObject go)
     {
-        node.InstantiateVariable(go);
+        node.InstantiateVariablePointer(go);
     }
 
-    public void SetVal(object val)
+    public void SetVal(int val)
     {
+        Debug.Log("Wants to set val");
         node.SetValue(val);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

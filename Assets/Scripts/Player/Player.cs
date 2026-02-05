@@ -15,9 +15,23 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-       if(((1 << other.gameObject.layer) & _hostileColliders.value) != 0)
+        if(((1 << other.gameObject.layer) & _hostileColliders.value) != 0)
         {
             PlayerDeath();
+        }
+        if (LayerMask.LayerToName(other.gameObject.layer) == "Objective")
+        {
+            ObjectiveManager.objective = other.gameObject;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (LayerMask.LayerToName(other.gameObject.layer) == "Objective")
+        {
+            if(ObjectiveManager.objective == other.gameObject)
+            {
+                ObjectiveManager.objective = null;
+            }
         }
     }
     void PlayerDeath()

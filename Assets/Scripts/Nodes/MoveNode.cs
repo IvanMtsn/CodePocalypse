@@ -24,12 +24,10 @@ public class MoveNode : INode
     {
         Player = PL;
         rb = Player.GetComponent<Rigidbody>();
-        Debug.Log($"{Player}, {rb}");
     }
 
     private void Update()
     {
-        Debug.Log($"{isMoving} {dT}");
         if (!isStopped)
         {
             if (isMoving && (Vector3.Distance(new Vector3(Player.transform.position.x,0,0), new Vector3(dT.position.x, 0, 0)) > 0.01f 

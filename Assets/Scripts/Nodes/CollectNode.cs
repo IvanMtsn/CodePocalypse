@@ -10,14 +10,12 @@ public class CollectNode : INode
     public INode Output { get; set; }
 
     public GameObject Player;
-    List<GateObstacle> gates;
     LayerMask layerMask;
+    GameObject objective;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public CollectNode()
     {
         layerMask = LayerMask.GetMask("Objective");
-        gates = GameObject.FindObjectsByType<GateObstacle>(FindObjectsSortMode.None).ToList<GateObstacle>();
-        Debug.Log(gates.Count + " Gates found.");
     }
 
     public async Task RunNode()
@@ -28,28 +26,13 @@ public class CollectNode : INode
 
     public async Task CollectObjective()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(Player.transform.position-Player.transform.forward, Player.transform.forward, out hit, 1f, layerMask))
-        {
-            ObjectiveManager.Instance.PickUpObjective(hit.collider.gameObject);
-            foreach (GateObstacle g in gates)
-            {
-                g.OpenOrCloseGate();
-            }
-        }
-        else { Debug.Log("Nothing hit."); }
-
+        ObjectiveManager.Instance.PickUpObjective();
         await Task.Yield();
     }
 
     public void TestNode()
     {
         RunNode();
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawLine(Player.transform.position - Player.transform.forward/2, Player.transform.position + Player.transform.forward/2);
     }
 
     public void Stop()

@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 public class DragAndDrop : MonoBehaviour, IDragHandler, IPointerDownHandler, IBeginDragHandler, IEndDragHandler
 {
     [SerializeField] Canvas canvas;
-    [SerializeField] GameObject placingField;
+    //[SerializeField] GameObject placingField;
     [SerializeField] AudioClip SelectEffekt;
     [SerializeField] AudioClip NodePlaceEffekt;
     [SerializeField] AudioClip NodeResetEffekt;
