@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class VariableNode_Holder : MonoBehaviour
 {
+    [SerializeField] Canvas _canvas;
+
     public VariableNode node;
+    public GameObject pointerPref_Holder;
 
     [SerializeField] private TMP_Text nameField;
 
@@ -14,10 +17,11 @@ public class VariableNode_Holder : MonoBehaviour
         node = new VariableNode();
         node.holder = this;
         node.nameField = nameField;
+        pointerPref_Holder.GetComponent<PointerNode_Holder>().canvas = _canvas;
     }
-    public void InstaniatePointer(GameObject go)
+    public GameObject InstaniatePointer(GameObject go)
     {
-        node.InstantiateVariablePointer(go);
+        return node.InstantiateVariablePointer(go);
     }
 
     public void SetVal(int val)

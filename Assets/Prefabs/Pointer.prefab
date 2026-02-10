@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2757473422333745959}
   - component: {fileID: 9132607394572449271}
   - component: {fileID: 3517031543729641771}
+  - component: {fileID: 5860953425389255908}
+  - component: {fileID: -5176117674346167415}
   m_Layer: 5
   m_Name: Pointer
   m_TagString: Untagged
@@ -134,6 +136,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dd9d4dce0941724281e1a3055739a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+--- !u!114 &5860953425389255908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4679661130027808352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fcb42805eb9ee4881c259447af0369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  SelectEffekt: {fileID: 8300000, guid: 038eea3d78cb5ad4fa8845d13c7c8af2, type: 3}
+  NodePlaceEffekt: {fileID: 8300000, guid: e7f1a90d988f05b4fbc0e8dc2fcb4049, type: 3}
+  NodeResetEffekt: {fileID: 8300000, guid: 749c02d8bf875c44f82d9640424b7c7a, type: 3}
+  orginPos: {x: 0, y: 0, z: 0}
+  placed: 1
+--- !u!225 &-5176117674346167415
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4679661130027808352}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8766329059214914586
 GameObject:
   m_ObjectHideFlags: 0

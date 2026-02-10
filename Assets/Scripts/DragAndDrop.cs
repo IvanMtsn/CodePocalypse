@@ -68,6 +68,11 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IPointerDownHandler, IBe
         rectTransform.anchoredPosition = orginPos;
     }
 
+    public void SetCanvas(Canvas go)
+    {
+        canvas = go;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

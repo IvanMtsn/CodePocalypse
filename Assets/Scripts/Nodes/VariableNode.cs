@@ -15,9 +15,9 @@ public class VariableNode
     private VarValue varVal = new VarValue();
     public string Name;
 
-    public void InstantiateVariablePointer(GameObject go)
+    public GameObject InstantiateVariablePointer(GameObject go)
     {
-        if(!go.GetComponent<PointerNode_Holder>()) return;
+        if(!go.GetComponent<PointerNode_Holder>()) return null;
         Name = nameField.text;
         GameObject var = GameObject.Instantiate(go, holder.transform.position, holder.transform.rotation);
         Debug.Log(var.GetComponent<PointerNode_Holder>().node);
@@ -25,6 +25,7 @@ public class VariableNode
         var.GetComponentInChildren<TMP_Text>().text = this.Name;
         pointers.Add(var);
         Debug.Log(pointers.Count);
+        return var;
     }
 
     public void TestSetFunc()

@@ -15,7 +15,16 @@ public class NodeFieldhauser : MonoBehaviour, IDropHandler
                 node.placed = true;
                 node.GetComponent<CanvasGroup>().blocksRaycasts = true;
                 GameObject nodeCopy = eventData.pointerDrag;
-                nodeCopy = Instantiate(nodeCopy, this.transform, true);
+                if (nodeCopy.TryGetComponent<VariableNode_Holder>(out _))
+                {
+                    Debug.Log("Is Var");
+                    VariableNode_Holder var_holder = nodeCopy.GetComponent<VariableNode_Holder>();
+                    nodeCopy = Instantiate(var_holder.InstaniatePointer(var_holder.pointerPref_Holder), nodeCopy.transform.position, transform.rotation, transform);
+                }
+                else
+                {
+                    nodeCopy = Instantiate(nodeCopy, this.transform, true);
+                }
                 nodeCopy.transform.SetParent(this.transform);
                 node.ResetPosition();
                 node.placed = false;
