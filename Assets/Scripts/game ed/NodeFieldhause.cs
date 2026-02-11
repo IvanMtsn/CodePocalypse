@@ -31,6 +31,7 @@ public class NodeFieldhauser : MonoBehaviour, IDropHandler
             }
             else
             {
+                Debug.Log("Not Placed");
                 eventData.pointerDrag.transform.SetParent(this.transform);
             }
         }

@@ -18,7 +18,7 @@ public class SpielStart : MonoBehaviour
 
     public async void StartRound()
     {
-      var currentNode = StartNode.GetComponent<INode>();
+      var currentNode = StartNode.GetComponent<Holder>().node;
       while (currentNode != null)
       {
           await currentNode.RunNode();
