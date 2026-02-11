@@ -3842,7 +3842,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1354600338}
-  - {fileID: 712504788}
   m_Father: {fileID: 1247407066}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5458,16 +5457,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 712504787}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.000071992305}
+  m_LocalPosition: {x: 0, y: 0, z: 0.00012715654}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 385778048}
-  m_Father: {fileID: 408430113}
+  m_Father: {fileID: 1247407066}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -732.46436, y: 3.3240967}
+  m_AnchoredPosition: {x: -365.2046, y: 218.23799}
   m_SizeDelta: {x: 69.5911, y: 17.1382}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &712504789
@@ -7844,7 +7843,7 @@ GameObject:
   - component: {fileID: 1059968226}
   - component: {fileID: 1059968225}
   m_Layer: 5
-  m_Name: Output
+  m_Name: PickUp_Output
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13034,7 +13033,7 @@ GameObject:
   - component: {fileID: 1131935907}
   - component: {fileID: 1131935906}
   m_Layer: 5
-  m_Name: Output
+  m_Name: Rotate_Output
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13960,6 +13959,7 @@ RectTransform:
   - {fileID: 1155504390}
   - {fileID: 1816146040}
   - {fileID: 2052045106}
+  - {fileID: 712504788}
   - {fileID: 408430113}
   - {fileID: 777834025}
   - {fileID: 1424916385}
@@ -15703,7 +15703,7 @@ GameObject:
   - component: {fileID: 1654959337}
   - component: {fileID: 1654959336}
   m_Layer: 5
-  m_Name: Output
+  m_Name: Move_Output
   m_TagString: NodeButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16223,7 +16223,7 @@ GameObject:
   - component: {fileID: 1725143761}
   - component: {fileID: 1725143760}
   m_Layer: 5
-  m_Name: Input
+  m_Name: PickUp_Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17495,7 +17495,7 @@ GameObject:
   - component: {fileID: 1915499022}
   - component: {fileID: 1915499021}
   m_Layer: 5
-  m_Name: Input
+  m_Name: Rotate_Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17648,7 +17648,7 @@ GameObject:
   - component: {fileID: 1927940969}
   - component: {fileID: 1927940968}
   m_Layer: 5
-  m_Name: Input
+  m_Name: Move_Input
   m_TagString: NodeButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
