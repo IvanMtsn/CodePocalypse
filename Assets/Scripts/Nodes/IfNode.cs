@@ -10,8 +10,10 @@ public enum Conditions
 }
 public class IfNode : MonoBehaviour
 {
+    
     [SerializeField] GameObject Player;
     public INode Input { get; set; }
+    public INode Input2 { get; set; }
     public INode Output { get; set; }
     public INode Output2 { get; set; }
     public bool IsTrue { get; set; }

@@ -13,34 +13,42 @@ public class Destroyable : MonoBehaviour, IPointerClickHandler
         Holder currentnodeHolder = currentnode.GetComponent<Holder>();
         INode currentNodeData = currentnodeHolder?.node;
         deleteLines();
-        
+
         foreach (Transform child in nodeField.transform)
         {
             Holder othernode = child.gameObject.GetComponent<Holder>();
             if (othernode == null || othernode.node == null) continue;
-            deleteInput(othernode.node);
-            deleteOutput(othernode.node);
+            deleteOutput(othernode.gameObject);
+            deleteInput(othernode.gameObject);
         }
         Destroy(currentnode);
         }
     }
-    public void deleteInput(INode inputNode)
+    public void deleteInput(GameObject inputNode)
     {
             Holder currentnodeHolder = currentnode.GetComponent<Holder>();
-            if (currentnodeHolder.node.Input == inputNode)
+            Holder inputNodeHolder = inputNode.GetComponent<Holder>();
+            if (currentnodeHolder == null || currentnodeHolder.node == null || inputNodeHolder == null || inputNodeHolder.node == null) return;
+            
+            INode inputNodeData = inputNodeHolder.node;
+            if (currentnodeHolder.node.Input == inputNodeData)
             {
                 currentnodeHolder.node.Input = null;
-                inputNode.Output = null;
+                inputNodeData.Output = null;
             }
     }
 
-    public void deleteOutput(INode outputNode)
+    public void deleteOutput(GameObject outputNode)
     {
             Holder currentnodeHolder = currentnode.GetComponent<Holder>();
-            if (currentnodeHolder.node.Output == outputNode)
+            Holder outputNodeHolder = outputNode.GetComponent<Holder>();
+            if (currentnodeHolder == null || currentnodeHolder.node == null || outputNodeHolder == null || outputNodeHolder.node == null) return;
+            
+            INode outputNodeData = outputNodeHolder.node;
+            if (currentnodeHolder.node.Output == outputNodeData)
             {
                 currentnodeHolder.node.Output = null;
-                outputNode.Input = null;
+                outputNodeData.Input = null;
             }
     }
 

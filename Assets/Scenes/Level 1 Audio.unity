@@ -6927,7 +6927,7 @@ GameObject:
   - component: {fileID: 898078818}
   - component: {fileID: 898078817}
   - component: {fileID: 898078816}
-  - component: {fileID: 898078815}
+  - component: {fileID: 898078820}
   m_Layer: 5
   m_Name: ifNode
   m_TagString: Node
@@ -6958,18 +6958,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -47.100006}
   m_SizeDelta: {x: 45, y: 39.4}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &898078815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898078813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 542ec2de8a58fae4cb9d71b3f15e6cdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &898078816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7038,6 +7026,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898078813}
   m_CullTransparentMesh: 1
+--- !u!114 &898078820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898078813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3754f35f1c195a468c1f356134c4899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comparer: {fileID: 0}
+  val1: {fileID: 0}
+  val2: {fileID: 0}
 --- !u!1 &944449891
 GameObject:
   m_ObjectHideFlags: 0
@@ -17647,6 +17650,7 @@ GameObject:
   - component: {fileID: 1927940970}
   - component: {fileID: 1927940969}
   - component: {fileID: 1927940968}
+  - component: {fileID: 1927940971}
   m_Layer: 5
   m_Name: Move_Input
   m_TagString: NodeButton
@@ -17767,6 +17771,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1927940966}
   m_CullTransparentMesh: 1
+--- !u!114 &1927940971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927940966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed05f3bf2743d8443a6e89ed3e2a4ab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeField: {fileID: 54886880}
 --- !u!65 &1947675080
 BoxCollider:
   m_ObjectHideFlags: 0
