@@ -6,6 +6,8 @@ public class DasherEnemy : MonoBehaviour
     [SerializeField] LayerMask _scanningLaserMask;
     [SerializeField] Transform _beamFirePoint;
     [SerializeField] GameObject _thrusterMesh;
+
+     AudioSource _audioSource;
     LineRenderer _lineRenderer;
     Rigidbody _rb;
     float _maxRaycastDistance = 19;
@@ -17,6 +19,8 @@ public class DasherEnemy : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _lineRenderer = GetComponent<LineRenderer>();
+        _audioSource = GetComponent<AudioSource>();
+        SoundManager.instance.PlayClipOnSource(_audioSource, SoundManager.instance.GetGegnerIdleSound(), 1f, false);
     }
     void Update()
     {
@@ -29,7 +33,9 @@ public class DasherEnemy : MonoBehaviour
                 _isRushingForward = true;
                 _lineRenderer.enabled = false;
                 _thrusterMesh.SetActive(true);
+                   SoundManager.instance.PlayClipOnSource(_audioSource, SoundManager.instance.GetGegnerMoveSound(), 1f, false);
                 StartCoroutine(RushTowardsPlayer());
+             
             }
         }
         ShootScanningBeam();
@@ -55,4 +61,5 @@ public class DasherEnemy : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
     }
+   
 }

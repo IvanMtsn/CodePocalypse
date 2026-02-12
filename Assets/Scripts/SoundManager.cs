@@ -16,10 +16,24 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource b;
   
     [SerializeField] private AudioClip Player_Move;
+    [SerializeField] private AudioClip Player_Zerstört;
     [SerializeField] private AudioClip PickupSound;
+
+    [SerializeField] private AudioClip LevelCompleteJingle;
+
+    [SerializeField] private AudioClip LevelFailedJingle;
+
     [SerializeField] private AudioClip FinishSound;
     [SerializeField] private AudioClip GateOpenSound;
     [SerializeField] private AudioClip GateCloseSound;
+    [SerializeField] private AudioClip GegnerIdleSound;
+    [SerializeField] private AudioClip GegnerMoveSound;
+
+    [SerializeField] private AudioClip GegnerDeathSound;
+
+    [SerializeField] private AudioClip ExplosionSound1;
+
+    [SerializeField] private AudioClip ExplosionSound2;
 
 
 
@@ -35,6 +49,17 @@ public class SoundManager : MonoBehaviour
     {
         a.PlayOneShot(audioclip, volume);
     }
+
+    public void PlayClipOnSource(AudioSource source, AudioClip clip, float volume = 1f, bool loop = false)
+ {
+     if (source == null || clip == null) return;
+
+     source.clip = clip;
+     source.volume = volume;
+     source.loop = loop;
+     source.spatialBlend = 1f; 
+     source.Play();
+ }
 
     public void PlayTrack(AudioClip audioclip, float volume)
     {
@@ -80,19 +105,31 @@ public class SoundManager : MonoBehaviour
         MusikManager.instance.StopMusik();
         a.PlayOneShot(PickupSound, 1f);
     }
-    public void PlayGateOpenSound()
+    public AudioClip GetGateOpenSound()
     {
-        a.PlayOneShot(GateOpenSound, 1f);
+        return GateOpenSound;
     }
-    public void PlayGateCloseSound()
+    public AudioClip GetGateCloseSound()
     {
-        a.PlayOneShot(GateCloseSound, 1f);
+       return  GateCloseSound;
     }
 
-
-    public void PlayPlayerMoveTrack()
+    public AudioClip GetGegnerIdleSound()
     {
-        PlayTrack(Player_Move, 1f);
+        return GegnerIdleSound;
+    }
+    public AudioClip GetGegnerMoveSound()
+    {
+        return GegnerMoveSound;
+    }
+    public AudioClip GetGegnerDeathSound()
+    {
+        return GegnerDeathSound;
+    }
+
+    public AudioClip GetPlayPlayerMoveTrack()
+    {
+        return Player_Move;
     }
 
 

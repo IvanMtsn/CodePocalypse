@@ -6,17 +6,15 @@ public class MusikManager : MonoBehaviour
 {
     public static MusikManager instance;
 
-    [SerializeField] private AudioSource Musik_AudioSource;
+    [SerializeField] private AudioSource Ambient_AudioSource;
+    [SerializeField] private AudioSource Music_AudioSource;
     [SerializeField] private AudioClip Menu_AudioClip;
     [SerializeField] private AudioClip Action_AudioClip;
     [SerializeField] private AudioClip Node_AudioClip;
     [SerializeField] private AudioClip Player_Startup;
     [SerializeField] private AudioClip Ambient_Track;
 
-    private AudioSource a;
-
-
-    private Dictionary<AudioClip, float> savedPositions = new Dictionary<AudioClip, float>();
+   
 
     private AudioClip currentClip;
 
@@ -28,20 +26,20 @@ public class MusikManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
             
-        a = GetComponent<AudioSource>();
+        
     }
 
     public void PlayMusik(AudioClip audioclip, float volume)
     {
-
-        if (a.clip == audioclip && a.isPlaying == false)
+        StopAmbient();
+        if (Music_AudioSource.clip == audioclip && Music_AudioSource.isPlaying == false)
         {
-            a.UnPause();
+            Music_AudioSource.UnPause();
             return;
         }
-        a.clip = audioclip;
-        a.volume = volume;
-        a.Play();
+        Music_AudioSource.clip = audioclip;
+        Music_AudioSource.volume = volume;
+        Music_AudioSource.Play();
     }
 
 
@@ -71,14 +69,31 @@ public class MusikManager : MonoBehaviour
     }
     public void PlayAmbientTrack()
     {
-        PlayMusik(Ambient_Track, 1f);
+        if (!Music_AudioSource.isPlaying)
+        {
+            Ambient_AudioSource.volume = 0.5f;
+            Ambient_AudioSource.clip = Ambient_Track;
+            Ambient_AudioSource.Play();
+        }
+        else
+        {
+            Ambient_AudioSource.Pause();
+        }
+            
     }
   
 
     public void StopMusik() 
     {
-        a.Pause();
-        PlayAmbientTrack();
+        Music_AudioSource.Pause();
+        instance.PlayAmbientTrack();
     }
+    private void StopAmbient()
+{
+    if (Ambient_AudioSource.isPlaying)
+    {
+        Ambient_AudioSource.Pause();
+    }
+}
 }
     
