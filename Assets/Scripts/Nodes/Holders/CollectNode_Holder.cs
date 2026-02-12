@@ -1,17 +1,15 @@
 using TMPro;
 using UnityEngine;
 
-public class NodeHolder_CollectNode : MonoBehaviour
+public class NodeHolder_CollectNode : Holder
 {
-    public CollectNode node;
-
     [SerializeField] GameObject Player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         node = new CollectNode();
-        node.Player = Player;
+        ((CollectNode)node).Player = Player;
     }
     public async void RunNode()
     {
