@@ -84,10 +84,10 @@ public class MoveNode : INode
         Debug.Log("Finished Moving");
     }
 
-    public void TestNode()
-    {
-        RunNode();
-    }
+    // public void TestNode()
+    // {
+    //     RunNode();
+    // }
 
     public void Stop()
     {

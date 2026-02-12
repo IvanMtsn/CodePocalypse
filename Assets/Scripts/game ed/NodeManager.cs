@@ -54,7 +54,7 @@ public class NodeManager : MonoBehaviour
 
         // int connectedCount = 0;
         var currentNode = startNode;
-        var startendConnected = false;
+        // var startendConnected = false;
         foreach (GameObject lineObj in allLines)
         {
             var lr = lineObj.GetComponent<Linerendererv2>();

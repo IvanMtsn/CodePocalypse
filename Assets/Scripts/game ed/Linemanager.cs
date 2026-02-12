@@ -37,7 +37,6 @@ public class LineManager : MonoBehaviour
             points[0] = firstbutton.transform;
             points[1] = button.transform;
             // firstbutton.SetOutput(button);
-            Debug.Log(firstbutton.transform.parent.GetComponent<Holder>());
             firstbutton.transform.parent.GetComponent<Holder>().node.Output = button.transform.parent.GetComponent<Holder>().node;
             button.transform.parent.GetComponent<Holder>().node.Input = firstbutton.transform.parent.GetComponent<Holder>().node;
             lineRenderer.SetUpLine(points);

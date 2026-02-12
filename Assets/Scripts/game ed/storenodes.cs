@@ -20,15 +20,4 @@ public class storenodes : MonoBehaviour
         return false;
     }
 
-    public bool isInputNode(GameObject node)
-    {
-        LineRenderer lineRenderer = line.GetComponent<LineRenderer>();
-        Debug.Log(node.name);
-        if (lineRenderer.GetPosition(0) == node.transform.position)
-        {
-            return true;
-            Debug.Log("isInputNode");
-        }
-        return false;
-    }
 }
