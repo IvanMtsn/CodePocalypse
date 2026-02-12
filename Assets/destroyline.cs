@@ -34,9 +34,10 @@ public class destroyline : MonoBehaviour, IPointerClickHandler
               // {
               //     othernode.node.Output = null;
               // }
-
+              Debug.Log(child.gameObject);
                 parentdestroyable.deleteInput(child.gameObject);
-                if (lineData != null && lineData.containsNode(parentNode) && lineData.isInputNode(parentNode))
+
+                if (lineData != null && lineData.containsNode(this.gameObject))
                 {
                     Destroy(lineData.gameObject);
                 }
@@ -51,7 +52,7 @@ public class destroyline : MonoBehaviour, IPointerClickHandler
               lineData = child.gameObject.GetComponent<storenodes>();
               parentNode.GetComponent<Holder>().node.Output = null;
               parentdestroyable.deleteOutput(child.gameObject);
-                if (lineData != null && lineData.containsNode(parentNode) && !lineData.isInputNode(parentNode))
+                if (lineData != null && lineData.containsNode(this.gameObject))
                 {
                     Destroy(lineData.gameObject);
                 }
