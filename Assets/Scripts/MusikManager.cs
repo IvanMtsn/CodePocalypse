@@ -11,6 +11,7 @@ public class MusikManager : MonoBehaviour
     [SerializeField] private AudioClip Action_AudioClip;
     [SerializeField] private AudioClip Node_AudioClip;
     [SerializeField] private AudioClip Player_Startup;
+    [SerializeField] private AudioClip Ambient_Track;
 
     private AudioSource a;
 
@@ -59,6 +60,7 @@ public class MusikManager : MonoBehaviour
 
         StartCoroutine(PlayActionAfterClip(Player_Startup));
     }
+
     public void PlayMusikMenu()
     {
         PlayMusik(Menu_AudioClip, 1f);
@@ -67,10 +69,16 @@ public class MusikManager : MonoBehaviour
     {
         PlayMusik(Node_AudioClip, 1f);
     }
+    public void PlayAmbientTrack()
+    {
+        PlayMusik(Ambient_Track, 1f);
+    }
+  
 
     public void StopMusik() 
     {
         a.Pause();
+        PlayAmbientTrack();
     }
 }
     

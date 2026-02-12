@@ -6,6 +6,7 @@ public class NodeHolder_Move : Holder
     [SerializeField] GameObject Player;
     [SerializeField] GameObject destination;
     [SerializeField] LayerMask coordinateLayer;
+
     public float MoveLenght;
     public int MoveSpeed;
 
@@ -20,6 +21,8 @@ public class NodeHolder_Move : Holder
             MoveLenght = MoveLenght,
             MoveSpeed = MoveSpeed
         };
+
+       
     }
 
     public void RunNode()

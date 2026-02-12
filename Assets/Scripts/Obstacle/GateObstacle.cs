@@ -21,6 +21,8 @@ public class GateObstacle : MonoBehaviour
     {
         _isClosed = !_isClosed;
         _collider.enabled = _isClosed;
+        if (_isClosed)
+            SoundManager.instance.PlayGateCloseSound();
         Debug.Log($"Is gate closed? {_isClosed}, collider {_collider.enabled}");
     }
 }

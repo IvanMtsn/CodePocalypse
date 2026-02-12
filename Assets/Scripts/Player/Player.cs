@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
         if (LayerMask.LayerToName(other.gameObject.layer) == "Objective")
         {
             ObjectiveManager.objective = other.gameObject;
+            SoundManager.instance.PlayPickupSound();
+
         }
     }
     private void OnTriggerExit(Collider other)
