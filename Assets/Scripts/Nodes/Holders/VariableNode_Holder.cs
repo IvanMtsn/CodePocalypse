@@ -24,6 +24,11 @@ public class VariableNode_Holder : MonoBehaviour
         return node.InstantiateVariablePointer(go);
     }
 
+    public void TestSpawnPointer()
+    {
+        node.TestSpawnPointer(pointerPref_Holder);
+    }
+
     public void SetVal(int val)
     {
         Debug.Log("Wants to set val");

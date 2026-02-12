@@ -1833,11 +1833,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 271987381}
         m_TargetAssemblyTypeName: VariableNode_Holder, Assembly-CSharp
-        m_MethodName: InstaniatePointer
-        m_Mode: 2
+        m_MethodName: TestSpawnPointer
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 4679661130027808352, guid: 4dc23380c0093584dace8d574abb23db, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 1
           m_StringArgument: 
@@ -1893,7 +1893,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a5c02a4ef5eda42befe3b762005490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointerPref_Holder: {fileID: 0}
+  _canvas: {fileID: 1323859753}
+  pointerPref_Holder: {fileID: 4679661130027808352, guid: 4dc23380c0093584dace8d574abb23db, type: 3}
   nameField: {fileID: 1394023611}
 --- !u!1 &318231275
 GameObject:
@@ -3832,6 +3833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a5c02a4ef5eda42befe3b762005490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvas: {fileID: 0}
   pointerPref_Holder: {fileID: 4679661130027808352, guid: 4dc23380c0093584dace8d574abb23db, type: 3}
   nameField: {fileID: 1301283820}
 --- !u!114 &696301473
@@ -9687,12 +9689,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00791cfd89d39e641b2dbdf060b4b7f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AudioSource: {fileID: 1644959753}
   CloseEditor: {fileID: 0}
   OpenEditor: {fileID: 0}
   PlayerStart: {fileID: 0}
   PlayerStop: {fileID: 0}
   MenuButton: {fileID: 0}
+  a: {fileID: 0}
+  b: {fileID: 0}
+  Player_Move: {fileID: 0}
+  PickupSound: {fileID: 0}
+  FinishSound: {fileID: 0}
+  GateOpenSound: {fileID: 0}
+  GateCloseSound: {fileID: 0}
 --- !u!4 &1644959755
 Transform:
   m_ObjectHideFlags: 0

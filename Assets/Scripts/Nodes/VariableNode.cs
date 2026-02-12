@@ -86,4 +86,9 @@ public class VariableNode
     {
         pointers.Remove(pointer);
     }
+
+    public void TestSpawnPointer(GameObject Pointerholder)
+    {
+        InstantiateVariablePointer(Pointerholder);
+    }
 }
