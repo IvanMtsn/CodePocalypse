@@ -19,7 +19,8 @@ public class GameManager : MonoBehaviour
     List<ObjectState> _gameObjects = new List<ObjectState>();
     public static GameManager Instance;
     public bool IsNodeMenuOpen = false;
-    Transform _playerTransformSavepoint;
+    Vector3 _playerPositionSavepoint;
+    Quaternion _playerRotationSavepoint;
     void Awake()
     {
         Instance = this;
@@ -27,18 +28,29 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SaveObjectStates();
+        SavePlayerState();
     }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
             ResetToDefaultObjectStates();
+            ResetPlayerState();
         }
+    }
+    void SavePlayerState()
+    {
+        var player = GameObject.FindGameObjectWithTag("Player");
+        _playerPositionSavepoint = player.transform.position;
+        _playerRotationSavepoint = player.transform.rotation;
+    }
+    void ResetPlayerState()
+    {
+        GameObject.FindGameObjectWithTag("Player").transform
+            .SetPositionAndRotation(_playerPositionSavepoint, _playerRotationSavepoint);
     }
     void SaveObjectStates()
     {
-
         _gameObjects.Clear();
         var currentObjects = GetAllObjectsInMask();
         foreach (var gameObject in currentObjects)
