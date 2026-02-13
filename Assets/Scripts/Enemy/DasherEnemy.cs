@@ -35,7 +35,6 @@ public class DasherEnemy : MonoBehaviour
                 _thrusterMesh.SetActive(true);
                    SoundManager.instance.PlayClipOnSource(_audioSource, SoundManager.instance.GetGegnerMoveSound(), 1f, false);
                 StartCoroutine(RushTowardsPlayer());
-             
             }
         }
         ShootScanningBeam();

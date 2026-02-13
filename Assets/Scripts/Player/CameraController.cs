@@ -22,13 +22,16 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            //Testwerte
             _minDistance = 10;
             _maxDistance = 20;
         }
     }
     void Update()
     {
+        //if (GameManager.Instance.IsNodeMenuOpen)
+        //{
+        //    return;
+        //}
         if (Mouse.current.leftButton.isPressed)
         {
             float deltaX = Mouse.current.delta.x.ReadValue();

@@ -73,7 +73,6 @@ public class MainMenuManager : MonoBehaviour
         {
             case 0:
                 Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
-
                 break;
             case 1:
                 Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
