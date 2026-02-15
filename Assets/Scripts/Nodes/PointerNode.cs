@@ -29,12 +29,16 @@ public class PointerNode : INode
         {
             ChangeValue((Input as PointerNode).VariableNode.GetValue());
         }
+        if(Input is CompareIfNode)
+        {
+            ChangeValue((Input as CompareIfNode).IsTrue);
+        }
         await Task.Yield();
     }
 
     public void Stop()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     ~PointerNode()

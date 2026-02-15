@@ -1,15 +1,17 @@
 using UnityEngine;
 
-public class OnObjectiveCondition : MonoBehaviour, ICondition
+public class OnObjectiveCondition : ICondition
 {
     [SerializeField] LayerMask colliderMask;
-    public Transform Player;
+    Transform Player;
+
+    public OnObjectiveCondition(LayerMask objectiveMask)
+    {
+        colliderMask = objectiveMask;
+    }
+
     public bool Check(Transform Player)
     {
         return Physics.CheckSphere(this.Player.transform.position, 0.4f, colliderMask.value);
-    }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawSphere(Player.transform.position, 0.4f);
     }
 }

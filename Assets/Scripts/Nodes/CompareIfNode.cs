@@ -17,9 +17,12 @@ public enum CompareOptions
     Not
 }
 
-public class NewIfNode : INode
+public class CompareIfNode : INode
 {
     public INode Input { get; set; }
+
+    //Im Set sollen ein side1/2connected gesetzt werden
+    //Ersätz abfrage in Update
     public INode SideInput1 { get; set; }
     public INode SideInput2 { get; set; }
     public INode Output { get; set; }
@@ -57,13 +60,15 @@ public class NewIfNode : INode
         }
     }
 
-    public async Task RunNode()
+    public CompareIfNode()
     {
         UpdateCaller.AddUpdateCallback(Update);
-        await Task.Yield();
+    }
+
+    public async Task RunNode()
+    {
         Check();
         await Task.Yield();
-        UpdateCaller.UnsubscribeUpdateCallback(Update);
     }
 
     public void Check()
@@ -97,7 +102,6 @@ public class NewIfNode : INode
                 }
                 else
                 {
-                    Debug.Log("AAAAAAAHhhhhhhhhhhhhhhh");
                     IsTrue = float.Parse(val1.text.AsSpan()[..^1]) < float.Parse(val2.text.AsSpan()[..^1]);
                 }
                 break;

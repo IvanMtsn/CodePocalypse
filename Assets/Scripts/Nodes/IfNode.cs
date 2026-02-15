@@ -8,7 +8,7 @@ public enum Conditions
     WayIsBlocked,
     OnObjective
 }
-public class IfNode : MonoBehaviour
+public class IfNode : INode
 {
     
     [SerializeField] GameObject Player;
@@ -22,7 +22,14 @@ public class IfNode : MonoBehaviour
 
     ICondition condition;
 
-    public async void RunNode()
+    public LayerMask obstacles, objective;
+
+    public IfNode(GameObject player)
+    {
+        Player = player;
+    }
+
+    public async Task RunNode()
     {
         CheckCondition();
         await Task.Yield();
@@ -30,24 +37,18 @@ public class IfNode : MonoBehaviour
 
     public void CheckCondition()
     {
+        Debug.Log("Checking");
         condition = conditionType switch
         {
             (Conditions.WayIsBlocked) =>
-            gameObject.GetComponent(typeof(WayBlockedCondition)) as WayBlockedCondition,
+            new WayBlockedCondition(obstacles),
             (Conditions.OnObjective) =>
-            gameObject.GetComponent(typeof(OnObjectiveCondition)) as OnObjectiveCondition,
+            new OnObjectiveCondition(objective),
             _ => null,
         };
-        if (condition.Check(Player.transform))
-        {
-            IsTrue = true;
-        }
-        else IsTrue = false;
-        Debug.Log($"Is True: {IsTrue}, Check: {condition.Check(Player.transform)}");
-    }
-    public void TestNode()
-    {
-        RunNode();
+        condition.Check(Player.transform);
+        IsTrue = condition.Check(Player.transform);
+        Debug.Log($"Is True: {IsTrue}");
     }
 
     public INode GetOutput()

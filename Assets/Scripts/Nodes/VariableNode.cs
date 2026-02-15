@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class VariableNode
 {
-    //[SerializeField] GameObject PointerPref;
     public List<GameObject> pointers = new ();
     public TMP_Text nameField;
     public VariableNode_Holder holder;
@@ -42,7 +41,6 @@ public class VariableNode
     {
         Debug.Log(newVal.GetType());
         Debug.Log($"is Int:" + (newVal.GetType() == typeof(System.Int32)));
-        //TODO: switch mit gültigen Typen und varVal.Type setzen
         switch (newVal)
         {
             case System.Int32: varVal.varType = VarType.Int;
