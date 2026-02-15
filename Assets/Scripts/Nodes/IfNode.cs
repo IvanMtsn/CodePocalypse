@@ -37,7 +37,6 @@ public class IfNode : INode
 
     public void CheckCondition()
     {
-        Debug.Log("Checking");
         condition = conditionType switch
         {
             (Conditions.WayIsBlocked) =>

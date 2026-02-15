@@ -8,28 +8,24 @@ public class AddNode : CalculatingNodes
 {
     public override async Task RunNode()
     {
-        UpdateCaller.AddUpdateCallback(Update);
+        //UpdateCaller.AddUpdateCallback(Update);
         Calculate();
         await Task.Yield();
     }
     ~AddNode() 
     {
-        UpdateCaller.UnsubscribeUpdateCallback(Update);
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+        //UpdateCaller.UnsubscribeUpdateCallback(Update);
     }
 
     public override void Calculate()
     {
-        if (!side1connected && !float.TryParse(val1.text.AsSpan()[..^1], out _))
+        float val1f = 0;
+        float val2f = 0;
+        if (!side1connected && !float.TryParse(val1.text.AsSpan()[..^1], out val1f))
         {
             return;
         }
-        if (!side2connected && !float.TryParse(val2.text.AsSpan()[..^1], out _))
+        if (!side2connected && !float.TryParse(val2.text.AsSpan()[..^1], out val2f))
         {
             return;
         }
@@ -38,17 +34,17 @@ public class AddNode : CalculatingNodes
         //Beide Seiten sind nicht verbunden
         if (!side1connected && !side2connected)
         {
-            Value = float.Parse(val1.text.ToString().AsSpan()[..^1]) + float.Parse(val2.text.ToString().AsSpan()[..^1]);
+            Value = val1f + val2f;
         }
         //Side1 ist verbunden
         else if(side1connected && !side2connected)
         {
-            Value = (float)var1.GetValue().Value + float.Parse(val2.text.ToString().AsSpan()[..^1]);
+            Value = (float)var1.GetValue().Value + val2f;
         }
         //Side2 ist verbunden
         else if (side2connected && !side1connected)
         {
-            Value = float.Parse(val1.text.ToString().AsSpan()[..^1]) + (float)var2.GetValue().Value;
+            Value = val1f + (float)var2.GetValue().Value;
         }
 
         //Beide sind verbunden

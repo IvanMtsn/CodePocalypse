@@ -3,7 +3,7 @@ using UnityEngine;
 public class OnObjectiveCondition : ICondition
 {
     [SerializeField] LayerMask colliderMask;
-    Transform Player;
+    //Transform Player;
 
     public OnObjectiveCondition(LayerMask objectiveMask)
     {
@@ -12,6 +12,6 @@ public class OnObjectiveCondition : ICondition
 
     public bool Check(Transform Player)
     {
-        return Physics.CheckSphere(this.Player.transform.position, 0.4f, colliderMask.value);
+        return Physics.CheckSphere(Player.position, 0.4f, colliderMask.value);
     }
 }

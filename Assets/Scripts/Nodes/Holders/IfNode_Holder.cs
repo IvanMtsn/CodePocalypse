@@ -1,7 +1,11 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IfNode_Holder : Holder
 {
+    [SerializeField] TMP_Dropdown Dropdown;
+
     public GameObject Player;
     public LayerMask obstacles, objective;
 
@@ -23,8 +27,8 @@ public class IfNode_Holder : Holder
         
     }
 
-    public void OnDirectionDropdownChanged(int value)
+    public void OnDirectionDropdownChanged()
     {
-        ((IfNode)node).conditionType = (Conditions)value;
+        ((IfNode)node).conditionType = (Conditions)Dropdown.value;
     }
 }
