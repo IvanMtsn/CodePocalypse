@@ -14096,7 +14096,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -9.862549, y: -201.95996}
+  m_AnchoredPosition: {x: -9.862549, y: -201.95998}
   m_SizeDelta: {x: -723.5601, y: -403.9103}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1163585631
@@ -17356,6 +17356,10 @@ MonoBehaviour:
   PlayerStart: {fileID: 8300000, guid: cc372ebab407e534abbc7befdc6130c8, type: 3}
   PlayerStop: {fileID: 8300000, guid: 99ebea3af6f20ee469c9a321aeb04e66, type: 3}
   MenuButton: {fileID: 8300000, guid: e00cce4b97cd1f442ad3a55e142df22b, type: 3}
+  SelectEffekt: {fileID: 8300000, guid: 038eea3d78cb5ad4fa8845d13c7c8af2, type: 3}
+  NodePlaceEffekt: {fileID: 8300000, guid: e7f1a90d988f05b4fbc0e8dc2fcb4049, type: 3}
+  NodeResetEffekt: {fileID: 8300000, guid: 749c02d8bf875c44f82d9640424b7c7a, type: 3}
+  DeleteNode: {fileID: 8300000, guid: 3054f79d4529cfe4dac5b657ca3f075d, type: 3}
   a: {fileID: 1505214250}
   b: {fileID: 172301373}
   Player_Move: {fileID: 8300000, guid: 5b6422b6c0d951f4e8a890d9cd977cd6, type: 3}
@@ -18287,7 +18291,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0

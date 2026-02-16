@@ -10,7 +10,12 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip OpenEditor;
     [SerializeField] private AudioClip PlayerStart;
     [SerializeField] private AudioClip PlayerStop;
-    [SerializeField] private AudioClip MenuButton;  
+    [SerializeField] private AudioClip MenuButton;
+    [SerializeField] AudioClip SelectEffekt;
+    [SerializeField] AudioClip NodePlaceEffekt;
+    [SerializeField] AudioClip NodeResetEffekt;
+    [SerializeField] AudioClip DeleteNode;
+
     [SerializeField] private AudioSource a;
     [Header("GameSfx")]
     [SerializeField] private AudioSource b;
@@ -34,6 +39,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip ExplosionSound1;
 
     [SerializeField] private AudioClip ExplosionSound2;
+
+
 
 
 
@@ -83,6 +90,26 @@ public class SoundManager : MonoBehaviour
         a.PlayOneShot(CloseEditor, 1f);
     }
 
+    public void PlaySelectEffekt()
+    {
+        a.PlayOneShot(SelectEffekt, 1f);
+    }
+
+    public void PlayNodePlaceEffekt()
+    {
+        a.PlayOneShot(NodePlaceEffekt, 1f);
+    }
+
+    public void PlayNodeResetEffekt()
+    {
+        a.PlayOneShot(NodeResetEffekt, 1f);
+    }
+
+    public void PlayNodeDeleteEffekt()
+    {
+        a.PlayOneShot(DeleteNode, 1f);
+    }
+
     public void PlayOpenEditorSound()
     {
         a.PlayOneShot(OpenEditor, 1f);
@@ -103,7 +130,7 @@ public class SoundManager : MonoBehaviour
     public void PlayPickupSound()
     {
         MusikManager.instance.StopMusik();
-        a.PlayOneShot(PickupSound, 1f);
+        b.PlayOneShot(PickupSound, 1f);
     }
     public AudioClip GetGateOpenSound()
     {
@@ -125,6 +152,15 @@ public class SoundManager : MonoBehaviour
     public AudioClip GetGegnerDeathSound()
     {
         return GegnerDeathSound;
+    }
+
+
+    public AudioClip GetExplosionSound(int index)
+    {
+        if (index == 0)
+            return ExplosionSound1;
+        else
+            return ExplosionSound2;
     }
 
     public AudioClip GetPlayPlayerMoveTrack()
