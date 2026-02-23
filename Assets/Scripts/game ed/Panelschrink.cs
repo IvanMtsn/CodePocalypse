@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Panel : MonoBehaviour
+public class Panelschrink : MonoBehaviour
 {
     [SerializeField] RectTransform panelRectTransform;
     // public void Start()

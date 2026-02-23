@@ -4,6 +4,12 @@ using UnityEngine;
 public class SpielStart : MonoBehaviour
 {
     [SerializeField] GameObject StartNode;
+    [SerializeField] GameObject EndNode;
+    [SerializeField] GameObject startButton;
+    [SerializeField] GameObject nodeSelection;
+    [SerializeField] Panelschrink panel;
+    [SerializeField] SoundManager soundManager;
+    [SerializeField] MusikManager musicManager;
     public int DelayMS;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,10 +21,28 @@ public class SpielStart : MonoBehaviour
     {
         
     }
+    bool fullConnected()
+    {
+      if(StartNode.GetComponent<Holder>().node.Output != null && EndNode.GetComponent<Holder>().node.Input != null)
+      {
+        return true;
+      }
+      return false;
+    }
 
     public async void StartRound()
     {
+      if (!fullConnected())
+      {
+        Debug.Log("Not all Nodes are connected!");
+        return;
+      }
+      startButton.SetActive(false);
+      nodeSelection.SetActive(false);
+      soundManager.PlayPlayerStartSound();
+      musicManager.PlayMusikAction();
       var currentNode = StartNode.GetComponent<Holder>().node;
+      panel.ScaleAndMove();
       while (currentNode != null)
       {
          if(currentNode is IfNode)
