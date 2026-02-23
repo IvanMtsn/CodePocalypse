@@ -18,6 +18,8 @@ public class LineManager : MonoBehaviour
 
     public void CreateLine(GameObject button)
     {
+       if (button.transform.parent.GetComponent<DragAndDrop>().placed == true)
+       {
         if (firstbutton == null)
         {
             firstbutton = button;
@@ -37,14 +39,43 @@ public class LineManager : MonoBehaviour
             points[0] = firstbutton.transform;
             points[1] = button.transform;
             // firstbutton.SetOutput(button);
-            firstbutton.transform.parent.GetComponent<Holder>().node.Output = button.transform.parent.GetComponent<Holder>().node;
-            button.transform.parent.GetComponent<Holder>().node.Input = firstbutton.transform.parent.GetComponent<Holder>().node;
+            if(firstbutton.name.Contains("OutputSide"))
+            {
+              (firstbutton.transform.parent.GetComponent<Holder>().node as IfNode).Output2 = button.transform.parent.GetComponent<Holder>().node;
+            }
+            else
+            {
+              firstbutton.transform.parent.GetComponent<Holder>().node.Output = button.transform.parent.GetComponent<Holder>().node;
+            }
+            if(button.transform.parent.GetComponent<Holder>().node is IfNode)
+            {
+               
+              if(button.transform.parent.GetComponent<Holder>().node.Input == null)
+              {
+                 button.transform.parent.GetComponent<Holder>().node.Input = firstbutton.transform.parent.GetComponent<Holder>().node;
+              }
+              else if(button.transform.parent.GetComponent<Holder>().node is IfNode ifNode && ifNode.Input2 == null && button.transform.parent.GetComponent<Holder>().node.Input != null)
+              {
+                 (button.transform.parent.GetComponent<Holder>().node as IfNode).Input2 = firstbutton.transform.parent.GetComponent<Holder>().node;
+              }
+              else
+              {
+                Debug.Log("Both inputs of the IfNode are already occupied, line not created.");
+                Destroy(newLine);
+                return;
+              }
+            }
+            else
+            {
+               button.transform.parent.GetComponent<Holder>().node.Input = firstbutton.transform.parent.GetComponent<Holder>().node;
+            }
             lineRenderer.SetUpLine(points);
             
             allLines = Content.GetComponentsInChildren<Linerendererv2>();
             firstbutton = null;
             SoundManager.instance.PlaySoundCLip(NodeConnectEffekt, 1f);
         }
+       }
     }
 
     public void ClearAllLines()

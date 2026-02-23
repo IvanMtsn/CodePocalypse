@@ -8,6 +8,8 @@ public class Destroyable : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if(!currentnode.name.Contains("start") && !currentnode.name.Contains("end"))
+        {
         if (eventData.button == PointerEventData.InputButton.Right && currentnode.GetComponent<DragAndDrop>().placed)
         {
         Holder currentnodeHolder = currentnode.GetComponent<Holder>();
@@ -22,6 +24,7 @@ public class Destroyable : MonoBehaviour, IPointerClickHandler
             deleteInput(othernode.gameObject);
         }
         Destroy(currentnode);
+        }
         }
     }
     public void deleteInput(GameObject inputNode)

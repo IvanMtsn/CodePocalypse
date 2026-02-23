@@ -9,7 +9,7 @@ public class EndNode : MonoBehaviour, INode
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Input = null;
+      
     }
 
     public async Task RunNode()

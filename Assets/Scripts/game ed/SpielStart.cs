@@ -21,9 +21,20 @@ public class SpielStart : MonoBehaviour
       var currentNode = StartNode.GetComponent<Holder>().node;
       while (currentNode != null)
       {
+         if(currentNode is IfNode)
+         {
+          await currentNode.RunNode();
+          await Task.Delay(DelayMS);
+          currentNode = ((IfNode)currentNode).GetOutput();
+          Debug.Log("IfNode processed, moving to next node.");
+          Debug.Log($"Next node: {currentNode}");
+         }
+         else
+         {
           await currentNode.RunNode();
           await Task.Delay(DelayMS);
           currentNode = currentNode.Output;
+         }
       }
         Debug.Log("No more Nodes");
     }
