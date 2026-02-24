@@ -13,8 +13,13 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip MenuButton;
     [SerializeField] AudioClip SelectEffekt;
     [SerializeField] AudioClip NodePlaceEffekt;
+    [SerializeField] AudioClip NodeConnectEffekt;
     [SerializeField] AudioClip NodeResetEffekt;
     [SerializeField] AudioClip DeleteNode;
+    [SerializeField] AudioClip MenuButtonSound;
+
+    [SerializeField] AudioClip DropdownSound;
+
 
     [SerializeField] private AudioSource a;
     [Header("GameSfx")]
@@ -49,8 +54,16 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+     if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
             instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
     }
 
     private void Update()
@@ -88,9 +101,9 @@ public class SoundManager : MonoBehaviour
      source.Play();
      }
 
-    public void PlayClipAtLocation2D(AudioClip clip, Vector3 position, float volume = 1f)
+    public void PlayClipIndependant(AudioClip clip, float volume = 1f)
     {
-        AudioSource a = Instantiate(prefabSoundObject, position, Quaternion.identity);
+        AudioSource a = Instantiate(prefabSoundObject, Vector3.zero, Quaternion.identity);
         a.clip = clip;
         a.volume = volume;
         a.Play();
@@ -134,15 +147,28 @@ public class SoundManager : MonoBehaviour
         a.PlayOneShot(NodeResetEffekt, 1f);
     }
 
+    
     public void PlayNodeDeleteEffekt()
     {
-        a.PlayOneShot(DeleteNode, 1f);
+        a.PlayOneShot(DeleteNode, 0.6f);
+    }
+
+
+     public void PlayNodeConnectEffekt()
+    {
+        a.PlayOneShot(NodeConnectEffekt, 0.8f);
+    }
+
+     public void PlayDropdownSound()
+    {
+        a.PlayOneShot(DropdownSound, 1f);
     }
 
     public void PlayOpenEditorSound()
     {
         a.PlayOneShot(OpenEditor, 1f);
     }
+    
 
     public void PlayPlayerStartSound()
     {
@@ -161,6 +187,13 @@ public class SoundManager : MonoBehaviour
         MusikManager.instance.StopMusik();
         b.PlayOneShot(PickupSound, 1f);
     }
+
+     public void PlayExitSound()
+    {
+        b.PlayOneShot(LevelFailedJingle, 1f);
+    }
+
+ 
 
     public AudioClip GetPlayerZerstoertSound()
     {

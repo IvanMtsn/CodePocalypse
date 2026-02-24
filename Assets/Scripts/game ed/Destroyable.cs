@@ -8,6 +8,7 @@ public class Destroyable : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        SoundManager.instance.PlayNodeDeleteEffekt();
         if(!currentnode.name.Contains("start") && !currentnode.name.Contains("end"))
         {
         if (eventData.button == PointerEventData.InputButton.Right && currentnode.GetComponent<DragAndDrop>().placed)
@@ -29,6 +30,7 @@ public class Destroyable : MonoBehaviour, IPointerClickHandler
     }
     public void deleteInput(GameObject inputNode)
     {
+
             Holder currentnodeHolder = currentnode.GetComponent<Holder>();
             Holder inputNodeHolder = inputNode.GetComponent<Holder>();
             if (currentnodeHolder == null || currentnodeHolder.node == null || inputNodeHolder == null || inputNodeHolder.node == null) return;
@@ -39,6 +41,7 @@ public class Destroyable : MonoBehaviour, IPointerClickHandler
                 currentnodeHolder.node.Input = null;
                 inputNodeData.Output = null;
             }
+            SoundManager.instance.PlayNodeDeleteEffekt();
     }
 
     public void deleteOutput(GameObject outputNode)
@@ -53,6 +56,7 @@ public class Destroyable : MonoBehaviour, IPointerClickHandler
                 currentnodeHolder.node.Output = null;
                 outputNodeData.Input = null;
             }
+            SoundManager.instance.PlayNodeDeleteEffekt();
     }
 
     public void deleteLines()
@@ -66,6 +70,7 @@ public class Destroyable : MonoBehaviour, IPointerClickHandler
                 GameObject button = childNode.gameObject;
                 if (lineData.containsNode(childNode.gameObject))
                 {
+                    
                     Destroy(lineData.gameObject);
                 }
             }

@@ -28,6 +28,7 @@ public class ObjectiveManager : MonoBehaviour
 
     public void PickUpObjective()
     {
+        SoundManager.instance.PlayPickupSound();
         Debug.Log(objective);
         if(objective)
         {

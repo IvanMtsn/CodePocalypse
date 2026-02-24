@@ -14,9 +14,11 @@ public class deleteNodes : MonoBehaviour
     void Update()
     {
       if (Input.GetMouseButtonDown(2)) 
-      {
+      { 
+          
           OnMiddleMouseClick();
           Debug.Log("Middle mouse button clicked");
+         
       }
     }
 

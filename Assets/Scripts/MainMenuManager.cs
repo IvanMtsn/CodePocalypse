@@ -13,8 +13,6 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] GameObject _videoSettings;
     [SerializeField] GameObject _audioSettings;
     [SerializeField] TMP_Dropdown _displayModeDropdown;
-    [SerializeField] AudioClip SelectEffekt;
-    [SerializeField] AudioClip DropDownEffekt;
     void Start()
     {
         _displayModeDropdown.onValueChanged.AddListener(SetWindowMode);
@@ -36,31 +34,31 @@ public class MainMenuManager : MonoBehaviour
         _settingsScreen.SetActive(false);
 
         _homeScreen.SetActive(true);
-        SoundManager.instance.PlaySoundCLip(SelectEffekt, 1f);
+        SoundManager.instance.PlayMenuButtonSound();
     }
     public void OpenLevelSelect()
     {
         _homeScreen.SetActive(false);
         _levelSelectScreen.SetActive(true);
-        SoundManager.instance.PlaySoundCLip(SelectEffekt,1f);
+         SoundManager.instance.PlayMenuButtonSound();
     }
     public void OpenSettings()
     {
         _homeScreen.SetActive(false);
         _settingsScreen.SetActive(true);
-        SoundManager.instance.PlaySoundCLip(SelectEffekt, 1f);
+       SoundManager.instance.PlayMenuButtonSound();
     }
     public void OpenVideoSettings()
     {
         _audioSettings.SetActive(false);
         _videoSettings.SetActive(true);
-        SoundManager.instance.PlaySoundCLip(SelectEffekt, 1f);
+         SoundManager.instance.PlayMenuButtonSound();
     }
     public void OpenAudioSettings()
     {
         _videoSettings.SetActive(false);
         _audioSettings.SetActive(true);
-        SoundManager.instance.PlaySoundCLip(SelectEffekt, 1f);
+        SoundManager.instance.PlayMenuButtonSound();
     }
     public void QuitGame()
     {
@@ -78,6 +76,6 @@ public class MainMenuManager : MonoBehaviour
                 Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
                 break;
         }
-        SoundManager.instance.PlaySoundCLip(DropDownEffekt, 1f);
+        SoundManager.instance.PlayDropdownSound();
     }
 }

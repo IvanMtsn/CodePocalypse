@@ -17,13 +17,12 @@ public class Player : MonoBehaviour
     {
         if(((1 << other.gameObject.layer) & _hostileColliders.value) != 0)
         {
-            SoundManager.instance.PlayClipAtLocation2D(SoundManager.instance.GetPlayerZerstoertSound(), transform.position, 1f);
+            SoundManager.instance.PlayClipIndependant(SoundManager.instance.GetPlayerZerstoertSound(), 1f);
             PlayerDeath();
         }
         if (LayerMask.LayerToName(other.gameObject.layer) == "Objective")
         {
             ObjectiveManager.objective = other.gameObject;
-            SoundManager.instance.PlayPickupSound();
         }
     }
     private void OnTriggerExit(Collider other)

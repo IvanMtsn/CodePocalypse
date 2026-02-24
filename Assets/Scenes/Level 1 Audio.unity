@@ -1891,7 +1891,19 @@ MonoBehaviour:
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1780393028}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: PlayDropdownSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &62252295
 MonoBehaviour:
@@ -1931,6 +1943,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 62252292}
   m_CullTransparentMesh: 1
+--- !u!1 &74419941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 74419943}
+  - component: {fileID: 74419942}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &74419942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74419941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71c7b9d5a2b360442827f0b6b62b33a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectMask:
+    serializedVersion: 2
+    m_Bits: 1344
+  IsNodeMenuOpen: 0
+--- !u!4 &74419943
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74419941}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.3114605, y: -19.251835, z: -9.465681}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &76074858
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,8 +2416,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linePrefab: {fileID: 4745500550056744356, guid: cb65e4716a2793c42adc1acba04aec92, type: 3}
   Content: {fileID: 54886880}
-  ButtonEffekt: {fileID: 8300000, guid: e00cce4b97cd1f442ad3a55e142df22b, type: 3}
-  NodeConnectEffekt: {fileID: 8300000, guid: 0a557fd90505da9429715990e5380f3d, type: 3}
   nodefield: {fileID: 54886880}
 --- !u!4 &129408176
 Transform:
@@ -5507,10 +5565,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: RotateNode, Assembly-CSharp
-        m_MethodName: OnDirectionDropdownChanged
-        m_Mode: 0
+      - m_Target: {fileID: 1780393028}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: PlayDropdownSound
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7652,6 +7710,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1780393028}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: PlayMenuButtonSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1780393028}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: PlayExitSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16915,7 +16985,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000019073486, y: 0.000015806594}
+  m_AnchoredPosition: {x: 0.000019073486, y: 0}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1354600337
@@ -19678,8 +19748,11 @@ MonoBehaviour:
   MenuButton: {fileID: 8300000, guid: e00cce4b97cd1f442ad3a55e142df22b, type: 3}
   SelectEffekt: {fileID: 8300000, guid: 038eea3d78cb5ad4fa8845d13c7c8af2, type: 3}
   NodePlaceEffekt: {fileID: 8300000, guid: e7f1a90d988f05b4fbc0e8dc2fcb4049, type: 3}
+  NodeConnectEffekt: {fileID: 8300000, guid: 0a557fd90505da9429715990e5380f3d, type: 3}
   NodeResetEffekt: {fileID: 8300000, guid: 749c02d8bf875c44f82d9640424b7c7a, type: 3}
   DeleteNode: {fileID: 8300000, guid: 3054f79d4529cfe4dac5b657ca3f075d, type: 3}
+  MenuButtonSound: {fileID: 8300000, guid: e00cce4b97cd1f442ad3a55e142df22b, type: 3}
+  DropdownSound: {fileID: 8300000, guid: a49d9208261f6df4b83108b6d95778ba, type: 3}
   a: {fileID: 1505214250}
   b: {fileID: 172301373}
   prefabSoundObject: {fileID: 2195457200094170934, guid: f2f2fbe346239da44acce5db2ba5fbdb, type: 3}
@@ -22965,3 +23038,4 @@ SceneRoots:
   - {fileID: 76074861}
   - {fileID: 1066188847}
   - {fileID: 1338821295}
+  - {fileID: 74419943}
