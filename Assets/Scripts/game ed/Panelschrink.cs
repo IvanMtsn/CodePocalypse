@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Panel : MonoBehaviour
+public class Panelschrink : MonoBehaviour
 {
     [SerializeField] RectTransform panelRectTransform;
     // public void Start()
@@ -16,7 +16,7 @@ public class Panel : MonoBehaviour
     public void ResetPanel()
     {
         panelRectTransform.localScale = new Vector3(1f, 1f, 1f);
-        Vector2 originalPosition = new Vector2(90f, 0f); // Ursprüngliche Position
+        Vector2 originalPosition = new Vector2(100f, 0f); // Ursprüngliche Position
         panelRectTransform.anchoredPosition = originalPosition; 
     }
 
