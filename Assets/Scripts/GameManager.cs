@@ -28,14 +28,12 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SaveObjectStates();
-        SavePlayerState();
     }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
             ResetToDefaultObjectStates();
-            ResetPlayerState();
         }
     }
     void SavePlayerState()
@@ -86,6 +84,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        SavePlayerState();
     }
     public void ResetToDefaultObjectStates()
     {
@@ -136,6 +135,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        ResetPlayerState();
     }
     List<GameObject> GetAllObjectsInMask()
     {

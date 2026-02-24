@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
         {
             ObjectiveManager.objective = other.gameObject;
             SoundManager.instance.PlayPickupSound();
-
         }
     }
     private void OnTriggerExit(Collider other)
@@ -39,7 +38,7 @@ public class Player : MonoBehaviour
     void PlayerDeath()
     {
         Debug.Log("Player is KABLAMO");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameManager.Instance.ResetToDefaultObjectStates();
     }
     void TestMove()
     {
