@@ -19,6 +19,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource a;
     [Header("GameSfx")]
     [SerializeField] private AudioSource b;
+
+    [SerializeField] private AudioSource prefabSoundObject;
   
     [SerializeField] private AudioClip Player_Move;
     [SerializeField] private AudioClip Player_Zerstört;
@@ -40,7 +42,7 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private AudioClip ExplosionSound2;
 
-
+    private bool isMuted = false;
 
 
 
@@ -49,8 +51,26 @@ public class SoundManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
-
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            ToggleMute();
+        }
+    }
+    
+    public void ToggleMute()
+    {
+        isMuted = !isMuted;
+
+        a.mute = isMuted;
+        b.mute = isMuted;
+
+        Debug.Log(isMuted ? "Audio Muted" : "Audio Unmuted");
+    }
+
 
     public void PlaySoundCLip(AudioClip audioclip, float volume)
     {
@@ -58,7 +78,7 @@ public class SoundManager : MonoBehaviour
     }
 
     public void PlayClipOnSource(AudioSource source, AudioClip clip, float volume = 1f, bool loop = false)
- {
+    {
      if (source == null || clip == null) return;
 
      source.clip = clip;
@@ -66,7 +86,16 @@ public class SoundManager : MonoBehaviour
      source.loop = loop;
      source.spatialBlend = 1f; 
      source.Play();
- }
+     }
+
+    public void PlayClipAtLocation2D(AudioClip clip, Vector3 position, float volume = 1f)
+    {
+        AudioSource a = Instantiate(prefabSoundObject, position, Quaternion.identity);
+        a.clip = clip;
+        a.volume = volume;
+        a.Play();
+        Destroy(a.gameObject, clip.length);
+    }
 
     public void PlayTrack(AudioClip audioclip, float volume)
     {
@@ -131,6 +160,11 @@ public class SoundManager : MonoBehaviour
     {
         MusikManager.instance.StopMusik();
         b.PlayOneShot(PickupSound, 1f);
+    }
+
+    public AudioClip GetPlayerZerstoertSound()
+    {
+        return Player_Zerstört;
     }
     public AudioClip GetGateOpenSound()
     {

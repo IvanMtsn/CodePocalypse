@@ -14,7 +14,7 @@ public class MusikManager : MonoBehaviour
     [SerializeField] private AudioClip Player_Startup;
     [SerializeField] private AudioClip Ambient_Track;
 
-   
+    bool isMuted = false;
 
     private AudioClip currentClip;
 
@@ -27,6 +27,23 @@ public class MusikManager : MonoBehaviour
         }
             
         
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            ToggleMute();
+        }
+    }
+    
+    public void ToggleMute()
+    {
+        isMuted = !isMuted;
+
+        Ambient_AudioSource.mute = isMuted;
+        Music_AudioSource.mute = isMuted;
+
+        Debug.Log(isMuted ? "Audio Muted" : "Audio Unmuted");
     }
 
     public void PlayMusik(AudioClip audioclip, float volume)
