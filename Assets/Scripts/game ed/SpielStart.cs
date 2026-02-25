@@ -11,6 +11,7 @@ public class SpielStart : MonoBehaviour
     [SerializeField] SoundManager soundManager;
     [SerializeField] MusikManager musicManager;
     bool gamestart = false;
+    public INode CurrentNode;
     public float timer = 0f;
     public int DelayMS;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,7 +27,7 @@ public class SpielStart : MonoBehaviour
             timer += Time.deltaTime;
         }
     }
-    bool fullConnected()
+    bool FullConnected()
     {
       if(StartNode.GetComponent<Holder>().node.Output != null && EndNode.GetComponent<Holder>().node.Input != null)
       {
@@ -37,13 +38,14 @@ public class SpielStart : MonoBehaviour
 
     public void ResetGame()
     {
-      gamestart = false;
+        gamestart = false;
+        CurrentNode = null;
     }
     
 
     public async void StartRound()
     {
-      if (!fullConnected())
+      if (!FullConnected())
       {
         Debug.Log("Not all Nodes are connected!");
         return;
@@ -53,25 +55,25 @@ public class SpielStart : MonoBehaviour
       nodeSelection.SetActive(false);
       soundManager.PlayPlayerStartSound();
       musicManager.PlayMusikAction();
-      var currentNode = StartNode.GetComponent<Holder>().node;
+      CurrentNode = StartNode.GetComponent<Holder>().node;
       panel.ScaleAndMove();
       timer = 0f;
       gamestart = true;
-      while (currentNode != null)
+      while (CurrentNode != null)
       {
-         if(currentNode is IfNode)
+         if(CurrentNode is IfNode)
          {
-          await currentNode.RunNode();
+          await CurrentNode.RunNode();
           await Task.Delay(DelayMS);
-          currentNode = ((IfNode)currentNode).GetOutput();
+          CurrentNode = ((IfNode)CurrentNode).GetOutput();
           Debug.Log("IfNode processed, moving to next node.");
-          Debug.Log($"Next node: {currentNode}");
+          Debug.Log($"Next node: {CurrentNode}");
          }
          else
          {
-          await currentNode.RunNode();
+          await CurrentNode.RunNode();
           await Task.Delay(DelayMS);
-          currentNode = currentNode.Output;
+          CurrentNode = CurrentNode.Output;
          }
       }
         Debug.Log("No more Nodes");

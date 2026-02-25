@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] LayerMask _objectMask;
     List<ObjectState> _gameObjects = new List<ObjectState>();
     public static GameManager Instance;
-    public bool IsNodeMenuOpen = false;
+    public bool IsCameraMoveable = true;
     Vector3 _playerPositionSavepoint;
     Quaternion _playerRotationSavepoint;
     void Awake()
@@ -135,11 +135,16 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
         ResetPlayerState();
     }
     List<GameObject> GetAllObjectsInMask()
     {
         return Resources.FindObjectsOfTypeAll<GameObject>()
             .Where(o => o.scene.IsValid() && ((1 << o.layer) & _objectMask.value) != 0).ToList();
+    }
+    public void SetCameraMoveableState(bool value)
+    {
+        IsCameraMoveable = value;
     }
 }

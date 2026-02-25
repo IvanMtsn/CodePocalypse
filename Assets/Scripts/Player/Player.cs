@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -38,6 +39,9 @@ public class Player : MonoBehaviour
     void PlayerDeath()
     {
         Debug.Log("Player is KABLAMO");
+        //Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere), transform.position, Quaternion.identity);
+        GameObject.FindAnyObjectByType<SpielStart>().CurrentNode.Stop();
+        GameObject.FindAnyObjectByType<SpielStart>().ResetGame();
         GameManager.Instance.ResetToDefaultObjectStates();
     }
     void TestMove()

@@ -22,16 +22,18 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            _minDistance = 10;
+            _minDistance = 10;  
             _maxDistance = 20;
         }
     }
     void Update()
     {
-        //if (GameManager.Instance.IsNodeMenuOpen)
-        //{
-        //    return;
-        //}
+        if (!GameManager.Instance.IsCameraMoveable)
+        {
+            transform.position = _isBigLevel ? new Vector3(0, 15, 0) : new Vector3(0, 5, 0);
+            transform.localEulerAngles = new Vector3(90, 0, 180);
+            return;
+        }
         if (Mouse.current.leftButton.isPressed)
         {
             float deltaX = Mouse.current.delta.x.ReadValue();
