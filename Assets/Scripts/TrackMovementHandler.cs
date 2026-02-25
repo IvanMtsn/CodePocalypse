@@ -7,6 +7,8 @@ public class TrackMovementHandler : MonoBehaviour
 
     [SerializeField] AudioSource a;
 
+    [SerializeField] bool isPlayer = true;
+
     
     Rigidbody _rb;
     bool _wasMoving = false;
@@ -28,7 +30,12 @@ public class TrackMovementHandler : MonoBehaviour
         if (isMoving != _wasMoving)
         {
             if (isMoving)
-                SoundManager.instance.PlayClipOnSource(a, SoundManager.instance.GetPlayPlayerMoveTrack(), 0.6f, true);
+                if (isPlayer)
+                {
+                    SoundManager.instance.PlayClipOnSource(a, SoundManager.instance.GetPlayPlayerMoveTrack(), 0.6f, true);
+                }
+                else
+                    SoundManager.instance.PlayClipOnSource(a, SoundManager.instance.GetDasherGegnerMoveSound(), 1f, true);
             else
                 a.Pause();
 

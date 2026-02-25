@@ -41,6 +41,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip GegnerIdleSound;
     [SerializeField] private AudioClip GegnerMoveSound;
 
+    [SerializeField] private AudioClip DasherGegnerMoveSound;
+
     [SerializeField] private AudioClip GegnerDeathSound;
 
     [SerializeField] private AudioClip ExplosionSound1;
@@ -150,7 +152,7 @@ public class SoundManager : MonoBehaviour
     
     public void PlayNodeDeleteEffekt()
     {
-        a.PlayOneShot(DeleteNode, 0.6f);
+        a.PlayOneShot(DeleteNode, 0.4f);
     }
 
 
@@ -216,18 +218,20 @@ public class SoundManager : MonoBehaviour
     {
         return GegnerMoveSound;
     }
+
+     public AudioClip GetDasherGegnerMoveSound()
+    {
+        return DasherGegnerMoveSound;
+    }
     public AudioClip GetGegnerDeathSound()
     {
         return GegnerDeathSound;
     }
 
 
-    public AudioClip GetExplosionSound(int index)
+    public AudioClip GetExplosionSound()
     {
-        if (index == 0)
-            return ExplosionSound1;
-        else
-            return ExplosionSound2;
+        return Random.Range(0, 2) == 0 ? ExplosionSound1 : ExplosionSound2;
     }
 
     public AudioClip GetPlayPlayerMoveTrack()

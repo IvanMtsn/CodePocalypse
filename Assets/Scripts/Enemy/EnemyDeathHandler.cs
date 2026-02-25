@@ -27,6 +27,7 @@ public class EnemyDeathHandler : MonoBehaviour
 
     public void PlayDeathSound()
     {
-        SoundManager.instance.PlayClipOnSource(_audioSource, SoundManager.instance.GetGegnerDeathSound(), 1f, false);
+        // SoundManager.instance.PlayClipOnSource(_audioSource, SoundManager.instance.GetGegnerDeathSound(), 1f, false);
+         SoundManager.instance.PlayClipIndependant(SoundManager.instance.GetExplosionSound(), 1f);
     }
 }

@@ -15469,7 +15469,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 944449892}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.9999998
+  m_Size: 0.9999997
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -15919,7 +15919,7 @@ MonoBehaviour:
   Ambient_AudioSource: {fileID: 406574925}
   Music_AudioSource: {fileID: 806430426}
   Menu_AudioClip: {fileID: 8300000, guid: d3ac5333895779041bd2e83d86870d4e, type: 3}
-  Action_AudioClip: {fileID: 8300000, guid: 2e5d1a642f3ff6c4d932345ffd87b93c, type: 3}
+  Action_AudioClip: {fileID: 8300000, guid: fd113265b4f28cb4f8cc0e15058903d5, type: 3}
   Node_AudioClip: {fileID: 8300000, guid: 55e6770b54e77c4438d2068670ee2909, type: 3}
   Player_Startup: {fileID: 8300000, guid: cc372ebab407e534abbc7befdc6130c8, type: 3}
   Ambient_Track: {fileID: 8300000, guid: d0d25824decbaa8489b0177cff2b45ff, type: 3}
@@ -17025,7 +17025,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000019073486, y: 0}
+  m_AnchoredPosition: {x: 0.000019073486, y: -0.000009443054}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1354600337
@@ -19806,6 +19806,7 @@ MonoBehaviour:
   GateCloseSound: {fileID: 8300000, guid: 03d2df72798060f4493e521846b7bcbb, type: 3}
   GegnerIdleSound: {fileID: 8300000, guid: 033670ac101b1994094144bbbd26eabc, type: 3}
   GegnerMoveSound: {fileID: 8300000, guid: c5839b778f66bdd4482a3b60dbccc040, type: 3}
+  DasherGegnerMoveSound: {fileID: 8300000, guid: 758df8c70ee7a6144a27be2f7738b266, type: 3}
   GegnerDeathSound: {fileID: 8300000, guid: dc3950411dd12b04999009e9343e849e, type: 3}
   ExplosionSound1: {fileID: 8300000, guid: 1ee7384a3098d434fb38f4d8c6a38db9, type: 3}
   ExplosionSound2: {fileID: 8300000, guid: c9fc67193e0ce7c4681d726192294da1, type: 3}

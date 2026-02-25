@@ -6,8 +6,13 @@ public class DasherEnemy : MonoBehaviour
     [SerializeField] LayerMask _scanningLaserMask;
     [SerializeField] Transform _beamFirePoint;
     [SerializeField] GameObject _thrusterMesh;
+    [SerializeField] AudioSource _audioSource;
+    [SerializeField] float _minIdleInterval = 3f;
+    [SerializeField] float _maxIdleInterval = 8f;
 
-     AudioSource _audioSource;
+
+
+
     LineRenderer _lineRenderer;
     Rigidbody _rb;
     float _maxRaycastDistance = 19;
@@ -20,7 +25,7 @@ public class DasherEnemy : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _lineRenderer = GetComponent<LineRenderer>();
         _audioSource = GetComponent<AudioSource>();
-        SoundManager.instance.PlayClipOnSource(_audioSource, SoundManager.instance.GetGegnerIdleSound(), 1f, false);
+        StartCoroutine(PlayIdleSounds());
     }
     void Update()
     {
@@ -33,7 +38,6 @@ public class DasherEnemy : MonoBehaviour
                 _isRushingForward = true;
                 _lineRenderer.enabled = false;
                 _thrusterMesh.SetActive(true);
-                   SoundManager.instance.PlayClipOnSource(_audioSource, SoundManager.instance.GetGegnerMoveSound(), 1f, false);
                 StartCoroutine(RushTowardsPlayer());
             }
         }
@@ -60,5 +64,16 @@ public class DasherEnemy : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
     }
+
+    IEnumerator PlayIdleSounds()
+{
+    while (true)
+    {
+        SoundManager.instance.PlayClipOnSource(_audioSource, SoundManager.instance.GetGegnerIdleSound(), 1f, false);
+        yield return new WaitForSeconds(Random.Range(_minIdleInterval, _maxIdleInterval));
+    }
+}
+
+
    
 }

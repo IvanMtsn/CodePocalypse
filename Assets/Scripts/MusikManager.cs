@@ -18,6 +18,11 @@ public class MusikManager : MonoBehaviour
 
     private AudioClip currentClip;
 
+    private void Start()
+    {
+        PlayAmbientTrack();
+    }
+
     private void Awake()
     {
         if (instance == null) 

@@ -106,6 +106,9 @@ MonoBehaviour:
     m_Bits: 1288
   _beamFirePoint: {fileID: 1238874707665687453}
   _thrusterMesh: {fileID: 8777752637121564934}
+  _audioSource: {fileID: 1018001363778615388}
+  _minIdleInterval: 3
+  _maxIdleInterval: 8
 --- !u!114 &7410450912980173613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _trackMeshRenderer: {fileID: 1010571071527811404}
   _scrollSpeed: 0.85
+  a: {fileID: 1018001363778615388}
+  isPlayer: 0
 --- !u!120 &2827528605083540106
 LineRenderer:
   serializedVersion: 2
@@ -249,22 +254,22 @@ AudioSource:
   m_GameObject: {fileID: 4813112252558037086}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 1279721405006273932, guid: 3dbef4ca4ad7b2f4db97837020c3c518, type: 2}
+  OutputAudioMixerGroup: {fileID: -8062476736154416824, guid: 24eacfadf440bb0429c6467832121fbe, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
-  MinDistance: 3
-  MaxDistance: 50
+  DopplerLevel: 1.48
+  MinDistance: 5
+  MaxDistance: 8
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -297,7 +302,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -312,7 +317,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.083333336
       inSlope: 0
       outSlope: 0
       tangentMode: 0
