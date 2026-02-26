@@ -31,26 +31,29 @@ public class RotateNode : INode
 
     private void FixedUpdate()
     {
-        if (!isStopped)
+        if (isStopped) return;
+        if ((isRotating &&
+            (Quaternion.Inverse(Quaternion.Euler(0, Player.transform.eulerAngles.y, 0)) * 
+                Quaternion.Euler(0, destination.transform.eulerAngles.y, 0)).eulerAngles.y > 0.05f))
         {
-            if ((isRotating && (Quaternion.Inverse(Quaternion.Euler(0, Player.transform.eulerAngles.y, 0)) * Quaternion.Euler(0, destination.transform.eulerAngles.y, 0)).eulerAngles.y > 0.05f))
-            {
-                rb.MoveRotation(Quaternion.Slerp(Quaternion.Euler(Player.transform.eulerAngles.x, Player.transform.eulerAngles.y, Player.transform.eulerAngles.z), Quaternion.Euler(Player.transform.eulerAngles.x, destination.transform.eulerAngles.y, Player.transform.eulerAngles.z), timer));
-                timer += Time.fixedDeltaTime * RotateSpeed;
-            }
-            else if (isRotating)
-            {
-                isRotating = false;
-                Player.transform.eulerAngles = destination.transform.eulerAngles;
-                destination.transform.SetParent(Player.transform);
-                timer = 0;
-            }
+            rb.MoveRotation(Quaternion.Slerp(Quaternion.Euler(Player.transform.eulerAngles.x, Player.transform.eulerAngles.y,
+                Player.transform.eulerAngles.z),
+                Quaternion.Euler(Player.transform.eulerAngles.x, destination.transform.eulerAngles.y, Player.transform.eulerAngles.z), timer));
+            timer += Time.fixedDeltaTime * RotateSpeed;
+        }
+        else if (isRotating)
+        {
+            isRotating = false;
+            Player.transform.eulerAngles = destination.transform.eulerAngles;
+            destination.transform.SetParent(Player.transform);
+            timer = 0;
         }
     }
 
     public async Task RunNode()
     {
         UpdateCaller.AddUpdateCallback(FixedUpdate);
+        isStopped = false;
         await RotatePlayer();
         await Task.Yield();
         UpdateCaller.UnsubscribeUpdateCallback(FixedUpdate);
@@ -76,7 +79,7 @@ public class RotateNode : INode
         destination.transform.eulerAngles = targetDirection;
         isRotating = true;
 
-        while (isRotating) 
+        while (isRotating && !isStopped) 
         {
             await Task.Yield ();
         }
@@ -95,5 +98,10 @@ public class RotateNode : INode
     public void Stop()
     {
         isStopped = true;
+        isRotating = false;
+        timer = 0;
+        destination.transform.rotation = Player.transform.rotation;
+        UpdateCaller.UnsubscribeUpdateCallback(FixedUpdate);
+        //throw new System.Exception("Rotate interrupted");
     }
 }

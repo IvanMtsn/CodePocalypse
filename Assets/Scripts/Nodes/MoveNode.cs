@@ -28,31 +28,29 @@ public class MoveNode : INode
 
     private void Update()
     {
-        if (!isStopped)
+        if (isStopped) return;
+        if (isMoving && (Vector3.Distance(new Vector3(Player.transform.position.x,0,0), new Vector3(dT.position.x, 0, 0)) > 0.01f 
+            || Vector3.Distance(new Vector3(0,0,Player.transform.position.z), new Vector3(0,0, dT.position.z)) > 0.01f))
         {
-            if (isMoving && (Vector3.Distance(new Vector3(Player.transform.position.x,0,0), new Vector3(dT.position.x, 0, 0)) > 0.01f 
-                || Vector3.Distance(new Vector3(0,0,Player.transform.position.z), new Vector3(0,0, dT.position.z)) > 0.01f))
+            rb.MovePosition(Vector3.Lerp(prevPos, new Vector3(dT.position.x, 0, dT.position.z), timer));
+            timer += Time.fixedDeltaTime * MoveSpeed;
+        }
+        else if (isMoving)
+        {
+            isMoving = false;
+            Player.transform.position = new Vector3(dT.position.x,0,dT.position.z);
+            if (dT == destination.transform) 
             {
-                Debug.Log("Update");
-                rb.MovePosition(Vector3.Lerp(prevPos, new Vector3(dT.position.x, 0, dT.position.z), timer));
-                timer += Time.fixedDeltaTime * MoveSpeed;
+                dT.SetParent(Player.transform);
             }
-            else if (isMoving)
-            {
-                isMoving = false;
-                Player.transform.position = new Vector3(dT.position.x,0,dT.position.z);
-                if (dT == destination.transform) 
-                {
-                    dT.SetParent(Player.transform);
-                }
-                timer = 0;
-            }
+            timer = 0;
         }
     }
 
     public async Task RunNode()
     {
         UpdateCaller.AddUpdateCallback(Update);
+        isStopped = false;
         await MovePlayer();
         await Task.Yield();
         UpdateCaller.UnsubscribeUpdateCallback(Update);
@@ -77,7 +75,7 @@ public class MoveNode : INode
         prevPos = Player.transform.position;
         isMoving = true;
 
-        while(isMoving)
+        while(isMoving && !isStopped)
         {
             await Task.Yield();
         }
@@ -92,5 +90,10 @@ public class MoveNode : INode
     public void Stop()
     {
         isStopped = true;
+        isMoving = false;
+        timer = 0;
+        dT = null;
+        UpdateCaller.UnsubscribeUpdateCallback(Update);
+        //throw new System.Exception("Movement interrupted");
     }
 }

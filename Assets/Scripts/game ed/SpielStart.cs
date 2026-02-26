@@ -39,6 +39,7 @@ public class SpielStart : MonoBehaviour
     public void ResetGame()
     {
         gamestart = false;
+        CurrentNode?.Stop();
         CurrentNode = null;
     }
     
@@ -61,6 +62,7 @@ public class SpielStart : MonoBehaviour
       gamestart = true;
       while (CurrentNode != null)
       {
+        //if(CurrentNode == null) return;
          if(CurrentNode is IfNode)
          {
           await CurrentNode.RunNode();
@@ -71,9 +73,12 @@ public class SpielStart : MonoBehaviour
          }
          else
          {
-          await CurrentNode.RunNode();
-          await Task.Delay(DelayMS);
-          CurrentNode = CurrentNode.Output;
+            //Debug.Log(CurrentNode.ToString());
+            await CurrentNode.RunNode();
+            await Task.Delay(DelayMS);
+            if(CurrentNode == null) break;
+            CurrentNode = CurrentNode.Output;
+            //Debug.Log("New cur: " + CurrentNode.ToString());
          }
       }
         Debug.Log("No more Nodes");
