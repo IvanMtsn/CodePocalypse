@@ -18,6 +18,6 @@ public class finish : MonoBehaviour
   void Update()
   { 
     if (textMeshPro != null && spielStart != null)
-      textMeshPro.text = spielStart.Timer.ToString("F2") + " Sec";
+      textMeshPro.text = "--/--";
   }
 }
