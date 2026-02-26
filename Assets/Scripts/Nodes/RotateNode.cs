@@ -89,11 +89,6 @@ public class RotateNode : INode
     {
         RunNode();
     }
-    
-    public void OnDirectionDropdownChanged(int value)
-    {
-        selectedDir = (RotateDirection)value;
-    }
 
     public void Stop()
     {
