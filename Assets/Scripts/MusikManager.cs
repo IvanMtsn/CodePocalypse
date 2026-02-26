@@ -25,13 +25,13 @@ public class MusikManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null) 
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-            
-        
+        //if (instance == null) 
+        //{
+        //    instance = this;
+        //    DontDestroyOnLoad(gameObject);
+        //}
+        instance = this;
+
     }
     private void Update()
     {

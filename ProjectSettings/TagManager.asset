@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Node
   - NodeButton
+  - Objective
   layers:
   - Default
   - TransparentFX
