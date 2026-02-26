@@ -3994,7 +3994,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -9.862549, y: -201.95998}
+  m_AnchoredPosition: {x: -9.862549, y: -201.95999}
   m_SizeDelta: {x: -723.5601, y: -403.9103}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &227632225
@@ -4029,7 +4029,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1576337564}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.00000017881393, y: 0}
+  m_AnchorMin: {x: 0.00000029802322, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -5119,7 +5119,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 227632226}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.9999998
+  m_Size: 0.9999997
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -20740,9 +20740,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: PlayDropdownSound
+      - m_Target: {fileID: 222901272}
+        m_TargetAssemblyTypeName: IfNode_Holder, Assembly-CSharp
+        m_MethodName: OnDirectionDropdownChanged
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
