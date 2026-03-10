@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -6,7 +7,8 @@ public class GuideManager : MonoBehaviour
 {
     [SerializeField] GameObject _guide;
     [SerializeField] GameObject currentPage;
-    [SerializeField] GameObject currentChpt;
+    [SerializeField] Chapter currentChpt;
+    [SerializeField] GameObject curChptBtn;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,7 +18,7 @@ public class GuideManager : MonoBehaviour
             ToggleDisplay();
             TutorialManager.showedTut = true;
         }
-        Button button = currentChpt.GetComponent<Button>();
+        Button button = curChptBtn.GetComponent<Button>();
         var colors = button.colors;
         colors.normalColor = colors.selectedColor;
         colors.selectedColor = button.colors.normalColor;
@@ -39,25 +41,26 @@ public class GuideManager : MonoBehaviour
         _guide.SetActive(true);
     }
 
-    public void FlipToPage(GameObject nextPage)
+    public void FlipToPage(int idx)
     {
-        if (nextPage == null) Debug.Log("Next page is not set!");
-        if (nextPage == currentPage || nextPage == null) return;
-        nextPage.SetActive(true);
-        currentPage.SetActive(false);
-        currentPage = nextPage;
+        //if (nextPage == null) Debug.Log("Next page is not set!");
+        //Chapter chapter = currentChpt.GetComponent<Chapter>();
+        currentChpt.Pages[currentChpt.CurrentPageIndex].SetActive(false);
+        currentChpt.Pages[idx].SetActive(true);
+        currentChpt.CurrentPageIndex = idx;
     }
     
-    public void FlipToChapter(GameObject chapterButton)
+    public void FlipToChapter(Chapter chapter)
     {
-        if (chapterButton == currentChpt) return;
-        currentChpt = chapterButton;
-        FlipToPage(chapterButton.GetComponent<Chapter>().firstPage);
+        if (chapter == currentChpt || chapter == null) return;
+        currentChpt = chapter;
+        FlipToPage(currentChpt.CurrentPageIndex);
     }
-    public void SwitchActiveChptColor(Button button)
+    private void SwitchActiveChptColor(Button button)
     {
         EventSystem.current.SetSelectedGameObject(null);
-        if (button.gameObject == currentChpt || button == null) return;
+        if (button.gameObject == curChptBtn || button == null) return;
+        Debug.Log("New Btn:" + button.gameObject.name);
         //Mark selected Chpt
         var colors = button.colors;
         colors.normalColor = colors.selectedColor;
@@ -65,27 +68,33 @@ public class GuideManager : MonoBehaviour
         button.colors = colors;
 
         //Reset last selected Chpt
-        button = currentChpt.GetComponent<Button>();
-        colors = button.colors;
+        Button lastButton = curChptBtn.GetComponent<Button>();
+        colors = lastButton.colors;
         colors.normalColor = colors.selectedColor;
-        colors.selectedColor = button.colors.normalColor;
-        button.colors = colors;
+        colors.selectedColor = lastButton.colors.normalColor;
+        lastButton.colors = colors;
+        Debug.Log("Cur Btn:" + lastButton.gameObject.name);
+
+        curChptBtn = button.gameObject;
     }
 
     public void OnChptButtonClick(GameObject chpt)
     {
-        if (chpt == currentChpt) { return; }
         SwitchActiveChptColor(chpt.GetComponent<Button>());
-        FlipToChapter(chpt);
+    }
+
+    public void SetCurChapter(Chapter chapter)
+    {
+        FlipToChapter(chapter);
     }
     
-    public void ClickOnChapterButton(GameObject chapterButton)
-    {
-        if (chapterButton == currentChpt) return;
-        Button button;
-        if (chapterButton.TryGetComponent<Button>(out button))
-        {
-            button.onClick.Invoke();
-        }
-    }
+    //public void ClickOnChapterButton(GameObject chapterButton)
+    //{
+    //    if (chapterButton == currentChpt) return;
+    //    Button button;
+    //    if (chapterButton.TryGetComponent<Button>(out button))
+    //    {
+    //        button.onClick.Invoke();
+    //    }
+    //}
 }
