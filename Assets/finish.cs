@@ -16,7 +16,7 @@ public class finish : MonoBehaviour
       spielStart = startRound.GetComponent<SpielStart>();
     
     SoundManager.instance.PlayLevelCompleteSound();
-    MusikManager.instance.StopMusik();
+    
 
   }
   void Update()

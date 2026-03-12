@@ -36,6 +36,7 @@ public class ObjectiveManager : MonoBehaviour
             _endGameTriggered = true;
             GameManager.Instance.IsCameraMoveable = false;
             _endScreen.SetActive(true);
+            MusikManager.instance.ToggleMute();
         }
     }
     public void PickUpObjective()

@@ -6273,7 +6273,7 @@ MonoBehaviour:
         m_CallState: 1
       - m_Target: {fileID: 1135338401}
         m_TargetAssemblyTypeName: MusikManager, Assembly-CSharp
-        m_MethodName: StopMusik
+        m_MethodName: PlayMusikNode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16449,7 +16449,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -9.862549, y: -201.95996}
+  m_AnchoredPosition: {x: -9.862549, y: -201.95993}
   m_SizeDelta: {x: -723.5601, y: -403.9103}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1163585631
