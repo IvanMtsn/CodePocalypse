@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3468743421036021117}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.99998957, z: -0, w: 0.0045678904}
+  m_LocalRotation: {x: 0, y: 0.9999896, z: 0, w: 0.0045640077}
   m_LocalPosition: {x: -4.53, y: 0, z: 5.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -53,7 +53,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 13.44, y: 1, z: 7.02}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &5237377887862247016
 AudioSource:
@@ -76,8 +76,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 5
-  MaxDistance: 7.5
+  MinDistance: 4.37
+  MaxDistance: 7.82
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -127,7 +127,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.055555556
+      value: 0.45833334
       inSlope: 0
       outSlope: 0
       tangentMode: 0

@@ -14,6 +14,10 @@ public class finish : MonoBehaviour
       textMeshPro = timerderzeit.GetComponent<TextMeshProUGUI>();
     if (startRound != null)
       spielStart = startRound.GetComponent<SpielStart>();
+    
+    SoundManager.instance.PlayLevelCompleteSound();
+    MusikManager.instance.StopMusik();
+
   }
   void Update()
   { 

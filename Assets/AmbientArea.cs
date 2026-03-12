@@ -15,7 +15,6 @@ public class WindScript : MonoBehaviour
     
     private Coroutine currentFadeCoroutine;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         WindSound.volume = 0f;

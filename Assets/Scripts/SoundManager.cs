@@ -34,8 +34,6 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip LevelCompleteJingle;
 
     [SerializeField] private AudioClip LevelFailedJingle;
-
-    [SerializeField] private AudioClip FinishSound;
     [SerializeField] private AudioClip GateOpenSound;
     [SerializeField] private AudioClip GateCloseSound;
     [SerializeField] private AudioClip GegnerIdleSound;
@@ -193,6 +191,13 @@ public class SoundManager : MonoBehaviour
      public void PlayExitSound()
     {
         b.PlayOneShot(LevelFailedJingle, 1f);
+    }
+
+
+
+     public void PlayLevelCompleteSound()
+    {
+        b.PlayOneShot(LevelCompleteJingle, 1f);
     }
 
  
