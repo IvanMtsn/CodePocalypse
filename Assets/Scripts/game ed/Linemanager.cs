@@ -1,89 +1,109 @@
 using UnityEngine;
-using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class LineManager : MonoBehaviour
 {
     [SerializeField] private GameObject linePrefab;
-    [SerializeField] private GameObject Content;
-    [SerializeField] GameObject nodefield;
-    Linerendererv2[] allLines;
-
-    private GameObject firstbutton;
-
-    public void Start()
-    {
-    }
+    [SerializeField] private GameObject nodeField;
+    
+    private Linerendererv2[] allLines;
+    private GameObject firstButton;
 
     public void CreateLine(GameObject button)
     {
-       if (button.transform.parent.GetComponent<DragAndDrop>().placed == true)
-       {
-        if (firstbutton == null)
+        if (!IsButtonPlaced(button)) return;
+
+        if (firstButton == null)
         {
-            firstbutton = button;
-            SoundManager.instance.PlayMenuButtonSound();
+            if (button.gameObject.name.Contains("Output"))
+            {
+               firstButton = button;
+               SoundManager.instance.PlayMenuButtonSound();
+              //  color buttonfarb = firstButton.gameObject.GetComponent<Image>().Color;
+              //  buttonfarb.a = 0.5f; // Set alpha to 50%
+              //  firstButton.GetComponent<Image>().Color = buttonfarb;
+            }
         }
         else
         {
-            if (button == firstbutton)
+            if (button == firstButton)
             {
-              firstbutton = null;
+                firstButton = null;
                 Debug.Log("Same button clicked twice, line not created.");
-              return;
-            }
-            GameObject newLine = Instantiate(linePrefab, Content.transform);
-            Linerendererv2 lineRenderer = newLine.GetComponent<Linerendererv2>();
-            Transform[] points = new Transform[2];
-            points[0] = firstbutton.transform;
-            points[1] = button.transform;
-            // firstbutton.SetOutput(button);
-            if(firstbutton.name.Contains("OutputSide"))
-            {
-              (firstbutton.transform.parent.GetComponent<Holder>().node as IfNode).Output2 = button.transform.parent.GetComponent<Holder>().node;
-            }
-            else
-            {
-              firstbutton.transform.parent.GetComponent<Holder>().node.Output = button.transform.parent.GetComponent<Holder>().node;
-            }
-            if(button.transform.parent.GetComponent<Holder>().node is IfNode)
-            {
-               
-              if(button.transform.parent.GetComponent<Holder>().node.Input == null)
-              {
-                 button.transform.parent.GetComponent<Holder>().node.Input = firstbutton.transform.parent.GetComponent<Holder>().node;
-              }
-              else if(button.transform.parent.GetComponent<Holder>().node is IfNode ifNode && ifNode.Input2 == null && button.transform.parent.GetComponent<Holder>().node.Input != null)
-              {
-                 (button.transform.parent.GetComponent<Holder>().node as IfNode).Input2 = firstbutton.transform.parent.GetComponent<Holder>().node;
-              }
-              else
-              {
-                Debug.Log("Both inputs of the IfNode are already occupied, line not created.");
-                Destroy(newLine);
                 return;
-              }
             }
-            else
-            {
-               button.transform.parent.GetComponent<Holder>().node.Input = firstbutton.transform.parent.GetComponent<Holder>().node;
-            }
-            lineRenderer.SetUpLine(points);
-            
-            allLines = Content.GetComponentsInChildren<Linerendererv2>();
-            firstbutton = null;
-            SoundManager.instance.PlayNodeConnectEffekt();
+
+            CreateLineBetweenButtons(firstButton, button);
         }
-       }
     }
 
-    public void ClearAllLines()
+    private bool IsButtonPlaced(GameObject button)
     {
-        allLines = Content.GetComponentsInChildren<Linerendererv2>();
-        foreach (Linerendererv2 line in allLines)
-        {
-            Destroy(line.gameObject);
-        }
+        DragAndDrop dragDrop = button.transform.parent.GetComponent<DragAndDrop>();
+        return dragDrop != null && dragDrop.placed;
     }
-    
-    
+
+    private void CreateLineBetweenButtons(GameObject start, GameObject end)
+    {
+        GameObject newLine = Instantiate(linePrefab, nodeField.transform);
+        Linerendererv2 lineRenderer = newLine.GetComponent<Linerendererv2>();
+        
+        Transform[] points = { start.transform, end.transform };
+        
+        if (!ConnectNodes(start, end))
+        {
+            Destroy(newLine);
+            return;
+        }
+
+        lineRenderer.SetUpLine(points);
+        allLines = nodeField.GetComponentsInChildren<Linerendererv2>();
+        firstButton = null;
+        SoundManager.instance.PlayNodeConnectEffekt();
+    }
+
+    private bool ConnectNodes(GameObject start, GameObject end)
+    {
+        Holder startHolder = start.transform.parent.GetComponent<Holder>();
+        Holder endHolder = end.transform.parent.GetComponent<Holder>();
+
+        if (startHolder == null || endHolder == null) return false;
+
+        // Set output
+        if (start.name.Contains("OutputSide"))
+        {
+            if (startHolder.node is IfNode ifNode)
+            {
+                ifNode.Output2 = endHolder.node;
+            }
+        }
+        else
+        {
+            startHolder.node.Output = endHolder.node;
+        }
+
+        // Set input
+        if (endHolder.node is IfNode endIfNode)
+        {
+            if (endIfNode.Input == null)
+            {
+                endIfNode.Input = startHolder.node;
+            }
+            else if (endIfNode.Input2 == null)
+            {
+                endIfNode.Input2 = startHolder.node;
+            }
+            else
+            {
+                Debug.Log("Both inputs of the IfNode are already occupied, line not created.");
+                return false;
+            }
+        }
+        else
+        {
+            endHolder.node.Input = startHolder.node;
+        }
+
+        return true;
+    }
 }
