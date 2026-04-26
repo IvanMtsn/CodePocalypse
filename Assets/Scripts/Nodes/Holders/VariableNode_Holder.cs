@@ -9,7 +9,7 @@ public class VariableNode_Holder : MonoBehaviour
     public VariableNode node;
     public GameObject pointerPref_Holder;
 
-    [SerializeField] private TMP_Text nameField;
+    [SerializeField] private TMP_Text nameField, valueField;
     [SerializeField] private GameObject nodefield;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,9 +29,9 @@ public class VariableNode_Holder : MonoBehaviour
             }
         }
     }
-    public GameObject InstaniatePointer(GameObject go)
+    public GameObject InstaniatePointer(GameObject go, Vector3 pos, Transform transform)
     {
-        return node.InstantiateVariablePointer(go);
+        return node.InstantiateVariablePointer(go, pos, transform);
     }
 
     public void TestSpawnPointer()
@@ -44,9 +44,13 @@ public class VariableNode_Holder : MonoBehaviour
         node.UpdateAllPointers();
     }
 
-    public void SetVal(int val)
+    public void SetVal()
     {
         Debug.Log("Wants to set val");
-        node.SetValue(val);
+        node.SetValue(valueField.text);
+    }
+    public void SetName()
+    {
+        node.SetName(nameField.text);
     }
 }

@@ -53,6 +53,7 @@ public class GuideManager : MonoBehaviour
     public void FlipToChapter(Chapter chapter)
     {
         if (chapter == currentChpt || chapter == null) return;
+        currentChpt.Pages[currentChpt.CurrentPageIndex].SetActive(false);
         currentChpt = chapter;
         FlipToPage(currentChpt.CurrentPageIndex);
     }

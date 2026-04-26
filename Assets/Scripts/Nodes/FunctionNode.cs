@@ -54,8 +54,9 @@ public class FunctionNode : INode
         }
 
         currentNode = startNode.node;
-        for (int i = 0; i < nodesOnField.Count; i++) 
+        foreach (Holder holder in nodesOnField)
         {
+            if (nodeList.Contains(holder.node)) continue;
             nodeList.Add(currentNode);
             currentNode = currentNode.Output;
         }

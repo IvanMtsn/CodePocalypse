@@ -36,7 +36,7 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IPointerDownHandler, IBe
     public void OnDrag(PointerEventData eventData)
     {
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
-        Debug.Log("wird immernoch gezogen");
+        //Debug.Log("wird immernoch gezogen");
         //throw new System.NotImplementedException();
     }
 

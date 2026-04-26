@@ -19,8 +19,11 @@ public class PointerNode : INode
 
     public VarValue GetValue()
     {
-      Debug.Log(wertLabel.GetComponent<TMP_Text>().text + "ivane");
-      wertLabel.GetComponent<TMP_Text>().text = VariableNode.GetValue().ToString();
+        Debug.Log(VariableNode + "Varb");
+      Debug.Log(wertLabel.GetComponent<TMP_Text>() + "ivane");
+      Debug.Log("get value " + VariableNode.GetValue().ToString());
+        if(VariableNode.GetValue().Value != null)
+        wertLabel.GetComponent<TMP_Text>().text = VariableNode.GetValue().Value.ToString();
       return VariableNode.GetValue();
     }
 

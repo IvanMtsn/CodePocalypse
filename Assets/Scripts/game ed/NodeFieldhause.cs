@@ -21,8 +21,8 @@ public class NodeFieldhauser : MonoBehaviour, IDropHandler
                 {
                     Debug.Log("Is Var");
                     VariableNode_Holder var_holder = nodeCopy.GetComponent<VariableNode_Holder>();
-                    nodeCopy = var_holder.InstaniatePointer(var_holder.pointerPref_Holder);
-                    Debug.Log(var_holder.GetComponent<VariableNode_Holder>().node + " black");
+                    nodeCopy = var_holder.InstaniatePointer(var_holder.pointerPref_Holder, eventData.delta, var_holder.transform);
+                    Debug.Log(nodeCopy.GetComponent<PointerNode_Holder>().node.VariableNode + " black");
                 }
                 else
                 {

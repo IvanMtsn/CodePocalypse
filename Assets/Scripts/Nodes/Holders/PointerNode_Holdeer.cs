@@ -13,8 +13,7 @@ public class PointerNode_Holder : MonoBehaviour
     {
         node = new PointerNode();
         node.wertLabel = _wertLabel;
-        Debug.Log(_wertLabel.GetComponent<TMP_Text>().text + "ivane");
-        node.GetValue();
+        //node.GetValue();
         DragAndDrop dnd = GetComponent<DragAndDrop>();
         dnd.SetCanvas(canvas);
     }

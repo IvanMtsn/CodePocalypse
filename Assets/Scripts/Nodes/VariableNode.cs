@@ -14,18 +14,15 @@ public class VariableNode
     private VarValue varVal = new VarValue();
     public string Name;
 
-    public GameObject InstantiateVariablePointer(GameObject go)
+    public GameObject InstantiateVariablePointer(GameObject go, Vector3 pos, Transform trnsfrm)
     {
         if(!go.GetComponent<PointerNode_Holder>()) return null;
         Name = nameField.text;
-        GameObject var = GameObject.Instantiate(go, holder.transform.position, holder.transform.rotation);
-        Debug.Log(var.GetComponent<PointerNode_Holder>().node);
-        Debug.Log(this + " this");
+        GameObject var = GameObject.Instantiate(go, holder.transform.position, holder.transform.rotation, trnsfrm);
         var.GetComponent<PointerNode_Holder>().node.VariableNode = this;
-        Debug.Log(var.GetComponent<PointerNode_Holder>().node.VariableNode + " black");
         var.GetComponentInChildren<TMP_Text>().text = this.Name;
+        var.GetComponent<PointerNode_Holder>().node.GetValue();
         pointers.Add(var);
-        Debug.Log(pointers.Count);
         return var;
     }
 
@@ -36,31 +33,49 @@ public class VariableNode
 
     public VarValue GetValue()
     {
-        Debug.Log(varVal + "valueee");
         return varVal;
     }
 
     public void SetValue(object newVal)
     {
-        Debug.Log("Ivans loch");
-        Debug.Log(newVal.GetType());
-        Debug.Log($"is Int:" + (newVal.GetType() == typeof(System.Int32)));
+        Debug.Log(newVal+ " " + newVal.GetType());
+        try
+        {
+            newVal = System.Convert.ToBoolean(newVal.ToString());
+            varVal.varType = VarType.Bool;
+            Debug.Log("Converted to bool");
+        }
+        catch (Exception ex) { }
+
+        if (int.TryParse(newVal.ToString(), out int newValInt))
+        {
+            Debug.Log("Converted to int");
+            newVal = newValInt;
+            varVal.varType = VarType.Int;
+        }
+        Debug.Log(newVal+ " " + newVal.GetType());
+            Debug.Log($"is Int:" + (newVal.GetType() == typeof(System.Int32)));
+        //Debug.Log($"is Bool:" + (System.Convert.ToBoolean(newVal).GetType() == typeof(System.Boolean)));
+
         switch (newVal)
         {
-            case System.Int32: varVal.varType = VarType.Int;
+            case System.Int32:
+                varVal.varType = VarType.Int;
                 break;
-            case System.Boolean: varVal.varType = VarType.Bool;
+            case System.Boolean:
+                varVal.varType = VarType.Bool;
                 break;
         }
         varVal.Value = newVal;
         UpdateAllPointers();
-        Debug.Log($"Var value: {varVal.Value}");
+        Debug.Log($"Var value: {varVal.Value} {varVal.varType}");
     }
 
     public void UpdateAllPointers()
     {
         foreach (var point in pointers)
         {
+            Debug.Log(point.name + point.GetComponentInChildren<TMP_Text>().text + Name);
             point.GetComponentInChildren<TMP_Text>().text = Name;
             point.GetComponent<PointerNode_Holder>().node.GetValue();
         }
@@ -77,6 +92,13 @@ public class VariableNode
         varVal.varType = type;
     }
 
+    public void SetName(string name)
+    {
+        Debug.Log("Set Name: " + name);
+        Name = name;
+        UpdateAllPointers();
+    }
+
     public void DestroyAllVariables() 
     {
         foreach (GameObject poi in pointers)
@@ -91,6 +113,6 @@ public class VariableNode
 
     public void TestSpawnPointer(GameObject Pointerholder)
     {
-        InstantiateVariablePointer(Pointerholder);
+        InstantiateVariablePointer(Pointerholder, Vector3.one, null);
     }
 }
