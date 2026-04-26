@@ -6,7 +6,7 @@ public class PointerNode_Holder : MonoBehaviour
 {
     public PointerNode node;
     [SerializeField] public Canvas canvas;
-    [SerializeField] private GameObject _wertLabel;
+    [SerializeField] GameObject _wertLabel;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()

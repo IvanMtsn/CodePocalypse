@@ -92,7 +92,7 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IPointerDownHandler, IBe
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             if (scroll != 0)
             {
-                rectTransform.Rotate(new Vector3(0, 0, scroll * 20f)); // Anpassen der Drehgeschwindigkeit
+                rectTransform.Rotate(new Vector3(0, 0, scroll * 50f)); // Anpassen der Drehgeschwindigkeit
             }
         }
     }

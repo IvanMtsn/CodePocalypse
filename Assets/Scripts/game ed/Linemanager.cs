@@ -20,6 +20,7 @@ public class LineManager : MonoBehaviour
             if (button.gameObject.name.Contains("Output"))
             {
                 firstButton = button;
+                SetFirstButtonAlpha(0.5f);
                 firstNode = button;
                 SoundManager.instance.PlayMenuButtonSound();
             }
@@ -29,18 +30,32 @@ public class LineManager : MonoBehaviour
 
         if (button == firstButton)
         {
+            SetFirstButtonAlpha(0f);
             firstButton = null;
             firstNode = null;
             Debug.Log("Same button clicked twice, line not created.");
             return;
         }
-
         CreateLineBetweenButtons(firstButton, button);
     }
 
 
 
     public bool HasFirstButton => firstButton != null;
+
+    private void SetFirstButtonAlpha(float alpha)
+    {
+        if (firstButton != null)
+        {
+            Image buttonImage = firstButton.GetComponent<Image>();
+            if (buttonImage != null)
+            {
+                Color color = buttonImage.color;
+                color.a = alpha;
+                buttonImage.color = color;
+            }
+        }
+    }
 
     private bool IsButtonPlaced(GameObject button)
     {
@@ -72,6 +87,7 @@ public class LineManager : MonoBehaviour
 
         lineRenderer.SetUpLine(points);
         allLines = nodeField.GetComponentsInChildren<Linerendererv2>();
+        SetFirstButtonAlpha(0f);
         firstButton = null;
         SoundManager.instance.PlayNodeConnectEffekt();
     }

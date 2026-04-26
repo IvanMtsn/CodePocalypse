@@ -4,81 +4,61 @@ using TMPro;
 
 public class Stopwatchmanager : MonoBehaviour
 {
-    [Header("UI Elements")]
-    [SerializeField] private Button startBtn;
-    [SerializeField] private Button stopBtn;
-
-    private float elapsedTime = 0f;
-    private float lastTime = 0f;
-    // private float bestTime = Mathf.Infinity;
-    private bool isTiming = false;
-
-    void Start()
-    {
-        startBtn.onClick.AddListener(StartTimer);
-        stopBtn.onClick.AddListener(StopTimer);
-    }
+   [SerializeField] private TMP_Text levelNameText;
+   [SerializeField] private TMP_Text currentTime;
+   [SerializeField] private TMP_Text bestTime;
+    
+    private float timer = 0f;
+    private bool running = false;
 
     void Update()
     {
-        if (isTiming)
+        if (running)
+            timer += Time.deltaTime;
+    }
+
+    public void StartTimer() => running = true;
+    public void StopTimer() => running = false;
+
+    public void OnLevelComplete()
+    {
+        StopTimer();
+
+        string levelName = levelNameText.text;
+        float currentBest = PlayerPrefs.GetFloat("BestTime_" + levelName, float.MaxValue);
+        string formattedTimer = FormatTime(timer);
+        Debug.Log($"OnLevelComplete aufgerufen. Timer: {timer}, Formatted: {formattedTimer}");
+        if (currentTime != null)
         {
-            elapsedTime += Time.deltaTime;
+            currentTime.text = formattedTimer;
+            Debug.Log($"currentTime.text gesetzt auf: {currentTime.text}");
+        }
+        else
+        {
+            Debug.LogError("currentTime TMP_Text ist null!");
+        }
+        if (timer < currentBest)
+        {
+            PlayerPrefs.SetFloat("BestTime_" + levelName, timer);
+            PlayerPrefs.Save();
+            Debug.Log($"Neuer Rekord: {FormatTime(timer)}");
+            bestTime.text = FormatTime(timer);
+        }
+        else
+        {
+            Debug.Log($"Bestzeit: {FormatTime(currentBest)}");
+            bestTime.text = FormatTime(currentBest);
         }
     }
 
-    private void StartTimer()
+    public static string FormatTime(float seconds)
     {
-        isTiming = true;
-        elapsedTime = 0f;
-        startBtn.interactable = false;
-        stopBtn.interactable = true;
+        if (seconds == float.MaxValue) return "--:--.--";
+
+        int minutes = (int)(seconds / 60);
+        int secs    = (int)(seconds % 60);
+        int ms      = (int)((seconds * 100) % 100);
+
+        return $"{minutes:00}:{secs:00}.{ms:00}";
     }
-
-    private void StopTimer()
-    {
-        isTiming = false;
-        startBtn.interactable = true;
-        stopBtn.interactable = false;
-
-        // Speichere Letzte Zeit
-        lastTime = elapsedTime;
-
-        // Überprüfe auf Bestzeit
-        bool newBestTime = false;
-        // if (elapsedTime < bestTime && elapsedTime > 0.1f)
-        // {
-        //     bestTime = elapsedTime;
-        //     newBestTime = true;
-        // }
-
-        // Logge Zeiten
-        Debug.Log($"Letzte Zeit: {FormatTime(lastTime)}");
-        
-        // if (bestTime < Mathf.Infinity)
-        // {
-        //         Debug.Log($"Bestzeit: {FormatTime(bestTime)}");
-
-        // }
-        // else
-        // {
-        //     Debug.Log("Bestzeit: Noch keine Bestzeit aufgezeichnet");
-        // }
-    }
-
-    private string FormatTime(float time)
-    {
-        int minutes = (int)(time / 60);
-        int seconds = (int)(time % 60);
-        int milliseconds = (int)((time * 100) % 100);
-        
-        return $"{minutes:00}:{seconds:00}.{milliseconds:00}";
-    }
-
-    // // Public Methoden
-    // public void ResetBestTime()
-    // {
-    //     bestTime = Mathf.Infinity;
-    //     Debug.Log("Bestzeit zurückgesetzt");
-    // }
 }

@@ -21,7 +21,25 @@ public class finish : MonoBehaviour
   }
   void Update()
   { 
-    if (textMeshPro != null && spielStart != null)
-      textMeshPro.text = "--/--";
+
   }
+  void Awake(){
+    if (timerderzeit != null)
+    {
+      Stopwatchmanager stopwatch = timerderzeit.GetComponent<Stopwatchmanager>();
+      if (stopwatch != null)
+      {
+        stopwatch.OnLevelComplete();
+      }
+      else
+      {
+        Debug.LogError("Stopwatchmanager nicht gefunden auf timerderzeit!");
+      }
+    }
+    else
+    {
+      Debug.LogError("timerderzeit ist null!");
+    }
+  }
+
 }

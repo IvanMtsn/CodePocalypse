@@ -3995,7 +3995,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -9.862549, y: -201.95999}
+  m_AnchoredPosition: {x: -9.862549, y: -201.95996}
   m_SizeDelta: {x: -723.5601, y: -403.9103}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &227632225
@@ -9318,8 +9318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linePrefab: {fileID: 4745500550056744356, guid: cb65e4716a2793c42adc1acba04aec92, type: 3}
-  Content: {fileID: 858737156}
-  nodefield: {fileID: 858737156}
+  nodeField: {fileID: 858737156}
 --- !u!4 &813236674
 Transform:
   m_ObjectHideFlags: 0
@@ -9517,6 +9516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc5434f25533a74dba9774677df27ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineManager: {fileID: 0}
 --- !u!114 &858737158
 MonoBehaviour:
   m_ObjectHideFlags: 0
