@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class destroyline : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField] GameObject nodeField;
+    [SerializeField]  public GameObject nodeField;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

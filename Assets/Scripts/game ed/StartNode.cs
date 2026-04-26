@@ -25,6 +25,6 @@ public class StartNode : INode
     // Update is called once per frame
     void Update()
     {
-        
+    
     }
 }

@@ -12,6 +12,8 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IPointerDownHandler, IBe
     Transform originalParents;
     public Vector3 orginPos;
     public bool placed;
+    private bool isDragging = false;
+    
     private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
@@ -24,6 +26,8 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IPointerDownHandler, IBe
     {
         //throw new System.NotImplementedException();
         canvasGroup.blocksRaycasts = false;
+        Debug.Log("wirdgezogen");
+        isDragging = true;
         if(!placed)
         rectTransform.SetParent(canvas.GetComponent<RectTransform>());
         SoundManager.instance.PlaySelectEffekt();
@@ -32,6 +36,7 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IPointerDownHandler, IBe
     public void OnDrag(PointerEventData eventData)
     {
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        Debug.Log("wird immernoch gezogen");
         //throw new System.NotImplementedException();
     }
 
@@ -40,6 +45,7 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IPointerDownHandler, IBe
         //throw new System.NotImplementedException();
         Debug.Log("OnEndDrag");
         canvasGroup.blocksRaycasts = true;
+        isDragging = false;
         if (!placed)
         {
 
@@ -64,6 +70,7 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IPointerDownHandler, IBe
     {
         rectTransform.SetParent(originalParents.GetComponent<RectTransform>());
         rectTransform.anchoredPosition = orginPos;
+        rectTransform.Rotate(new Vector3(0, 0, 0));
     }
 
     public void SetCanvas(Canvas go)
@@ -80,6 +87,13 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IPointerDownHandler, IBe
     // Update is called once per frame
     void Update()
     {
-        
+        if (isDragging && gameObject.name.Contains("Connect"))
+        {
+            float scroll = Input.GetAxis("Mouse ScrollWheel");
+            if (scroll != 0)
+            {
+                rectTransform.Rotate(new Vector3(0, 0, scroll * 20f)); // Anpassen der Drehgeschwindigkeit
+            }
+        }
     }
 }

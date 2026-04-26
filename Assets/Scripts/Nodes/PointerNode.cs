@@ -1,10 +1,13 @@
 using System.Threading.Tasks;
 using UnityEngine;
+using Unity.UI;
+using TMPro;
 
 public class PointerNode : INode
 {
     public PointerNode_Holder Holder;
     public VariableNode VariableNode;
+    public GameObject wertLabel;
 
     public INode Input { get; set; }
     public INode Output { get; set; }
@@ -16,7 +19,9 @@ public class PointerNode : INode
 
     public VarValue GetValue()
     {
-        return VariableNode.GetValue();
+      Debug.Log(wertLabel.GetComponent<TMP_Text>().text + "ivane");
+      wertLabel.GetComponent<TMP_Text>().text = VariableNode.GetValue().ToString();
+      return VariableNode.GetValue();
     }
 
     public async Task RunNode()

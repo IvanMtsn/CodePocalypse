@@ -20,7 +20,9 @@ public class VariableNode
         Name = nameField.text;
         GameObject var = GameObject.Instantiate(go, holder.transform.position, holder.transform.rotation);
         Debug.Log(var.GetComponent<PointerNode_Holder>().node);
+        Debug.Log(this + " this");
         var.GetComponent<PointerNode_Holder>().node.VariableNode = this;
+        Debug.Log(var.GetComponent<PointerNode_Holder>().node.VariableNode + " black");
         var.GetComponentInChildren<TMP_Text>().text = this.Name;
         pointers.Add(var);
         Debug.Log(pointers.Count);
@@ -34,11 +36,13 @@ public class VariableNode
 
     public VarValue GetValue()
     {
+        Debug.Log(varVal + "valueee");
         return varVal;
     }
 
     public void SetValue(object newVal)
     {
+        Debug.Log("Ivans loch");
         Debug.Log(newVal.GetType());
         Debug.Log($"is Int:" + (newVal.GetType() == typeof(System.Int32)));
         switch (newVal)
@@ -53,7 +57,7 @@ public class VariableNode
         Debug.Log($"Var value: {varVal.Value}");
     }
 
-    private void UpdateAllPointers()
+    public void UpdateAllPointers()
     {
         foreach (var point in pointers)
         {

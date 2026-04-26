@@ -3,6 +3,8 @@ using UnityEngine.EventSystems;
 
 public class NodeFieldhauser : MonoBehaviour, IDropHandler
 {
+    public LineManager lineManager;
+
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log("OnDrop");
@@ -19,10 +21,12 @@ public class NodeFieldhauser : MonoBehaviour, IDropHandler
                 {
                     Debug.Log("Is Var");
                     VariableNode_Holder var_holder = nodeCopy.GetComponent<VariableNode_Holder>();
-                    nodeCopy = Instantiate(var_holder.InstaniatePointer(var_holder.pointerPref_Holder), nodeCopy.transform.position, transform.rotation, transform);
+                    nodeCopy = var_holder.InstaniatePointer(var_holder.pointerPref_Holder);
+                    Debug.Log(var_holder.GetComponent<VariableNode_Holder>().node + " black");
                 }
                 else
                 {
+                   Debug.Log("Is Not Var");
                     nodeCopy = Instantiate(nodeCopy, this.transform, true);
                 }
                 nodeCopy.transform.SetParent(this.transform);
@@ -36,4 +40,12 @@ public class NodeFieldhauser : MonoBehaviour, IDropHandler
             }
         }
     }
+
+    // public void OnPointerClick(PointerEventData eventData)
+    // {
+    //     if (eventData.button != PointerEventData.InputButton.Left) return;
+    //     if (lineManager == null) return;
+
+    //     lineManager.CreateIntermediatePointAt(eventData);
+    // }
 }

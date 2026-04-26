@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class LineManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class LineManager : MonoBehaviour
     
     private Linerendererv2[] allLines;
     private GameObject firstButton;
+    private GameObject firstNode;
 
     public void CreateLine(GameObject button)
     {
@@ -17,30 +19,42 @@ public class LineManager : MonoBehaviour
         {
             if (button.gameObject.name.Contains("Output"))
             {
-               firstButton = button;
-               SoundManager.instance.PlayMenuButtonSound();
-              //  color buttonfarb = firstButton.gameObject.GetComponent<Image>().Color;
-              //  buttonfarb.a = 0.5f; // Set alpha to 50%
-              //  firstButton.GetComponent<Image>().Color = buttonfarb;
-            }
-        }
-        else
-        {
-            if (button == firstButton)
-            {
-                firstButton = null;
-                Debug.Log("Same button clicked twice, line not created.");
-                return;
+                firstButton = button;
+                firstNode = button;
+                SoundManager.instance.PlayMenuButtonSound();
             }
 
-            CreateLineBetweenButtons(firstButton, button);
+            return;
         }
+
+        if (button == firstButton)
+        {
+            firstButton = null;
+            firstNode = null;
+            Debug.Log("Same button clicked twice, line not created.");
+            return;
+        }
+
+        CreateLineBetweenButtons(firstButton, button);
     }
+
+
+
+    public bool HasFirstButton => firstButton != null;
 
     private bool IsButtonPlaced(GameObject button)
     {
         DragAndDrop dragDrop = button.transform.parent.GetComponent<DragAndDrop>();
         return dragDrop != null && dragDrop.placed;
+    }
+
+    private void CreateLineSegment(Transform start, Transform end)
+    {
+        GameObject newLine = Instantiate(linePrefab, nodeField.transform);
+        Linerendererv2 lineRenderer = newLine.GetComponent<Linerendererv2>();
+        Transform[] points = { start, end };
+        lineRenderer.SetUpLine(points);
+        allLines = nodeField.GetComponentsInChildren<Linerendererv2>();
     }
 
     private void CreateLineBetweenButtons(GameObject start, GameObject end)
@@ -99,6 +113,21 @@ public class LineManager : MonoBehaviour
                 return false;
             }
         }
+        else if (endHolder.node is CompareIfNode compareIfNode)
+        {
+            if (end.name.Contains("SideInput1"))
+            {
+                compareIfNode.SideInput1 = startHolder.node;
+            }
+            else if (end.name.Contains("SideInput2"))
+            {
+                compareIfNode.SideInput2 = startHolder.node;
+            }
+            else
+            {
+                compareIfNode.Input = startHolder.node;
+            }
+        }
         else
         {
             endHolder.node.Input = startHolder.node;
@@ -106,4 +135,5 @@ public class LineManager : MonoBehaviour
 
         return true;
     }
+
 }

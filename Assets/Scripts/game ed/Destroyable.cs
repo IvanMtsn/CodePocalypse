@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 public class Destroyable : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] GameObject currentnode;
-    [SerializeField] GameObject nodeField;
+    [SerializeField] public GameObject nodeField;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -33,8 +33,7 @@ public class Destroyable : MonoBehaviour, IPointerClickHandler
 
             Holder currentnodeHolder = currentnode.GetComponent<Holder>();
             Holder inputNodeHolder = inputNode.GetComponent<Holder>();
-            if (currentnodeHolder == null || currentnodeHolder.node == null || inputNodeHolder == null || inputNodeHolder.node == null) return;
-            
+            if (currentnodeHolder == null || currentnodeHolder.node == null || inputNodeHolder == null || inputNodeHolder.node == null) return;  
             INode inputNodeData = inputNodeHolder.node;
             if (currentnodeHolder.node.Input == inputNodeData)
             {

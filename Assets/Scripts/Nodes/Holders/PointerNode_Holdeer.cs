@@ -5,12 +5,16 @@ using UnityEngine;
 public class PointerNode_Holder : MonoBehaviour
 {
     public PointerNode node;
-    public Canvas canvas;
+    [SerializeField] public Canvas canvas;
+    [SerializeField] private GameObject _wertLabel;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         node = new PointerNode();
+        node.wertLabel = _wertLabel;
+        Debug.Log(_wertLabel.GetComponent<TMP_Text>().text + "ivane");
+        node.GetValue();
         DragAndDrop dnd = GetComponent<DragAndDrop>();
         dnd.SetCanvas(canvas);
     }
