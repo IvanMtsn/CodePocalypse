@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
             }
         }
     }
-    void PlayerDeath()
+    public void PlayerDeath()
     {
         Debug.Log("Player is KABLAMO");
         //Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere), transform.position, Quaternion.identity);

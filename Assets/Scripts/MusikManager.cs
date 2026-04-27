@@ -15,6 +15,7 @@ public class MusikManager : MonoBehaviour
     [SerializeField] private AudioClip Ambient_Track;
 
     bool isMuted = false;
+    public bool IsMuted => isMuted;
 
     private AudioClip currentClip;
 

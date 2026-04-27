@@ -11,7 +11,10 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] GameObject _levelSelectScreen;
     [SerializeField] GameObject _videoSettings;
     [SerializeField] GameObject _audioSettings;
+    [SerializeField] GameObject _codex;
     [SerializeField] TMP_Dropdown _displayModeDropdown;
+    public GameObject[] pages;
+    int _currentPageIndex = 0;
     void Start()
     {
         _displayModeDropdown.onValueChanged.AddListener(SetWindowMode);
@@ -23,6 +26,19 @@ public class MainMenuManager : MonoBehaviour
             ReturnToMainMenu();
         }
     }
+    public void OpenCodex()
+    {
+        _codex.SetActive(true);
+        _homeScreen.SetActive(false);
+    }
+    public void ShowCodexPage(int index)
+    {
+        if (_currentPageIndex >= 0 && _currentPageIndex < pages.Length)
+            pages[_currentPageIndex].SetActive(false);
+
+        pages[index].SetActive(true);
+        _currentPageIndex = index;
+    }
     public void LoadLevel(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
@@ -31,6 +47,7 @@ public class MainMenuManager : MonoBehaviour
     {
         _levelSelectScreen.SetActive(false);
         _settingsScreen.SetActive(false);
+        _codex.SetActive(false);
 
         _homeScreen.SetActive(true);
         SoundManager.instance.PlayMenuButtonSound();
