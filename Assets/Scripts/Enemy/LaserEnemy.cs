@@ -22,7 +22,7 @@ public class LaserEnemy : MonoBehaviour
     {
         if (Physics.Raycast(_beamFirePoint.position, _beamFirePoint.forward, out RaycastHit hit, _maxRaycastDistance, _laserMask))
         {
-            if (hit.collider.CompareTag("Enemy"))
+            if (hit.collider.gameObject.layer == 8)
             {
                 hit.collider.GetComponent<EnemyDeathHandler>().DestroyRobot();
             }
