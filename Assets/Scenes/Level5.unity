@@ -10479,7 +10479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9085297560201029610, guid: ef3b631df78677f4a87111b8aba27ba9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.83558506
+      value: 6.33
       objectReference: {fileID: 0}
     - target: {fileID: 9085297560201029610, guid: ef3b631df78677f4a87111b8aba27ba9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10517,6 +10517,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9163256041936983037, guid: ef3b631df78677f4a87111b8aba27ba9, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 1279721405006273932, guid: 3dbef4ca4ad7b2f4db97837020c3c518, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10872,7 +10876,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 375774857867418990, guid: 08c7dc66e5125044ca5eda2539a28b9d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.3617268
+      value: 0.97
       objectReference: {fileID: 0}
     - target: {fileID: 375774857867418990, guid: 08c7dc66e5125044ca5eda2539a28b9d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14363,6 +14367,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9163256041936983037, guid: ef3b631df78677f4a87111b8aba27ba9, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 1279721405006273932, guid: 3dbef4ca4ad7b2f4db97837020c3c518, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25496,7 +25504,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 375774857867418990, guid: 08c7dc66e5125044ca5eda2539a28b9d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.338914
+      value: 6.1
       objectReference: {fileID: 0}
     - target: {fileID: 375774857867418990, guid: 08c7dc66e5125044ca5eda2539a28b9d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -32435,7 +32443,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 227.55005, y: -100}
+  m_AnchoredPosition: {x: 227.55005, y: -100.00003}
   m_SizeDelta: {x: -484.69998, y: -260.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1777685697
@@ -38082,7 +38090,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9085297560201029610, guid: ef3b631df78677f4a87111b8aba27ba9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.101973
+      value: 4.4
       objectReference: {fileID: 0}
     - target: {fileID: 9085297560201029610, guid: ef3b631df78677f4a87111b8aba27ba9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -38112,6 +38120,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9163256041936983037, guid: ef3b631df78677f4a87111b8aba27ba9, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -8062476736154416824, guid: 24eacfadf440bb0429c6467832121fbe, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
