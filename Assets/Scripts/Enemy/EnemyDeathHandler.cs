@@ -12,12 +12,12 @@ public class EnemyDeathHandler : MonoBehaviour
             _lastCoordinatePos = other.transform.position;
             //Debug.Log(_lastCoordinateHit);
         }
-        if (other.gameObject.layer == 10)
+        if (other.gameObject.layer == 10 || other.gameObject.layer == 8)
         {
             DestroyRobot();
         }
     }
-    void DestroyRobot()
+    public void DestroyRobot()
     {
         PlayDeathSound();
         Vector3 debrisSpawnPos = new Vector3(_lastCoordinatePos.x,0, _lastCoordinatePos.z);
