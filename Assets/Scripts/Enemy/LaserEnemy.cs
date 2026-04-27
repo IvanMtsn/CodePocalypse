@@ -1,20 +1,23 @@
 using System.Collections;
 using UnityEngine;
 
-public class LaserEnemy : MonoBehaviour
+public class LaserEnemy : MonoBehaviour, IResettable
 {
     [SerializeField] LayerMask _laserMask;
     [SerializeField] Transform _beamFirePoint;
-    AudioSource _audioSource;
     [SerializeField] float _minIdleInterval = 3f;
     [SerializeField] float _maxIdleInterval = 8f;
 
+    AudioSource _audioSource;
     LineRenderer _lineRenderer;
+
     float _maxRaycastDistance = 19;
+
     void Start()
     {
         _lineRenderer = GetComponent<LineRenderer>();
         _audioSource = GetComponent<AudioSource>();
+
         StartCoroutine(PlayIdleSounds());
     }
 
@@ -26,16 +29,34 @@ public class LaserEnemy : MonoBehaviour
             {
                 hit.collider.GetComponent<Player>().PlayerDeath();
             }
+
             _lineRenderer.SetPosition(0, _beamFirePoint.position);
             _lineRenderer.SetPosition(1, hit.point);
         }
     }
+
     IEnumerator PlayIdleSounds()
     {
         while (true)
         {
-            SoundManager.instance.PlayClipOnSource(_audioSource, SoundManager.instance.GetGegnerIdleSound(), 1f, false);
+            SoundManager.instance.PlayClipOnSource(
+                _audioSource,
+                SoundManager.instance.GetGegnerIdleSound(),
+                1f,
+                false
+            );
+
             yield return new WaitForSeconds(Random.Range(_minIdleInterval, _maxIdleInterval));
         }
+    }
+
+    public void ResetState()
+    {
+        StopAllCoroutines();
+        if (_lineRenderer != null)
+        {
+            _lineRenderer.enabled = true;
+        }
+        StartCoroutine(PlayIdleSounds());
     }
 }
